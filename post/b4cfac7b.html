@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="yangq&#39;s blog">
 <meta property="og:description" content="简介本文介绍hexo使用、维护、升级配置汇总，theme为next-theme。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-08T14:58:59.597Z">
+<meta property="og:updated_time" content="2019-09-08T16:21:47.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo配置汇总">
 <meta name="twitter:description" content="简介本文介绍hexo使用、维护、升级配置汇总，theme为next-theme。">
@@ -417,12 +417,24 @@
                 
               
 
-              <time title="创建时间：2019-09-08 22:45:12 / 修改时间：22:58:59" itemprop="dateCreated datePublished" datetime="2019-09-08T22:45:12+08:00">2019-09-08</time>
+              <time title="创建时间：2019-09-08 22:45:12" itemprop="dateCreated datePublished" datetime="2019-09-08T22:45:12+08:00">2019-09-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新</span>
+                
+                <time title="修改时间：2019-09-09 00:21:47" itemprop="dateModified" datetime="2019-09-09T00:21:47+08:00">2019-09-09</time>
               
             
           </span>
@@ -487,7 +499,11 @@
 <li><p>安装<code>hexo-generator-searchdb</code>，站点根目录下执行:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-searchdb --save</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>ranohu</p>
+<li><p>然后站点配置文件新增:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: 10000</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑主题配置文件，启用本地搜索功能:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">local_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
