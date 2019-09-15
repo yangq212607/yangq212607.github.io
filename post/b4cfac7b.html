@@ -105,7 +105,7 @@
 <meta property="og:description" content="简介本文介绍hexo使用、维护、升级配置汇总，theme为next-theme。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://i.loli.net/2019/09/15/KpG73UQxoSfqB4A.png">
-<meta property="og:updated_time" content="2019-09-15T10:46:00.220Z">
+<meta property="og:updated_time" content="2019-09-15T11:06:59.588Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo配置汇总">
 <meta name="twitter:description" content="简介本文介绍hexo使用、维护、升级配置汇总，theme为next-theme。">
@@ -436,7 +436,7 @@
                 
                   <span class="post-meta-item-text">更新</span>
                 
-                <time title="修改时间：2019-09-15 18:46:00" itemprop="dateModified" datetime="2019-09-15T18:46:00+08:00">2019-09-15</time>
+                <time title="修改时间：2019-09-15 19:06:59" itemprop="dateModified" datetime="2019-09-15T19:06:59+08:00">2019-09-15</time>
               
             
           </span>
@@ -502,7 +502,12 @@
 </li>
 <li><p>升级hexo<br>执行：<code>npm install hexo --save</code><br>升级之后可以手动将<code>package.json</code>里的hexo对应version改下。执行完毕后如下：<br><img src="https://i.loli.net/2019/09/15/KpG73UQxoSfqB4A.png" alt="WX20190915-184353@2x.png"></p>
 </li>
+<li><p>升级<code>package.json</code>其他依赖，这个方法有两种：</p>
+</li>
 </ul>
+<ol>
+<li>手工更新<br>在<a href="http://npm.taobao.org/package/hexo-deployer-git" target="_blank" rel="noopener">http://npm.taobao.org/package/hexo-deployer-git</a>里手动检查每个dependencies，如<code>hexo-deployer-git</code>本来版本号是<code>^1.3.0</code>是没法升到最新的<code>2.0.0</code>的。手动修改<code>package.json</code>里的hexo-deployer-git为<code>^2.0.0</code>,然后输入:<code>fd</code></li>
+</ol>
 <h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>之前一直使用的Algolia，但是发现不太好用，一段时间之后再搜索就不灵了。这次采用的是<a href="http://theme-next.iissnan.com/third-party-services.html#local-search" target="_blank" rel="noopener">Local Search </a>，简单好用而且不收费。</p>
 <ul>
 <li><p>安装<code>hexo-generator-searchdb</code>，站点根目录下执行:</p>
