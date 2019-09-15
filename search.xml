@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[刷算法(2)-反转字符串]]></title>
     <url>%2Fpost%2Fc101f8b.html</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。 答案：折半遍历12345678public void reverseString(char[] s) &#123; int length = s.length; for (int i = 0, j = length -1; i &lt;= j; i++, j--) &#123; char temp = s[i]; s[i] = s[j]; s[j] = temp; &#125;&#125;]]></content>
       <categories>
         <category>算法</category>
       </categories>

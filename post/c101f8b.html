@@ -96,18 +96,18 @@
 
 
 
-  <meta name="description" content="小小程序员">
+  <meta name="description" content="题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。">
 <meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="刷算法(2)-反转字符串">
 <meta property="og:url" content="http://yangq.me/post/c101f8b.html">
 <meta property="og:site_name" content="yangq&#39;s blog">
-<meta property="og:description" content="小小程序员">
+<meta property="og:description" content="题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-15T09:44:59.485Z">
+<meta property="og:updated_time" content="2019-09-15T09:51:51.055Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="刷算法(2)-反转字符串">
-<meta name="twitter:description" content="小小程序员">
+<meta name="twitter:description" content="题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。">
 
 
 
@@ -417,7 +417,7 @@
                 
               
 
-              <time title="创建时间：2019-09-15 17:35:45 / 修改时间：17:44:59" itemprop="dateCreated datePublished" datetime="2019-09-15T17:35:45+08:00">2019-09-15</time>
+              <time title="创建时间：2019-09-15 17:35:45 / 修改时间：17:51:51" itemprop="dateCreated datePublished" datetime="2019-09-15T17:35:45+08:00">2019-09-15</time>
             
 
             
@@ -481,7 +481,9 @@
       
 
       
-        
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">题目</a></h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组<code>char[]</code>的形式给出。<br><a id="more"></a></p>
+<h2 id="答案：折半遍历"><a href="#答案：折半遍历" class="headerlink" title="答案：折半遍历"></a>答案：折半遍历</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void reverseString(char[] s) &#123;</span><br><span class="line">    int length = s.length;</span><br><span class="line">    for (int i = 0, j = length -1; i &lt;= j; i++, j--) &#123;</span><br><span class="line">        char temp = s[i];</span><br><span class="line">        s[i] = s[j];</span><br><span class="line">        s[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -573,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -682,6 +693,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#答案：折半遍历"><span class="nav-number">2.</span> <span class="nav-text">答案：折半遍历</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
