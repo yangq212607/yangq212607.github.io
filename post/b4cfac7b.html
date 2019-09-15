@@ -66,7 +66,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/09/15/KpG73UQxoSfqB4A.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/15/D2I8sPj5Lt6TVQC.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/15/UuObE5QXR6psYeG.png">
-<meta property="og:updated_time" content="2019-09-15T16:12:13.010Z">
+<meta property="og:updated_time" content="2019-09-15T17:24:46.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo配置汇总">
 <meta name="twitter:description" content="简介本文介绍hexo使用、维护、升级配置汇总，theme为next-theme。">
@@ -312,7 +312,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-16 00:12:13" itemprop="dateModified" datetime="2019-09-16T00:12:13+08:00">2019-09-16</time>
+                <time title="修改时间：2019-09-16 01:24:46" itemprop="dateModified" datetime="2019-09-16T01:24:46+08:00">2019-09-16</time>
               </span>
             
           
@@ -377,8 +377,15 @@
 </li>
 <li><p>解耦个性化配置(<strong>hexo3.5以上</strong>)<br>next-theme的配置文件都在自己主题下的_config.yml，为了让个性化配置和源码里解耦方便后续升级主题，新建<code>source/_data/next.yml</code>，内容从<code>next/_config.yml</code>里完整拷贝过来。同时在默认的<code>next/_config.yml</code>里将<code>override: false</code>，表示如果有冲突时会merge自定义的<code>next.yml</code>和默认的<code>_config.yml</code>，以<code>next.yml</code>为准。这样<code>next.yml</code>只保留自己个性化定制的东西即可。</p>
 </li>
-<li></li>
 </ol>
+<ul>
+<li>头像,将<code>avatar.jpg</code>放在next的images文件夹下</li>
+<li>个数统计，使用<code>busuanzi_count</code></li>
+<li>gitalk评论</li>
+<li><code>Menu Settings</code></li>
+<li><code>Scheme Settings</code></li>
+<li><code>footer</code>设置since和icon</li>
+</ul>
 <h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>之前一直使用的Algolia，但是发现不太好用，一段时间之后再搜索就不灵了。这次采用的是<a href="http://theme-next.iissnan.com/third-party-services.html#local-search" target="_blank" rel="noopener">Local Search </a>，简单好用而且不收费。</p>
 <ul>
 <li><p>安装<code>hexo-generator-searchdb</code>，站点根目录下执行:</p>
