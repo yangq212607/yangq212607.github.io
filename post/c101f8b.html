@@ -481,8 +481,11 @@
       
 
       
-        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">题目</a></h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组<code>char[]</code>的形式给出。<br><a id="more"></a></p>
+        <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">题目</a></h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组<code>char[]</code>的形式给出。</p>
+<a id="more"></a>
+
 <h2 id="答案：折半遍历"><a href="#答案：折半遍历" class="headerlink" title="答案：折半遍历"></a>答案：折半遍历</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void reverseString(char[] s) &#123;</span><br><span class="line">    int length = s.length;</span><br><span class="line">    for (int i = 0, j = length -1; i &lt;= j; i++, j--) &#123;</span><br><span class="line">        char temp = s[i];</span><br><span class="line">        s[i] = s[j];</span><br><span class="line">        s[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
       
     </div>

@@ -494,10 +494,15 @@
 
       
         <h2 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set proxy=http://127.0.0.1:8087</span><br><span class="line">npm config set registry=http://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+
 <a id="more"></a>
-<h2 id="关于https"><a href="#关于https" class="headerlink" title="关于https"></a>关于https</h2><p>经过上面设置使用了http开头的源，因此不需要设https_proxy了，否则还要增加一句:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set https-proxy http://server:port</span><br></pre></td></tr></table></figure></p>
+<h2 id="关于https"><a href="#关于https" class="headerlink" title="关于https"></a>关于https</h2><p>经过上面设置使用了http开头的源，因此不需要设https_proxy了，否则还要增加一句:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set https-proxy http://server:port</span><br></pre></td></tr></table></figure>
+
 <h2 id="代理用户名和密码"><a href="#代理用户名和密码" class="headerlink" title="代理用户名和密码"></a>代理用户名和密码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config set proxy http://username:password@server:port</span><br><span class="line">npm confit set https-proxy http://username:password@server:port</span><br></pre></td></tr></table></figure>
+
 <h2 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm config delete proxy</span><br><span class="line">npm config delete https-proxy</span><br></pre></td></tr></table></figure>
+
 <h2 id="修改源"><a href="#修改源" class="headerlink" title="修改源"></a>修改源</h2><p>请参考<a href="https://segmentfault.com/a/1190000002589144" target="_blank" rel="noopener">https://segmentfault.com/a/1190000002589144</a></p>
 
       
