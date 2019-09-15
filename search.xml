@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[刷算法(2)-反转字符串]]></title>
+    <url>%2Fpost%2Fc101f8b.html</url>
+    <content type="text"></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[hexo配置汇总]]></title>
     <url>%2Fpost%2Fb4cfac7b.html</url>
     <content type="text"><![CDATA[简介本文介绍hexo使用、维护、升级配置汇总，theme为next-theme。 搜索功能之前一直使用的Algolia，但是发现不太好用，一段时间之后再搜索就不灵了。这次采用的是Local Search ，简单好用而且不收费。 安装hexo-generator-searchdb，站点根目录下执行: 1npm install hexo-generator-searchdb --save 然后站点配置文件新增: 12345search: path: search.xml field: post format: html limit: 10000 编辑主题配置文件，启用本地搜索功能: 12local_search: enable: true]]></content>

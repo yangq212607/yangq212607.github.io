@@ -96,21 +96,18 @@
 
 
 
-  <meta name="description" content="简介本文介绍去除码市的Coding Pages的等待跳转页的方法,采用hexo的next主题5.1.2版本.">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="小小程序员">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hexo next主题去掉码市的Coding Pages等待页">
-<meta property="og:url" content="http://yangq.me/post/2dde9ec2.html">
+<meta property="og:title" content="刷算法(2)-反转字符串">
+<meta property="og:url" content="http://yangq.me/post/c101f8b.html">
 <meta property="og:site_name" content="yangq&#39;s blog">
-<meta property="og:description" content="简介本文介绍去除码市的Coding Pages的等待跳转页的方法,采用hexo的next主题5.1.2版本.">
+<meta property="og:description" content="小小程序员">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://image.yangq.me/blog/history/16-7-5/Jietu20170902-112355.jpg">
-<meta property="og:image" content="http://image.yangq.me/blog/history/16-7-5/Jietu20170902-112742.jpg">
-<meta property="og:updated_time" content="2019-04-27T10:13:11.344Z">
+<meta property="og:updated_time" content="2019-09-15T09:36:49.934Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hexo next主题去掉码市的Coding Pages等待页">
-<meta name="twitter:description" content="简介本文介绍去除码市的Coding Pages的等待跳转页的方法,采用hexo的next主题5.1.2版本.">
-<meta name="twitter:image" content="http://image.yangq.me/blog/history/16-7-5/Jietu20170902-112355.jpg">
+<meta name="twitter:title" content="刷算法(2)-反转字符串">
+<meta name="twitter:description" content="小小程序员">
 
 
 
@@ -118,7 +115,7 @@
 
   
   
-  <link rel="canonical" href="http://yangq.me/post/2dde9ec2">
+  <link rel="canonical" href="http://yangq.me/post/c101f8b">
 
 
 
@@ -128,7 +125,7 @@
   };
 </script>
 
-  <title>hexo next主题去掉码市的Coding Pages等待页 | yangq's blog</title>
+  <title>刷算法(2)-反转字符串 | yangq's blog</title>
   
 
 
@@ -377,7 +374,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yangq.me/post/2dde9ec2.html">
+    <link itemprop="mainEntityOfPage" href="http://yangq.me/post/c101f8b.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="老实念佛">
@@ -394,7 +391,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">hexo next主题去掉码市的Coding Pages等待页
+          <h1 class="post-title" itemprop="name headline">刷算法(2)-反转字符串
 
               
             
@@ -420,24 +417,12 @@
                 
               
 
-              <time title="创建时间：2017-09-02 10:35:48" itemprop="dateCreated datePublished" datetime="2017-09-02T10:35:48+08:00">2017-09-02</time>
+              <time title="创建时间：2019-09-15 17:35:45 / 修改时间：17:36:49" itemprop="dateCreated datePublished" datetime="2019-09-15T17:35:45+08:00">2019-09-15</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新</span>
-                
-                <time title="修改时间：2019-04-27 18:13:11" itemprop="dateModified" datetime="2019-04-27T18:13:11+08:00">2019-04-27</time>
               
             
           </span>
@@ -454,7 +439,7 @@
                 <span class="post-meta-item-text">分类</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/common/" itemprop="url" rel="index"><span itemprop="name">综合</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
 
                 
                 
@@ -496,20 +481,7 @@
       
 
       
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文介绍去除码市的Coding Pages的<a href="https://coding.net/u/coding/p/Coding-Feedback/topic/337715" target="_blank" rel="noopener">等待跳转页</a>的方法,采用hexo的next主题5.1.2版本.<br><a id="more"></a></p>
-<h2 id="1-升级银牌会员"><a href="#1-升级银牌会员" class="headerlink" title="1.升级银牌会员"></a>1.升级银牌会员</h2><p>完善信息就ok，这一步是必须的。</p>
-<h2 id="2-修改footer-swig"><a href="#2-修改footer-swig" class="headerlink" title="2.修改footer.swig"></a>2.修改<code>footer.swig</code></h2><p>找到主题下的这个文件，找到这一行:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;theme-info&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>原来这里面放的是<strong>主题 — NexT.Pisces v5.1.2</strong>，如下图所示:<br><img src="http://image.yangq.me/blog/history/16-7-5/Jietu20170902-112355.jpg" alt><br>其实这个没什么卵用，将这个div的东西都删掉，然后添加一句:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;span&gt;Hosted by &lt;a href=&quot;https://pages.coding.me&quot; style=&quot;font-weight: bold&quot;&gt;Coding Pages&lt;/a&gt;&lt;/span&gt;</span><br></pre></td></tr></table></figure>
-<p>最后完整的尾部信息是:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;% if theme.copyright %&#125;</span><br><span class="line">  &lt;div class=&quot;powered-by&quot;&gt;&#123;#</span><br><span class="line">  #&#125;&#123;&#123; __(&apos;footer.powered&apos;, &apos;&lt;a class=&quot;theme-link&quot; href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt;&apos;) &#125;&#125;&#123;#</span><br><span class="line">#&#125;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">  &lt;span class=&quot;post-meta-divider&quot;&gt;|&lt;/span&gt;</span><br><span class="line"></span><br><span class="line">  &lt;div class=&quot;theme-info&quot;&gt;</span><br><span class="line">  &lt;span&gt;Hosted by &lt;a href=&quot;https://pages.coding.me&quot; style=&quot;font-weight: bold&quot;&gt;Coding Pages&lt;/a&gt;&lt;/span&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-<p>最终的效果:<br><img src="http://image.yangq.me/blog/history/16-7-5/Jietu20170902-112742.jpg" alt><br>既保证了原来的结构也达到了效果。之前曾尝试过在copyright也就是博主名后面加(参考链接1的方案)弄两个竖线，但是又对不齐无奈太丑了所以放弃.</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://blog.csdn.net/yingpaixiaochuan/article/details/77113397" target="_blank" rel="noopener">http://blog.csdn.net/yingpaixiaochuan/article/details/77113397</a></li>
-<li><a href="http://zhanghao.studio/%E6%8F%90%E5%8D%87%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6.html" target="_blank" rel="noopener">http://zhanghao.studio/%E6%8F%90%E5%8D%87%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6.html</a></li>
-</ol>
-
+        
       
     </div>
 
@@ -532,7 +504,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/hexo/" rel="tag"># hexo</a>
+            <a href="/tags/leetcode/" rel="tag"># leetcode</a>
           
         </div>
       
@@ -545,8 +517,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/ab9bb85a.html" rel="next" title="hexo next主题集成gitment评论系统">
-                <i class="fa fa-chevron-left"></i> hexo next主题集成gitment评论系统
+              <a href="/post/b4cfac7b.html" rel="next" title="hexo配置汇总">
+                <i class="fa fa-chevron-left"></i> hexo配置汇总
               </a>
             
           </div>
@@ -554,10 +526,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/post/a525c216.html" rel="prev" title="Matlab里double和uint8对imshow函数的影响">
-                Matlab里double和uint8对imshow函数的影响 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -605,17 +573,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <div class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -723,23 +682,6 @@
         </div>
       </div>
 
-      
-      <!--noindex-->
-        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-            
-            
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-升级银牌会员"><span class="nav-number">2.</span> <span class="nav-text">1.升级银牌会员</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-修改footer-swig"><span class="nav-number">3.</span> <span class="nav-text">2.修改footer.swig</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
-            
-
-          </div>
-        </div>
-      <!--/noindex-->
       
 
       
