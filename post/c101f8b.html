@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Amita:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="yangq&#39;s blog">
 <meta property="og:description" content="题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-15T10:02:07.361Z">
+<meta property="og:updated_time" content="2019-09-16T00:08:09.606Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="刷算法(2)-反转字符串">
 <meta name="twitter:description" content="题目编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组char[]的形式给出。">
@@ -297,11 +297,19 @@
                 
               
 
-              <time title="创建时间：2019-09-15 17:35:45 / 修改时间：18:02:07" itemprop="dateCreated datePublished" datetime="2019-09-15T17:35:45+08:00">2019-09-15</time>
+              <time title="创建时间：2019-09-15 17:35:45" itemprop="dateCreated datePublished" datetime="2019-09-15T17:35:45+08:00">2019-09-15</time>
             </span>
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2019-09-16 08:08:09" itemprop="dateModified" datetime="2019-09-16T08:08:09+08:00">2019-09-16</time>
+              </span>
             
           
             <span class="post-meta-item">
@@ -340,7 +348,7 @@
         <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">题目</a></h2><p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组<code>char[]</code>的形式给出。</p>
 <a id="more"></a>
 
-<h2 id="答案：折半遍历"><a href="#答案：折半遍历" class="headerlink" title="答案：折半遍历"></a>答案：折半遍历</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void reverseString(char[] s) &#123;</span><br><span class="line">    int length = s.length;</span><br><span class="line">    for (int i = 0, j = length -1; i &lt;= j; i++, j--) &#123;</span><br><span class="line">        char temp = s[i];</span><br><span class="line">        s[i] = s[j];</span><br><span class="line">        s[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="题解-折半遍历"><a href="#题解-折半遍历" class="headerlink" title="题解(折半遍历)"></a>题解(折半遍历)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public void reverseString(char[] s) &#123;</span><br><span class="line">    int length = s.length;</span><br><span class="line">    for (int i = 0, j = length -1; i &lt;= j; i++, j--) &#123;</span><br><span class="line">        char temp = s[i];</span><br><span class="line">        s[i] = s[j];</span><br><span class="line">        s[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
     </div>
@@ -427,7 +435,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#答案：折半遍历"><span class="nav-number">2.</span> <span class="nav-text">答案：折半遍历</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目"><span class="nav-number">1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解-折半遍历"><span class="nav-number">2.</span> <span class="nav-text">题解(折半遍历)</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
