@@ -349,11 +349,11 @@
 <h2 id="检查crond服务是否开机自启"><a href="#检查crond服务是否开机自启" class="headerlink" title="检查crond服务是否开机自启"></a>检查crond服务是否开机自启</h2><p>CentOS上运行<code>systemctl is-enabled crond.service</code>，如果是disabled的话运行<code>systemctl enable crond.service</code>开启。</p>
 <p><strong>注意:如果crond服务不能开机自启的话，则第一次重启后，以后定时任务就没法持续了。</strong></p>
 <h2 id="开启crond服务"><a href="#开启crond服务" class="headerlink" title="开启crond服务"></a>开启crond服务</h2><p>运行:<code>service start crond</code>开启服务，<code>service crond status</code>查看状态：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Active: active (running) since Sun 2017-09-24 09:26:23 EDT; 3h 32min ago</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Active: active (running) since Sun <span class="number">2017</span><span class="number">-09</span><span class="number">-24</span> <span class="number">09</span>:<span class="number">26</span>:<span class="number">23</span> EDT; <span class="number">3</span>h <span class="number">32</span>min ago</span><br></pre></td></tr></table></figure>
 
 <p>包含以上输出表示已经开启crond服务.</p>
 <h2 id="创建定时任务"><a href="#创建定时任务" class="headerlink" title="创建定时任务"></a>创建定时任务</h2><p>创建:<code>crontable -e</code>,之后输入:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 4 * * * /sbin/reboot</span><br></pre></td></tr></table></figure>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">0 </span><span class="number">4</span> * * * /sbin/reboot</span><br></pre></td></tr></table></figure>
 
 <p>表示每天早上4:0分重启.</p>
 

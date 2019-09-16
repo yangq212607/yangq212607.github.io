@@ -348,15 +348,15 @@
         <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文介绍npm安装依赖至指定版本的方法,依赖的版本可以在<a href="https://npm.taobao.org/" target="_blank" rel="noopener">淘宝镜像</a>或<a href="https://www.npmjs.com/" target="_blank" rel="noopener">官方</a>查询到.</p>
 <a id="more"></a>
 <h2 id="三种方法"><a href="#三种方法" class="headerlink" title="三种方法"></a>三种方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>先在package.json里修改好指定版本号，然后输入:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update webpack</span><br></pre></td></tr></table></figure>
+<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> update webpack</span><br></pre></td></tr></table></figure>
 
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update webpack@4.7.0</span><br></pre></td></tr></table></figure>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update <span class="symbol">webpack@</span><span class="number">4.7</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
 
 <p>会把webpack更新至指定版本，但是不会写到package.json文件里，如果需要写到package.json里执行如下命令:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update webpack@4.7.0 --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update <span class="symbol">webpack@</span><span class="number">4.7</span><span class="number">.0</span> --save</span><br></pre></td></tr></table></figure>
 
 <p>其中<code>--save</code>等于<code>-S</code>.</p>
-<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm update webpack@latest -S</span><br></pre></td></tr></table></figure>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> update webpack@latest -S</span><br></pre></td></tr></table></figure>
 
 <h2 id="save和-save-dev区别"><a href="#save和-save-dev区别" class="headerlink" title="--save和--save-dev区别"></a><code>--save</code>和<code>--save-dev</code>区别</h2><p>一句话:<code>--save-dev</code>是你开发时依赖的东西，<code>--save</code>是发布后还依赖的东西.</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>

@@ -1254,7 +1254,7 @@
 
       
           <p><code>ActivityThread</code>是<code>Activity</code>里一个很重要的成员变量，俗称UI线程，也即应用的主线程,它自身有三个比较关键的成员变量，其中之一是<code>ApplicationThread</code>,在<code>ActivityThread</code>创建的时候作为全局变量被创建:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">final ApplicationThread mAppThread = new ApplicationThread();</span><br><span class="line">final ApplicationThread mAppThread = new ApplicationThread();</span><br><span class="line">final Looper mLooper = Looper.myLooper();</span><br><span class="line">final H mH = new H();</span><br></pre></td></tr></table></figure>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">final ApplicationThread mAppThread = <span class="keyword">new</span> <span class="constructor">ApplicationThread()</span>;</span><br><span class="line">final ApplicationThread mAppThread = <span class="keyword">new</span> <span class="constructor">ApplicationThread()</span>;</span><br><span class="line">final Looper mLooper = <span class="module-access"><span class="module"><span class="identifier">Looper</span>.</span></span>my<span class="constructor">Looper()</span>;</span><br><span class="line">final H mH = <span class="keyword">new</span> <span class="constructor">H()</span>;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           
             <div class="post-button text-center">
