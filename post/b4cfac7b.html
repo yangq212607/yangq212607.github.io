@@ -17,7 +17,7 @@
 
 <link rel="stylesheet" href="/css/main.css?v=7.4.0">
 
-
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Amita:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
 <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
@@ -66,7 +66,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/09/15/KpG73UQxoSfqB4A.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/15/D2I8sPj5Lt6TVQC.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/15/UuObE5QXR6psYeG.png">
-<meta property="og:updated_time" content="2019-09-15T17:24:46.175Z">
+<meta property="og:updated_time" content="2019-09-16T16:24:06.295Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo配置汇总">
 <meta name="twitter:description" content="简介本文介绍hexo使用、维护、升级配置汇总，theme为next-theme。">
@@ -312,7 +312,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-16 01:24:46" itemprop="dateModified" datetime="2019-09-16T01:24:46+08:00">2019-09-16</time>
+                <time title="修改时间：2019-09-17 00:24:06" itemprop="dateModified" datetime="2019-09-17T00:24:06+08:00">2019-09-17</time>
               </span>
             
           
@@ -372,12 +372,8 @@
 </ol>
 <p>执行：<code>ncu -u</code>更新package.json文件：<br><img src="https://i.loli.net/2019/09/15/UuObE5QXR6psYeG.png" alt="WX20190915-193659@2x.png"></p>
 <p>最后通过<code>npm install</code>安装更新。</p>
-<h2 id="升级hexo-next-theme从7-1-0至7-4-0"><a href="#升级hexo-next-theme从7-1-0至7-4-0" class="headerlink" title="升级hexo-next-theme从7.1.0至7.4.0"></a>升级<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">hexo-next-theme</a>从7.1.0至<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">7.4.0</a></h2><ol>
-<li><p>下载最新版本<br>参考<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md" target="_blank" rel="noopener">官网安装指导</a>，选择方式1，在hexo博客根目录下执行：<br><code>curl -s https://api.github.com/repos/theme-next/hexo-theme-next/releases/latest | grep tarball_url | cut -d &#39;&quot;&#39; -f 4 | wget -i - -O- | tar -zx -C themes/next --strip-components=1</code></p>
-</li>
-<li><p>解耦个性化配置(<strong>hexo3.5以上</strong>)<br>next-theme的配置文件都在自己主题下的_config.yml，为了让个性化配置和源码里解耦方便后续升级主题，新建<code>source/_data/next.yml</code>，内容从<code>next/_config.yml</code>里完整拷贝过来。同时在默认的<code>next/_config.yml</code>里将<code>override: false</code>，表示如果有冲突时会merge自定义的<code>next.yml</code>和默认的<code>_config.yml</code>，以<code>next.yml</code>为准。这样<code>next.yml</code>只保留自己个性化定制的东西即可。</p>
-</li>
-</ol>
+<h2 id="升级hexo-next-theme从7-1-0至7-4-0"><a href="#升级hexo-next-theme从7-1-0至7-4-0" class="headerlink" title="升级hexo-next-theme从7.1.0至7.4.0"></a>升级<a href="http://theme-next.iissnan.com/getting-started.html" target="_blank" rel="noopener">hexo-next-theme</a>从7.1.0至<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">7.4.0</a></h2><h3 id="下载最新版本"><a href="#下载最新版本" class="headerlink" title="下载最新版本"></a>下载最新版本</h3><p>参考<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/INSTALLATION.md" target="_blank" rel="noopener">官网安装指导</a>，选择方式1，在hexo博客根目录下执行：<br><code>curl -s https://api.github.com/repos/theme-next/hexo-theme-next/releases/latest | grep tarball_url | cut -d &#39;&quot;&#39; -f 4 | wget -i - -O- | tar -zx -C themes/next --strip-components=1</code></p>
+<h3 id="解耦个性化配置-hexo3-5以上"><a href="#解耦个性化配置-hexo3-5以上" class="headerlink" title="解耦个性化配置(hexo3.5以上)"></a>解耦个性化配置(<strong>hexo3.5以上</strong>)</h3><p>next-theme的配置文件都在自己主题下的_config.yml，为了让个性化配置和源码里解耦方便后续升级主题，新建<code>source/_data/next.yml</code>，内容从<code>next/_config.yml</code>里完整拷贝过来。同时在默认的<code>next/_config.yml</code>里将<code>override: false</code>，表示如果有冲突时会merge自定义的<code>next.yml</code>和默认的<code>_config.yml</code>，以<code>next.yml</code>为准。这样<code>next.yml</code>只保留自己个性化定制的东西即可。</p>
 <ul>
 <li>头像,将<code>avatar.jpg</code>放在next的images文件夹下</li>
 <li>个数统计，使用<code>busuanzi_count</code></li>
@@ -386,6 +382,7 @@
 <li><code>Scheme Settings</code></li>
 <li><code>footer</code>设置since和icon</li>
 </ul>
+<h3 id="字体设置"><a href="#字体设置" class="headerlink" title="字体设置"></a>字体设置</h3><p>升到最新的7.4.0后发现字体特别大不好看。</p>
 <h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>之前一直使用的Algolia，但是发现不太好用，一段时间之后再搜索就不灵了。这次采用的是<a href="http://theme-next.iissnan.com/third-party-services.html#local-search" target="_blank" rel="noopener">Local Search </a>，简单好用而且不收费。</p>
 <ul>
 <li><p>安装<code>hexo-generator-searchdb</code>，站点根目录下执行:</p>
@@ -492,7 +489,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级hexo从3-8-0至3-9-0"><span class="nav-number">2.</span> <span class="nav-text">升级hexo从3.8.0至3.9.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级hexo-next-theme从7-1-0至7-4-0"><span class="nav-number">3.</span> <span class="nav-text">升级hexo-next-theme从7.1.0至7.4.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索功能"><span class="nav-number">4.</span> <span class="nav-text">搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级hexo从3-8-0至3-9-0"><span class="nav-number">2.</span> <span class="nav-text">升级hexo从3.8.0至3.9.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级hexo-next-theme从7-1-0至7-4-0"><span class="nav-number">3.</span> <span class="nav-text">升级hexo-next-theme从7.1.0至7.4.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载最新版本"><span class="nav-number">3.1.</span> <span class="nav-text">下载最新版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解耦个性化配置-hexo3-5以上"><span class="nav-number">3.2.</span> <span class="nav-text">解耦个性化配置(hexo3.5以上)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体设置"><span class="nav-number">3.3.</span> <span class="nav-text">字体设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索功能"><span class="nav-number">4.</span> <span class="nav-text">搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
