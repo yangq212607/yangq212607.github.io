@@ -4,56 +4,97 @@
 
 
 
-<html lang="zh-CN">
-<head>
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
-
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
-
-<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
-<script id="hexo-configurations">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
     scheme: 'Pisces',
-    version: '7.4.0',
-    exturl: false,
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
-    copycode: {"enable":true,"show_result":true,"style":"default"},
-    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
-    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    version: '7.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
     fancybox: false,
-    mediumzoom: false,
+    fastclick: false,
     lazyload: false,
-    pangu: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     algolia: {
-      appID: '',
+      applicationID: '',
       apiKey: '',
       indexName: '',
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    },
-    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: 'search.xml',
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    translation: {
-      copy_button: '复制',
-      copy_success: '复制成功',
-      copy_failure: '复制失败'
-    },
-    sidebarPadding: 40
+    }
   };
 </script>
+
+
+  
+
+
+
 
   <meta name="description" content="背景之前博文里有介绍过搭建科学上网环境后，使用锐速进行提速，但是加速的效果有时候觉得好，有时候觉得不行。最近帮朋友在vultr上申请一个IP，搭建环境后，发现同WIFI环境下新IP下载速度只有20-30KB，老IP能达到1M左右。在另一处wifi环境下，GooglePlay上下载应用老IP速度达2M左右，新IP只有400多kb。本来想给vultr提个ticket反馈下这个情况，最后想起来老IP上装">
 <meta name="keywords" content="科学上网">
@@ -66,28 +107,34 @@
 <meta property="og:image" content="http://image.yangq.me/blog/history/16-7-5/Jietu20170825-234334.jpg">
 <meta property="og:image" content="http://image.yangq.me/blog/history/16-7-5/Jietu20170825-235228.jpg">
 <meta property="og:image" content="http://image.yangq.me/blog/history/16-7-5/Jietu20170825-235756.jpg">
-<meta property="og:updated_time" content="2019-04-27T10:13:03.984Z">
+<meta property="og:updated_time" content="2019-09-17T16:42:06.933Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Vultr Debian7上搭建科学上网，使用锐速畅享十倍提速">
 <meta name="twitter:description" content="背景之前博文里有介绍过搭建科学上网环境后，使用锐速进行提速，但是加速的效果有时候觉得好，有时候觉得不行。最近帮朋友在vultr上申请一个IP，搭建环境后，发现同WIFI环境下新IP下载速度只有20-30KB，老IP能达到1M左右。在另一处wifi环境下，GooglePlay上下载应用老IP速度达2M左右，新IP只有400多kb。本来想给vultr提个ticket反馈下这个情况，最后想起来老IP上装">
 <meta name="twitter:image" content="http://image.yangq.me/blog/history/16-7-5/Jietu20170825-234334.jpg">
+
+
+
+
+
+  
+  
   <link rel="canonical" href="http://yangq.me/post/170b145">
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
+
+<script id="page.configurations">
   CONFIG.page = {
     sidebar: "",
-    isHome: false,
-    isPost: true,
-    isPage: false,
-    isArchive: false
   };
 </script>
 
   <title>在Vultr Debian7上搭建科学上网，使用锐速畅享十倍提速 | yangq's blog</title>
-  <meta name="generator" content="Hexo 3.9.0">
   
+
+
+
+
 
 
 
@@ -98,6 +145,7 @@
 
   <noscript>
   <style>
+  .use-motion .motion-element,
   .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
@@ -106,7 +154,7 @@
   .use-motion .comments,
   .use-motion .post-header,
   .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
+  .use-motion .collection-title { opacity: initial; }
 
   .use-motion .logo,
   .use-motion .site-title,
@@ -123,22 +171,33 @@
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
-  <div class="container use-motion">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
+      <div class="header-inner"><div class="site-brand-wrapper">
   <div class="site-meta">
+    
 
-    <div>
+    <div class="custom-logo-site-title">
       <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">yangq's blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
+      
         <p class="site-subtitle">观心中月,破心中贼</p>
       
+    
+    
   </div>
 
   <div class="site-nav-toggle">
@@ -151,128 +210,174 @@
 </div>
 
 
+
 <nav class="site-nav">
   
-  <ul id="menu" class="menu">
-      
-      
+    <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-      
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
     
       
+    
+
     
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
 
   </li>
-      
-      
-      
         
-        <li class="menu-item menu-item-archives">
-      
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
     
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">20</span></a>
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
 
   </li>
-      
-      
-      
         
-        <li class="menu-item menu-item-categories">
-      
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
     
       
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
 
   </li>
-      
-      
-      
         
-        <li class="menu-item menu-item-tags">
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
     
       
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">8</span></a>
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
 
   </li>
-      
-      
-      
         
-        <li class="menu-item menu-item-about">
-      
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
     
       
+    
+
     
 
     <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
-      <li class="menu-item menu-item-search">
-        <a href="javascript:;" class="popup-trigger">
-        
-          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
-      </li>
-    
-  </ul>
 
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
 </nav>
-  <div class="site-search">
-    <div class="popup search-popup">
-    <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocorrect="off" autocapitalize="none"
-           placeholder="搜索..." spellcheck="false"
-           type="text" id="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result"></div>
 
-</div>
-<div class="search-pop-overlay"></div>
 
-  </div>
+
+  
+
+
+
 </div>
     </header>
 
     
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
 
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
             
 
+          
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
-      <article itemscope itemtype="http://schema.org/Article">
+    
+
+  
+
   
   
   
-  <div class="post-block post">
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yangq.me/post/170b145.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -284,43 +389,71 @@
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
       <meta itemprop="name" content="yangq's blog">
     </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">在Vultr Debian7上搭建科学上网，使用锐速畅享十倍提速
 
-          
-        </h1>
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在Vultr Debian7上搭建科学上网，使用锐速畅享十倍提速
+
+              
+            
+          </h1>
+        
 
         <div class="post-meta">
-            <span class="post-meta-item">
+          <span class="post-time">
+
+            
+            
+            
+
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">发表于</span>
+              
+                <span class="post-meta-item-text">发表</span>
+              
 
               
                 
               
 
               <time title="创建时间：2017-08-26 17:26:43" itemprop="dateCreated datePublished" datetime="2017-08-26T17:26:43+08:00">2017-08-26</time>
-            </span>
-          
             
 
             
-              <span class="post-meta-item">
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
                 <span class="post-meta-item-icon">
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-04-27 18:13:03" itemprop="dateModified" datetime="2019-04-27T18:13:03+08:00">2019-04-27</time>
-              </span>
+                
+                  <span class="post-meta-item-text">更新</span>
+                
+                <time title="修改时间：2019-09-18 00:42:06" itemprop="dateModified" datetime="2019-09-18T00:42:06+08:00">2019-09-18</time>
+              
             
+          </span>
+
           
-            <span class="post-meta-item">
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">分类于</span>
+              
+                <span class="post-meta-item-text">分类</span>
+              
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/common/" itemprop="url" rel="index"><span itemprop="name">综合</span></a></span>
 
@@ -331,17 +464,29 @@
           
 
           
-            <span class="post-meta-item" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             浏览： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
             </span>
+          
+
+          
+
           
 
         </div>
       </header>
+    
 
     
     
@@ -349,26 +494,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
+      
+
+      
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>之前博文里有介绍过搭建科学上网环境后，使用锐速进行提速，但是加速的效果有时候觉得好，有时候觉得不行。最近帮朋友在vultr上申请一个IP，搭建环境后，发现同WIFI环境下新IP下载速度只有20-30KB，老IP能达到1M左右。在另一处wifi环境下，GooglePlay上下载应用老IP速度达2M左右，新IP只有400多kb。本来想给vultr提个ticket反馈下这个情况，最后想起来老IP上装了锐速，待新IP装上锐速后youtube速度竟飙到14M，有感与此详细记录此次折腾过程。服务器选择的是debian7 64位，所占内存很小，也不需要改防火墙端口，装锐速时也不需要换内核，比较方便。</p>
 <a id="more"></a>
 <h2 id="安装shadowsocks"><a href="#安装shadowsocks" class="headerlink" title="安装shadowsocks"></a>安装shadowsocks</h2><p>参考<a href="https://teddysun.com/342.html" target="_blank" rel="noopener">博文</a>，运行如下命令安装:</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --<span class="keyword">no</span>-check-certificate -O shadowsocks.<span class="keyword">sh</span> http<span class="variable">s:</span>//raw.githubusercontent.<span class="keyword">com</span>/teddysun/shadowsocks_install/master/shadowsocks.<span class="keyword">sh</span></span><br><span class="line">chmod +<span class="keyword">x</span> shadowsocks.<span class="keyword">sh</span></span><br><span class="line">./shadowsocks.<span class="keyword">sh</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span> | tee shadowsocks.<span class="built_in">log</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate -O shadowsocks.sh https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocks.sh</span><br><span class="line">chmod +x shadowsocks.sh</span><br><span class="line">./shadowsocks.sh 2&gt;&amp;1 | tee shadowsocks.log</span><br></pre></td></tr></table></figure>
 
 <p>安装完毕后使用<code>service shadowsocks status</code>查看服务运行状态，执行<code>service shadowsocks restart|stop|start</code>对应重启、停止、启动该服务。</p>
 <h2 id="创建多用户shadowsocks配置"><a href="#创建多用户shadowsocks配置" class="headerlink" title="创建多用户shadowsocks配置"></a>创建多用户shadowsocks配置</h2><p>这里交代一点，vultr的debian7上不需要像<a href="http://blog.csdn.net/yanzi1225627/article/details/51470962" target="_blank" rel="noopener">CentOS上修改防火墙端口</a>.<br>多用户配置为:</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"server"</span>:<span class="string">"0.0.0.0"</span>,</span><br><span class="line">    <span class="attr">"local_address"</span>:<span class="string">"127.0.0.1"</span>,</span><br><span class="line">    <span class="attr">"local_port"</span>:<span class="number">1080</span>,</span><br><span class="line">    <span class="attr">"port_password"</span>:&#123;</span><br><span class="line">         <span class="attr">"8989"</span>:<span class="string">"password0"</span>,</span><br><span class="line">         <span class="attr">"9001"</span>:<span class="string">"password1"</span>,</span><br><span class="line">         <span class="attr">"9002"</span>:<span class="string">"password2"</span>,</span><br><span class="line">         <span class="attr">"9003"</span>:<span class="string">"password3"</span>,</span><br><span class="line">         <span class="attr">"9004"</span>:<span class="string">"password4"</span></span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="attr">"timeout"</span>:<span class="number">300</span>,</span><br><span class="line">    <span class="attr">"method"</span>:<span class="string">"your_encryption_method"</span>,</span><br><span class="line">    <span class="attr">"fast_open"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;server&quot;:&quot;0.0.0.0&quot;,</span><br><span class="line">    &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;local_port&quot;:1080,</span><br><span class="line">    &quot;port_password&quot;:&#123;</span><br><span class="line">         &quot;8989&quot;:&quot;password0&quot;,</span><br><span class="line">         &quot;9001&quot;:&quot;password1&quot;,</span><br><span class="line">         &quot;9002&quot;:&quot;password2&quot;,</span><br><span class="line">         &quot;9003&quot;:&quot;password3&quot;,</span><br><span class="line">         &quot;9004&quot;:&quot;password4&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;timeout&quot;:300,</span><br><span class="line">    &quot;method&quot;:&quot;your_encryption_method&quot;,</span><br><span class="line">    &quot;fast_open&quot;: false</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>为了批量创建端口号和对应的密码，我写了个python脚本，根据端口作出计算其对应的密钥。</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/env python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Time</span>    : 2017/8/21 下午10:56</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Author</span>  : yanzi1225627</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Site</span>    : </span></span><br><span class="line"><span class="comment"># <span class="doctag">@File</span>    : main.py</span></span><br><span class="line"><span class="comment"># <span class="doctag">@Software</span>: PyCharm Community Edition</span></span><br><span class="line"></span><br><span class="line">import _md5</span><br><span class="line">import hashlib</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getMd5</span><span class="params">(src)</span></span><span class="symbol">:</span></span><br><span class="line">    m1 = hashlib.md5()</span><br><span class="line">    m1.update(str.encode(src))</span><br><span class="line">    <span class="keyword">return</span> m1.hexdigest()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">getPswdByPort</span><span class="params">(port)</span></span><span class="symbol">:</span></span><br><span class="line">    data = port / <span class="number">37</span> + <span class="number">555</span></span><br><span class="line">    data1 = str(data) + <span class="string">'shadowsocks'</span></span><br><span class="line">    md = getMd5(data1)</span><br><span class="line">    <span class="keyword">return</span> md[<span class="symbol">:</span><span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span></span><span class="symbol">:</span></span><br><span class="line">    pswds = &#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> p <span class="keyword">in</span> range(<span class="number">7000</span>, <span class="number">7020</span>)<span class="symbol">:</span></span><br><span class="line">        pswd = getPswdByPort(p)</span><br><span class="line">        <span class="comment"># print("%s : %s" % (str(p), pswd))</span></span><br><span class="line"></span><br><span class="line">        pswds.setdefault(str(p), pswd)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(pswds)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    config = &#123;</span><br><span class="line">        <span class="string">"server"</span><span class="symbol">:<span class="string">"your ip"</span></span>,</span><br><span class="line">        <span class="string">"local_address"</span><span class="symbol">:<span class="string">"127.0.0.1"</span></span>,</span><br><span class="line">        <span class="string">"local_port"</span><span class="symbol">:</span><span class="number">1080</span>,</span><br><span class="line">        <span class="string">"port_password"</span><span class="symbol">:pswds</span>,</span><br><span class="line">        <span class="string">"timeout"</span><span class="symbol">:</span><span class="number">300</span>,</span><br><span class="line">        <span class="string">"method"</span><span class="symbol">:<span class="string">"rc4-md5"</span></span>,</span><br><span class="line">        <span class="string">"fast_open"</span><span class="symbol">:False</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    jsObj = json.dumps(config)</span><br><span class="line">    file= open(<span class="string">'./config.json'</span>, <span class="string">'w'</span>)</span><br><span class="line">    file.write(jsObj)</span><br><span class="line">    file.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name_<span class="number">_</span> == <span class="string">'__main__'</span><span class="symbol">:</span></span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Time    : 2017/8/21 下午10:56</span><br><span class="line"># @Author  : yanzi1225627</span><br><span class="line"># @Site    : </span><br><span class="line"># @File    : main.py</span><br><span class="line"># @Software: PyCharm Community Edition</span><br><span class="line"></span><br><span class="line">import _md5</span><br><span class="line">import hashlib</span><br><span class="line">import json</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def getMd5(src):</span><br><span class="line">    m1 = hashlib.md5()</span><br><span class="line">    m1.update(str.encode(src))</span><br><span class="line">    return m1.hexdigest()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def getPswdByPort(port):</span><br><span class="line">    data = port / 37 + 555</span><br><span class="line">    data1 = str(data) + &apos;shadowsocks&apos;</span><br><span class="line">    md = getMd5(data1)</span><br><span class="line">    return md[:6]</span><br><span class="line"></span><br><span class="line">def main():</span><br><span class="line">    pswds = &#123;&#125;</span><br><span class="line">    for p in range(7000, 7020):</span><br><span class="line">        pswd = getPswdByPort(p)</span><br><span class="line">        # print(&quot;%s : %s&quot; % (str(p), pswd))</span><br><span class="line"></span><br><span class="line">        pswds.setdefault(str(p), pswd)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    print(pswds)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    config = &#123;</span><br><span class="line">        &quot;server&quot;:&quot;your ip&quot;,</span><br><span class="line">        &quot;local_address&quot;:&quot;127.0.0.1&quot;,</span><br><span class="line">        &quot;local_port&quot;:1080,</span><br><span class="line">        &quot;port_password&quot;:pswds,</span><br><span class="line">        &quot;timeout&quot;:300,</span><br><span class="line">        &quot;method&quot;:&quot;rc4-md5&quot;,</span><br><span class="line">        &quot;fast_open&quot;:False</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    jsObj = json.dumps(config)</span><br><span class="line">    file= open(&apos;./config.json&apos;, &apos;w&apos;)</span><br><span class="line">    file.write(jsObj)</span><br><span class="line">    file.close()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
 
 <h2 id="安装锐速"><a href="#安装锐速" class="headerlink" title="安装锐速"></a>安装锐速</h2><p>其加速的核心是<a href="http://www.appexnetworks.com.cn/tech/zetatcp-tec.html" target="_blank" rel="noopener">zeta-tcp</a>,国外人最先提出来的，一种典型的单边加速，只需要在服务器部署即可。<br>首先执行<code>uname -a</code>查看内核如下:</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux guest <span class="number">3.2</span><span class="number">.0</span><span class="number">-4</span>-amd64 #<span class="number">1</span> SMP Debian <span class="number">3.2</span><span class="number">.89</span><span class="number">-2</span> x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Linux guest 3.2.0-4-amd64 #1 SMP Debian 3.2.89-2 x86_64 GNU/Linux</span><br></pre></td></tr></table></figure>
 
 <p>可以看到其内核是<strong>debian的3.2.0-4-amd64</strong>，查看锐速支持的<a href="https://www.91yun.co/wp-content/plugins/91yun-serverspeeder/systemlist.html" target="_blank" rel="noopener">内核列表</a>如下,可以看到在支持范围:<br><img src="http://image.yangq.me/blog/history/16-7-5/Jietu20170825-234334.jpg" alt><br>所以就不用更换内核了。<br>运行如下脚本安装:</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -<span class="keyword">N</span> --<span class="keyword">no</span>-check-certificate http<span class="variable">s:</span>//github.<span class="keyword">com</span>/<span class="number">91</span>yun/serverspeeder/raw/master/serverspeeder.<span class="keyword">sh</span> &amp;&amp; bash serverspeeder.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://github.com/91yun/serverspeeder/raw/master/serverspeeder.sh &amp;&amp; bash serverspeeder.sh</span><br></pre></td></tr></table></figure>
 
 <p>卸载脚本:</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i <span class="regexp">/serverspeeder/</span>etc<span class="regexp">/apx* &amp;&amp; /</span>serverspeeder<span class="regexp">/bin/</span>serverSpeeder.sh uninstall -f</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chattr -i /serverspeeder/etc/apx* &amp;&amp; /serverspeeder/bin/serverSpeeder.sh uninstall -f</span><br></pre></td></tr></table></figure>
 
 <p>安装完毕后，你需要知道几个命令:</p>
 <p>几个相关命令:<br><code>service serverSpeeder status</code> 查看serverSpeeder的状态 </p>
@@ -376,65 +524,85 @@
 <p>在youtube上搜索<code>1080p 测试视频</code>,如<a href="https://www.youtube.com/watch?v=Bey4XXJAqS8" target="_blank" rel="noopener">https://www.youtube.com/watch?v=Bey4XXJAqS8</a>可以看到加速后速度飙到了40M左右，右边的<strong>TotalActiveTcpFlow</strong>这个数字用来检验锐速是否生效，越大越好。<br><img src="http://image.yangq.me/blog/history/16-7-5/Jietu20170825-235228.jpg" alt><br>关闭锐速后，其速度在3-4M左右，如下图:<br><img src="http://image.yangq.me/blog/history/16-7-5/Jietu20170825-235756.jpg" alt></p>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>文中用到的所有脚本已备份至<a href="https://github.com/yanzi1225627/greennet" target="_blank" rel="noopener">github</a>,如果文中的链接或脚本被墙了，请到github里查看。<br><strong>如果本文对你有帮助且需要vultr的话，请点此<a href="https://www.vultr.com/?ref=6883272" target="_blank" rel="noopener">我的推广</a>注册，我得优惠您得实惠～～～</strong></p>
 
+      
     </div>
 
     
+
     
     
-        
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/科学上网/" rel="tag"># 科学上网</a>
+          
+        </div>
       
 
-      <footer class="post-footer">
-          
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          
-          <div class="post-tags">
-            
-              <a href="/tags/科学上网/" rel="tag"># 科学上网</a>
+              <a href="/post/c1c83cc.html" rel="next" title="Android应用启动流程分析">
+                <i class="fa fa-chevron-left"></i> Android应用启动流程分析
+              </a>
             
           </div>
-        
 
-        
+          <span class="post-nav-divider"></span>
 
-          <div class="post-nav">
-            <div class="post-nav-next post-nav-item">
-              
-                <a href="/post/c1c83cc.html" rel="next" title="Android应用启动流程分析">
-                  <i class="fa fa-chevron-left"></i> Android应用启动流程分析
-                </a>
-              
-            </div>
-
-            <span class="post-nav-divider"></span>
-
-            <div class="post-nav-prev post-nav-item">
-              
-                <a href="/post/19acb239.html" rel="prev" title="hexo链接持久化终极解决之道">
-                  hexo链接持久化终极解决之道 <i class="fa fa-chevron-right"></i>
-                </a>
-              
-            </div>
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/19acb239.html" rel="prev" title="hexo链接持久化终极解决之道">
+                hexo链接持久化终极解决之道 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
-        
-      </footer>
-    
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
   </article>
 
+
   </div>
 
 
           </div>
           
-    
-    <div class="comments" id="gitalk-container"></div>
+
+  
+    <div class="comments" id="gitalk-container">
+    </div>
+
   
 
+
+
         </div>
+        
           
   
   <div class="sidebar-toggle">
@@ -445,117 +613,155 @@
     </div>
   </div>
 
-  <aside class="sidebar">
+  <aside id="sidebar" class="sidebar">
     <div class="sidebar-inner">
-        
-        
-        
-        
+
       
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装shadowsocks"><span class="nav-number">2.</span> <span class="nav-text">安装shadowsocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建多用户shadowsocks配置"><span class="nav-number">3.</span> <span class="nav-text">创建多用户shadowsocks配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装锐速"><span class="nav-number">4.</span> <span class="nav-text">安装锐速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
-        
-      </div>
-      <!--/noindex-->
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
       <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image"
-      src="/images/avatar.jpg"
-      alt="老实念佛">
-  <p class="site-author-name" itemprop="name">老实念佛</p>
-  <div class="site-description" itemprop="description">小小程序员</div>
-</div>
-  <nav class="site-state motion-element">
-      <div class="site-state-item site-state-posts">
-        
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">20</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-    
-      
-      
-      <div class="site-state-item site-state-categories">
-        
-          
-            <a href="/categories/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">6</span>
-        <span class="site-state-item-name">分类</span>
-        </a>
-      </div>
-    
-      
-      
-      <div class="site-state-item site-state-tags">
-        
-          
-            <a href="/tags/">
-          
-        
-        
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-          
-        
-        <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">标签</span>
-        </a>
-      </div>
-    
-  </nav>
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="老实念佛">
+            
+              <p class="site-author-name" itemprop="name">老实念佛</p>
+              <div class="site-description motion-element" itemprop="description">小小程序员</div>
+          </div>
 
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
 
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
 
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
       </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装shadowsocks"><span class="nav-number">2.</span> <span class="nav-text">安装shadowsocks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建多用户shadowsocks配置"><span class="nav-number">3.</span> <span class="nav-text">创建多用户shadowsocks配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装锐速"><span class="nav-number">4.</span> <span class="nav-text">安装锐速</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
 
     </div>
   </aside>
-  <div id="sidebar-dimmer"></div>
+  
 
 
+        
       </div>
     </main>
 
@@ -566,14 +772,31 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">老实念佛</span>
+
+  
+
+  
 </div>
+
+
   <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+
+
+
   <span class="post-meta-divider">|</span>
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.1.0</div>
+
+
+
 
         
 <div class="busuanzi-count">
   <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
     <span class="post-meta-item-icon">
       <i class="fa fa-user"></i>
     </span>
@@ -581,7 +804,11 @@
       <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
     </span>
   
+
+  
     <span class="post-meta-divider">|</span>
+  
+
   
     <span class="post-meta-item-icon">
       <i class="fa fa-eye"></i>
@@ -600,48 +827,96 @@
 
 
 
-
-
-
         
       </div>
     </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
   </div>
 
   
 
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
 
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
   <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
-<script src="/js/schemes/pisces.js?v=7.4.0"></script>
-<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.0"></script>
+
+  <script src="/js/motion.js?v=7.1.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.0"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.0"></script>
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.0"></script>
+<script src="/js/post-details.js?v=7.1.0"></script>
 
 
 
   
 
 
-
-
-
-
-
-
-  <script src="/js/local-search.js?v=7.4.0"></script>
-
-
-
-
-
-
-
-
-
-
-
-
+  <script src="/js/next-boot.js?v=7.1.0"></script>
 
 
   
@@ -649,25 +924,394 @@
   
 
   
+
+  
+
+
+  
+    
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
 
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
 
+
+
+<script src="//cdn.jsdelivr.net/npm/js-md5@0.7.3/src/md5.min.js"></script>
+
 <script>
-  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
-    var gitalk = new Gitalk({
-      clientID: '60d9686c526081007639',
-      clientSecret: '2cb744c4370e936e30bcd161c1c142fadabe6d46',
-      repo: 'blogcomments',
-      owner: 'yangq212607',
-      admin: ['yangq212607'],
-      id: 'ee3efbc354895a4beb6ee1228c815f50',
-        language: 'zh-CN',
-      
-      distractionFreeMode: 'true'
-    });
-    gitalk.render('gitalk-container');
-  }, window.Gitalk);
+  var gitalk = new Gitalk({
+    clientID: '60d9686c526081007639',
+    clientSecret: '2cb744c4370e936e30bcd161c1c142fadabe6d46',
+    repo: 'blogcomments',
+    owner: 'yangq212607',
+    admin: ['yangq212607'],
+    id: md5(location.pathname),
+    
+      language: 'zh-CN',
+    
+    distractionFreeMode: 'true'
+  });
+  gitalk.render('gitalk-container');
 </script>
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
 
 </body>
 </html>
