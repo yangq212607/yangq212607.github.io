@@ -66,7 +66,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/09/15/KpG73UQxoSfqB4A.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/15/D2I8sPj5Lt6TVQC.png">
 <meta property="og:image" content="https://i.loli.net/2019/09/15/UuObE5QXR6psYeG.png">
-<meta property="og:updated_time" content="2019-09-17T16:42:06.930Z">
+<meta property="og:updated_time" content="2019-09-17T17:14:59.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo配置汇总">
 <meta name="twitter:description" content="简介本文介绍hexo使用、维护、升级配置汇总，theme为next-theme。">
@@ -312,7 +312,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-18 00:42:06" itemprop="dateModified" datetime="2019-09-18T00:42:06+08:00">2019-09-18</time>
+                <time title="修改时间：2019-09-18 01:14:59" itemprop="dateModified" datetime="2019-09-18T01:14:59+08:00">2019-09-18</time>
               </span>
             
           
@@ -389,6 +389,10 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">codeblock:</span><br><span class="line">  # Code Highlight theme</span><br><span class="line">  # Available values: normal | night | night eighties | night blue | night bright</span><br><span class="line">  # See: https://github.com/chriskempson/tomorrow-theme</span><br><span class="line">  highlight_theme: night bright </span><br><span class="line">  # Add copy button on codeblock</span><br><span class="line">  copy_button:</span><br><span class="line">    enable: true</span><br><span class="line">    # Show text copy result.</span><br><span class="line">    show_result: true</span><br><span class="line">    # Available values: default | flat | mac</span><br><span class="line">    style: default</span><br></pre></td></tr></table></figure>
 
 <p>然后还要将<code>https://github.com/chriskempson/tomorrow-theme.git</code>拷贝到<code>theme/next/source/lib</code>下才会生效。</p>
+<h3 id="CNAME解决github-404问题"><a href="#CNAME解决github-404问题" class="headerlink" title="CNAME解决github 404问题"></a><code>CNAME</code>解决github 404问题</h3><p>需要在主题的<code>themes/next_7.4.0/source</code>的目录下新建 <strong>CNAME</strong> 文件，内容为自己的域名，本文为:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yangq.me</span><br></pre></td></tr></table></figure>
+
+<p>否则每次push到github后，将会遇到404问题。然后需要在github的仓pages设置里把域名设进去。下次push后又会遇到404问题，需要再次设置。通过<code>CNAME</code>文件解决此问题。</p>
 <h2 id="搜索功能"><a href="#搜索功能" class="headerlink" title="搜索功能"></a>搜索功能</h2><p>之前一直使用的Algolia，但是发现不太好用，一段时间之后再搜索就不灵了。这次采用的是<a href="http://theme-next.iissnan.com/third-party-services.html#local-search" target="_blank" rel="noopener">Local Search </a>，简单好用而且不收费。</p>
 <ul>
 <li><p>安装<code>hexo-generator-searchdb</code>，站点根目录下执行:</p>
@@ -496,7 +500,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级hexo从3-8-0至3-9-0"><span class="nav-number">2.</span> <span class="nav-text">升级hexo从3.8.0至3.9.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级hexo-next-theme从7-1-0至7-4-0"><span class="nav-number">3.</span> <span class="nav-text">升级hexo-next-theme从7.1.0至7.4.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载最新版本"><span class="nav-number">3.1.</span> <span class="nav-text">下载最新版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解耦个性化配置-hexo3-5以上"><span class="nav-number">3.2.</span> <span class="nav-text">解耦个性化配置(hexo3.5以上)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体设置"><span class="nav-number">3.3.</span> <span class="nav-text">字体设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码高亮设置"><span class="nav-number">3.4.</span> <span class="nav-text">代码高亮设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索功能"><span class="nav-number">4.</span> <span class="nav-text">搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级hexo从3-8-0至3-9-0"><span class="nav-number">2.</span> <span class="nav-text">升级hexo从3.8.0至3.9.0</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#升级hexo-next-theme从7-1-0至7-4-0"><span class="nav-number">3.</span> <span class="nav-text">升级hexo-next-theme从7.1.0至7.4.0</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#下载最新版本"><span class="nav-number">3.1.</span> <span class="nav-text">下载最新版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解耦个性化配置-hexo3-5以上"><span class="nav-number">3.2.</span> <span class="nav-text">解耦个性化配置(hexo3.5以上)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字体设置"><span class="nav-number">3.3.</span> <span class="nav-text">字体设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码高亮设置"><span class="nav-number">3.4.</span> <span class="nav-text">代码高亮设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CNAME解决github-404问题"><span class="nav-number">3.5.</span> <span class="nav-text">CNAME解决github 404问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搜索功能"><span class="nav-number">4.</span> <span class="nav-text">搜索功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
