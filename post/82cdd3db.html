@@ -63,7 +63,7 @@
 <meta property="og:site_name" content="yangq&#39;s blog">
 <meta property="og:description" content="271.字符串的编码与解码设计一个算法，可以将一个 字符串列表 编码成为一个 字符串。这个编码后的字符串是可以通过网络进行高效传送的，并且可以在接收端被解码回原来的字符串列表。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-21T16:29:56.989Z">
+<meta property="og:updated_time" content="2019-09-22T02:25:13.668Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="刷算法(3)-字符串的编码与解码">
 <meta name="twitter:description" content="271.字符串的编码与解码设计一个算法，可以将一个 字符串列表 编码成为一个 字符串。这个编码后的字符串是可以通过网络进行高效传送的，并且可以在接收端被解码回原来的字符串列表。">
@@ -297,7 +297,7 @@
                 
               
 
-              <time title="创建时间：2019-09-22 00:26:39 / 修改时间：00:29:56" itemprop="dateCreated datePublished" datetime="2019-09-22T00:26:39+08:00">2019-09-22</time>
+              <time title="创建时间：2019-09-22 00:26:39 / 修改时间：10:25:13" itemprop="dateCreated datePublished" datetime="2019-09-22T00:26:39+08:00">2019-09-22</time>
             </span>
           
             
@@ -339,7 +339,40 @@
       
         <h2 id="271-字符串的编码与解码"><a href="#271-字符串的编码与解码" class="headerlink" title="271.字符串的编码与解码"></a><a href="https://leetcode-cn.com/problems/encode-and-decode-strings/" target="_blank" rel="noopener">271.字符串的编码与解码</a></h2><p>设计一个算法，可以将一个 字符串列表 编码成为一个 字符串。这个编码后的字符串是可以通过网络进行高效传送的，并且可以在接收端被解码回原来的字符串列表。</p>
 <a id="more"></a>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>猛一看题目很简单以为简单的拼接起来，中间加个分隔符就行了，但是输入字符串本身可能就是分隔符。所以必须还要加上长度信息，我们的加码方法是长度+”/“+字符串，比如对于”a”,”ab”,”abc”，我们就变成”1/a2/ab3/abc”，那么我们解码的时候就有规律可寻，先寻找”/“，然后之前的就是要取出的字符个数，从“/“后取出相应个数即可，以此类推直至没有”/“了。编码方法是这样，具体解码又以下三种思路。</p>
+<h2 id="解法1"><a href="#解法1" class="headerlink" title="解法1"></a>解法1</h2><p>用一个索引<code>i</code>来标记从哪一位开始搜索分隔符，搜索到之后截出来前面的长度信息，根据长度信息再截出来对应字符串。之后把<code>i</code>往后移，重新开始搜索分隔符。代码如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">package com.company;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Codec1 &#123;</span><br><span class="line">    // Encodes a list of strings to a single string.</span><br><span class="line">    public String encode(List&lt;String&gt; strs) &#123;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        for (String item : strs) &#123;</span><br><span class="line">            int length = item.length();</span><br><span class="line">            sb.append(length).append(&quot;/&quot;).append(item);</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // Decodes a single string to a list of strings.</span><br><span class="line">    public List&lt;String&gt; decode(String s) &#123;</span><br><span class="line">        List&lt;String&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">        int i = 0;</span><br><span class="line">        while (i &lt; s.length()) &#123;</span><br><span class="line">            int pos = s.indexOf(&apos;/&apos;, i);</span><br><span class="line">            int itemSize = Integer.parseInt(s.substring(i, pos));</span><br><span class="line">            int start = pos + 1;</span><br><span class="line">            int end = pos + itemSize + 1;</span><br><span class="line">            if (end &lt;= s.length()) &#123;</span><br><span class="line">                String item = s.substring(start, end);</span><br><span class="line">                result.add(item);</span><br><span class="line">            &#125;</span><br><span class="line">            i = end;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="解法2"><a href="#解法2" class="headerlink" title="解法2"></a>解法2</h2><p>和解法1类似，区别在于我们每次可以从原始输入<code>s</code>里把对应<code>item</code>截出来后重新赋值，之后从裁剪后的<code>s</code>继续遍历，直到<code>s</code>为空。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">package com.company;</span><br><span class="line"></span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Codec2 &#123;</span><br><span class="line">    public String encode(List&lt;String&gt; strs) &#123;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        for (String item : strs) &#123;</span><br><span class="line">            sb.append(item.length()).append(&quot;/&quot;).append(item);</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; decode(String s) &#123;</span><br><span class="line">        List&lt;String&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">        while (!s.isEmpty()) &#123;</span><br><span class="line">            int pos = s.indexOf(&quot;/&quot;);</span><br><span class="line">            int itemSize = Integer.parseInt(s.substring(0, pos));</span><br><span class="line">            result.add(s.substring(pos + 1, pos + itemSize + 1));</span><br><span class="line">            s = s.substring(pos + itemSize + 1);</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法3"><a href="#解法3" class="headerlink" title="解法3"></a>解法3</h2><p>我们可以编码的时候通过Java里的换行符<code>\n</code>进行分割，读入时借助<code>BufferReader</code>逐行读取就行了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">package com.company;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">import java.io.BufferedReader;</span><br><span class="line">import java.io.StringReader;</span><br><span class="line">import java.util.ArrayList;</span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">public class Codec &#123;</span><br><span class="line">    public String encode(List&lt;String&gt; strs) &#123;</span><br><span class="line">        StringBuilder sb = new StringBuilder();</span><br><span class="line">        for (String item : strs) &#123;</span><br><span class="line">            sb.append(item).append(&apos;\n&apos;);</span><br><span class="line">        &#125;</span><br><span class="line">        return sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public List&lt;String&gt; decode(String s) &#123;</span><br><span class="line">        List&lt;String&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">        BufferedReader br = new BufferedReader(new StringReader(s));</span><br><span class="line">        String temp = null;</span><br><span class="line">        try &#123;</span><br><span class="line">            while ((temp = br.readLine()) != null) &#123;</span><br><span class="line">                result.add(temp);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三种方法对比"><a href="#三种方法对比" class="headerlink" title="三种方法对比"></a>三种方法对比</h2><table>
+<thead>
+<tr>
+<th align="left">解法</th>
+<th align="right">耗时</th>
+<th align="center">内存</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">解法1</td>
+<td align="right">7ms</td>
+<td align="center">39.3MB</td>
+</tr>
+<tr>
+<td align="left">解法2</td>
+<td align="right">15ms</td>
+<td align="center">39.8MB</td>
+</tr>
+<tr>
+<td align="left">解法3</td>
+<td align="right">23ms</td>
+<td align="center">38.7MB</td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -425,7 +458,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#271-字符串的编码与解码"><span class="nav-number">1.</span> <span class="nav-text">271.字符串的编码与解码</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#271-字符串的编码与解码"><span class="nav-number">1.</span> <span class="nav-text">271.字符串的编码与解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法1"><span class="nav-number">3.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法2"><span class="nav-number">4.</span> <span class="nav-text">解法2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法3"><span class="nav-number">5.</span> <span class="nav-text">解法3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种方法对比"><span class="nav-number">6.</span> <span class="nav-text">三种方法对比</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
