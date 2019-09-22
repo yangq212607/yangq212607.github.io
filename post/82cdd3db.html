@@ -63,10 +63,12 @@
 <meta property="og:site_name" content="yangq&#39;s blog">
 <meta property="og:description" content="271.字符串的编码与解码设计一个算法，可以将一个 字符串列表 编码成为一个 字符串。这个编码后的字符串是可以通过网络进行高效传送的，并且可以在接收端被解码回原来的字符串列表。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-22T02:39:38.235Z">
+<meta property="og:image" content="https://i.loli.net/2019/09/22/v5RXUIhozKsZuiH.png">
+<meta property="og:updated_time" content="2019-09-22T03:08:54.818Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="刷算法(3)-字符串的编码与解码">
 <meta name="twitter:description" content="271.字符串的编码与解码设计一个算法，可以将一个 字符串列表 编码成为一个 字符串。这个编码后的字符串是可以通过网络进行高效传送的，并且可以在接收端被解码回原来的字符串列表。">
+<meta name="twitter:image" content="https://i.loli.net/2019/09/22/v5RXUIhozKsZuiH.png">
   <link rel="canonical" href="http://yangq.me/post/82cdd3db">
 
 
@@ -297,7 +299,7 @@
                 
               
 
-              <time title="创建时间：2019-09-22 00:26:39 / 修改时间：10:39:38" itemprop="dateCreated datePublished" datetime="2019-09-22T00:26:39+08:00">2019-09-22</time>
+              <time title="创建时间：2019-09-22 00:26:39 / 修改时间：11:08:54" itemprop="dateCreated datePublished" datetime="2019-09-22T00:26:39+08:00">2019-09-22</time>
             </span>
           
             
@@ -352,27 +354,63 @@
 <h2 id="三种方法对比"><a href="#三种方法对比" class="headerlink" title="三种方法对比"></a>三种方法对比</h2><table>
 <thead>
 <tr>
-<th align="left">解法</th>
-<th align="right">耗时</th>
-<th align="center">内存</th>
+<th>解法</th>
+<th>耗时</th>
+<th>内存</th>
 </tr>
 </thead>
 <tbody><tr>
-<td align="left">解法1</td>
-<td align="right">7ms</td>
-<td align="center">39.3MB</td>
+<td>解法1</td>
+<td>7ms</td>
+<td>39.3MB</td>
 </tr>
 <tr>
-<td align="left">解法2</td>
-<td align="right">15ms</td>
-<td align="center">39.8MB</td>
+<td>解法2</td>
+<td>15ms</td>
+<td>39.8MB</td>
 </tr>
 <tr>
-<td align="left">解法3</td>
-<td align="right">23ms</td>
-<td align="center">38.7MB</td>
+<td>解法3</td>
+<td>23ms</td>
+<td>38.7MB</td>
+</tr>
+<tr>
+<td><img src="https://i.loli.net/2019/09/22/v5RXUIhozKsZuiH.png" alt="WX20190922-104129@2x.png"></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>## <a href="https://www.runoob.com/java/java-string.html" target="_blank" rel="noopener">String基础操作</a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>### <code>indexOf</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>从左往右查找第一次出现x的索引，如果不出现则返回-1。</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Returns the index within this string of the first occurrence of the</span><br><span class="line"> * specified substring.</span><br><span class="line"> *</span><br><span class="line"> * &lt;p&gt;The returned index is the smallest value &lt;i&gt;k&lt;/i&gt; for which:</span><br><span class="line"> * &lt;blockquote&gt;&lt;pre&gt;</span><br><span class="line"> * this.startsWith(str, &lt;i&gt;k&lt;/i&gt;)</span><br><span class="line"> * &lt;/pre&gt;&lt;/blockquote&gt;</span><br><span class="line"> * If no such value of &lt;i&gt;k&lt;/i&gt; exists, then &#123;@code -1&#125; is returned.</span><br><span class="line"> *</span><br><span class="line"> * @param   str   the substring to search for.</span><br><span class="line"> * @return  the index of the first occurrence of the specified substring,</span><br><span class="line"> *          or &#123;@code -1&#125; if there is no such occurrence.</span><br><span class="line"> */</span><br><span class="line">public int indexOf(String str) &#123;</span><br><span class="line">    return indexOf(str, 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></td>
+<td></td>
+<td></td>
 </tr>
 </tbody></table>
+<p>其中indexOf(str, 0)原型如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * Returns the index within this string of the first occurrence of the</span><br><span class="line"> * specified substring, starting at the specified index.</span><br><span class="line"> *</span><br><span class="line"> * &lt;p&gt;The returned index is the smallest value &lt;i&gt;k&lt;/i&gt; for which:</span><br><span class="line"> * &lt;blockquote&gt;&lt;pre&gt;</span><br><span class="line"> * &lt;i&gt;k&lt;/i&gt; &amp;gt;= fromIndex &#123;@code &amp;&amp;&#125; this.startsWith(str, &lt;i&gt;k&lt;/i&gt;)</span><br><span class="line"> * &lt;/pre&gt;&lt;/blockquote&gt;</span><br><span class="line"> * If no such value of &lt;i&gt;k&lt;/i&gt; exists, then &#123;@code -1&#125; is returned.</span><br><span class="line"> *</span><br><span class="line"> * @param   str         the substring to search for.</span><br><span class="line"> * @param   fromIndex   the index from which to start the search.</span><br><span class="line"> * @return  the index of the first occurrence of the specified substring,</span><br><span class="line"> *          starting at the specified index,</span><br><span class="line"> *          or &#123;@code -1&#125; if there is no such occurrence.</span><br><span class="line"> */</span><br><span class="line">public int indexOf(String str, int fromIndex) &#123;</span><br><span class="line">    return indexOf(value, 0, value.length,</span><br><span class="line">            str.value, 0, str.value.length, fromIndex);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><code>fromIndex</code>表示开始搜索的地方，是算在数的。</p>
+<h3 id="lastIndexOf"><a href="#lastIndexOf" class="headerlink" title="lastIndexOf"></a><code>lastIndexOf</code></h3><p>从最后面开始找第一次出现x的索引，索引位置还是从正向开始计算的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * Returns the index within this string of the last occurrence of the</span><br><span class="line">     * specified substring.  The last occurrence of the empty string &quot;&quot;</span><br><span class="line">     * is considered to occur at the index value &#123;@code this.length()&#125;.</span><br><span class="line">     *</span><br><span class="line">     * &lt;p&gt;The returned index is the largest value &lt;i&gt;k&lt;/i&gt; for which:</span><br><span class="line">     * &lt;blockquote&gt;&lt;pre&gt;</span><br><span class="line">     * this.startsWith(str, &lt;i&gt;k&lt;/i&gt;)</span><br><span class="line">     * &lt;/pre&gt;&lt;/blockquote&gt;</span><br><span class="line">     * If no such value of &lt;i&gt;k&lt;/i&gt; exists, then &#123;@code -1&#125; is returned.</span><br><span class="line">     *</span><br><span class="line">     * @param   str   the substring to search for.</span><br><span class="line">     * @return  the index of the last occurrence of the specified substring,</span><br><span class="line">     *          or &#123;@code -1&#125; if there is no such occurrence.</span><br><span class="line">     */</span><br><span class="line">    public int lastIndexOf(String str) &#123;</span><br><span class="line">        return lastIndexOf(str, value.length);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * Returns the index within this string of the last occurrence of the</span><br><span class="line">     * specified substring, searching backward starting at the specified index.</span><br><span class="line">     *</span><br><span class="line">     * &lt;p&gt;The returned index is the largest value &lt;i&gt;k&lt;/i&gt; for which:</span><br><span class="line">     * &lt;blockquote&gt;&lt;pre&gt;</span><br><span class="line">     * &lt;i&gt;k&lt;/i&gt; &#123;@code &lt;=&#125; fromIndex &#123;@code &amp;&amp;&#125; this.startsWith(str, &lt;i&gt;k&lt;/i&gt;)</span><br><span class="line">     * &lt;/pre&gt;&lt;/blockquote&gt;</span><br><span class="line">     * If no such value of &lt;i&gt;k&lt;/i&gt; exists, then &#123;@code -1&#125; is returned.</span><br><span class="line">     *</span><br><span class="line">     * @param   str         the substring to search for.</span><br><span class="line">     * @param   fromIndex   the index to start the search from.</span><br><span class="line">     * @return  the index of the last occurrence of the specified substring,</span><br><span class="line">     *          searching backward from the specified index,</span><br><span class="line">     *          or &#123;@code -1&#125; if there is no such occurrence.</span><br><span class="line">     */</span><br><span class="line">    public int lastIndexOf(String str, int fromIndex) &#123;</span><br><span class="line">        return lastIndexOf(value, 0, value.length,</span><br><span class="line">                str.value, 0, str.value.length, fromIndex);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>总结：</strong>indexOf和lastIndexOf里第二个位置参数是参与搜索的。</p>
+<h3 id="substring"><a href="#substring" class="headerlink" title="substring"></a><code>substring</code></h3><p><code>substring(int beginIndex, int endIndex)</code>截取的是从beginIndex开始到endIndex-1的字符串，截出来的长度为endIndex-beginIndex。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">     * Returns a string that is a substring of this string. The</span><br><span class="line">     * substring begins at the specified &#123;@code beginIndex&#125; and</span><br><span class="line">     * extends to the character at index &#123;@code endIndex - 1&#125;.</span><br><span class="line">     * Thus the length of the substring is &#123;@code endIndex-beginIndex&#125;.</span><br><span class="line">     * &lt;p&gt;</span><br><span class="line">     * Examples:</span><br><span class="line">     * &lt;blockquote&gt;&lt;pre&gt;</span><br><span class="line">     * &quot;hamburger&quot;.substring(4, 8) returns &quot;urge&quot;</span><br><span class="line">     * &quot;smiles&quot;.substring(1, 5) returns &quot;mile&quot;</span><br><span class="line">     * &lt;/pre&gt;&lt;/blockquote&gt;</span><br><span class="line">     *</span><br><span class="line">     * @param      beginIndex   the beginning index, inclusive.</span><br><span class="line">     * @param      endIndex     the ending index, exclusive.</span><br><span class="line">     * @return     the specified substring.</span><br><span class="line">     * @exception  IndexOutOfBoundsException  if the</span><br><span class="line">     *             &#123;@code beginIndex&#125; is negative, or</span><br><span class="line">     *             &#123;@code endIndex&#125; is larger than the length of</span><br><span class="line">     *             this &#123;@code String&#125; object, or</span><br><span class="line">     *             &#123;@code beginIndex&#125; is larger than</span><br><span class="line">     *             &#123;@code endIndex&#125;.</span><br><span class="line">     */</span><br><span class="line">    public String substring(int beginIndex, int endIndex) &#123;</span><br><span class="line">        if (beginIndex &lt; 0) &#123;</span><br><span class="line">            throw new StringIndexOutOfBoundsException(beginIndex);</span><br><span class="line">        &#125;</span><br><span class="line">        if (endIndex &gt; value.length) &#123;</span><br><span class="line">            throw new StringIndexOutOfBoundsException(endIndex);</span><br><span class="line">        &#125;</span><br><span class="line">        int subLen = endIndex - beginIndex;</span><br><span class="line">        if (subLen &lt; 0) &#123;</span><br><span class="line">            throw new StringIndexOutOfBoundsException(subLen);</span><br><span class="line">        &#125;</span><br><span class="line">        return ((beginIndex == 0) &amp;&amp; (endIndex == value.length)) ? this</span><br><span class="line">                : new String(value, beginIndex, subLen);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 
     </div>
 
@@ -458,7 +496,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#271-字符串的编码与解码"><span class="nav-number">1.</span> <span class="nav-text">271.字符串的编码与解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法1"><span class="nav-number">3.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法2"><span class="nav-number">4.</span> <span class="nav-text">解法2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法3"><span class="nav-number">5.</span> <span class="nav-text">解法3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种方法对比"><span class="nav-number">6.</span> <span class="nav-text">三种方法对比</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#271-字符串的编码与解码"><span class="nav-number">1.</span> <span class="nav-text">271.字符串的编码与解码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">2.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法1"><span class="nav-number">3.</span> <span class="nav-text">解法1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法2"><span class="nav-number">4.</span> <span class="nav-text">解法2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法3"><span class="nav-number">5.</span> <span class="nav-text">解法3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三种方法对比"><span class="nav-number">6.</span> <span class="nav-text">三种方法对比</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#lastIndexOf"><span class="nav-number">6.1.</span> <span class="nav-text">lastIndexOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#substring"><span class="nav-number">6.2.</span> <span class="nav-text">substring</span></a></li></ol></li></ol></div>
         
       </div>
       <!--/noindex-->
