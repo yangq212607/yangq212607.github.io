@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+
+
+
+
+
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+
+<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+
+<link rel="stylesheet" href="https://fonts.loli.net/css?family=Noto Serif SC:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '7.4.0',
+    exturl: false,
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":true,"show_result":true,"style":"default"},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: '复制',
+      copy_success: '复制成功',
+      copy_failure: '复制失败'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="简介本文按照leetcode的标签进行分类，跟踪自己刷题进展。">
+<meta name="keywords" content="leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode刷题进展">
+<meta property="og:url" content="http://yangq.me/post/3149820c.html">
+<meta property="og:site_name" content="yangq&#39;s blog">
+<meta property="og:description" content="简介本文按照leetcode的标签进行分类，跟踪自己刷题进展。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-09-22T09:09:06.360Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="leetcode刷题进展">
+<meta name="twitter:description" content="简介本文按照leetcode的标签进行分类，跟踪自己刷题进展。">
+  <link rel="canonical" href="http://yangq.me/post/3149820c">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>leetcode刷题进展 | yangq's blog</title>
+  <meta name="generator" content="Hexo 3.9.0">
+  
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">yangq's blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">观心中月,破心中贼</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+      
+      
+      
+        
+        <li class="menu-item menu-item-home">
+      
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-archives">
+      
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">23</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-categories">
+      
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类<span class="badge">6</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-tags">
+      
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">8</span></a>
+
+  </li>
+      
+      
+      
+        
+        <li class="menu-item menu-item-about">
+      
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger">
+        
+          <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+      </li>
+    
+  </ul>
+
+</nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+            
+
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+      <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block post">
+    <link itemprop="mainEntityOfPage" href="http://yangq.me/post/3149820c.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="老实念佛">
+      <meta itemprop="description" content="小小程序员">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="yangq's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">leetcode刷题进展
+
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-22 16:42:46 / 修改时间：17:09:06" itemprop="dateCreated datePublished" datetime="2019-09-22T16:42:46+08:00">2019-09-22</time>
+            </span>
+          
+            
+
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            <span class="post-meta-item" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文按照leetcode的标签进行分类，跟踪自己刷题进展。</p>
+<a id="more"></a>
+
+
+<h2 id="数组-1-189"><a href="#数组-1-189" class="headerlink" title="数组(1/189)"></a>数组(1/189)</h2><h3 id="1-两数之和-简单"><a href="#1-两数之和-简单" class="headerlink" title="1. 两数之和(简单)"></a><a href="https://leetcode-cn.com/problems/two-sum/" target="_blank" rel="noopener">1. 两数之和(简单)</a></h3><h2 id="动态规划-0-149"><a href="#动态规划-0-149" class="headerlink" title="动态规划(0/149)"></a>动态规划(0/149)</h2><h2 id="数学-0-142"><a href="#数学-0-142" class="headerlink" title="数学(0/142)"></a>数学(0/142)</h2><h2 id="字符串-3-138"><a href="#字符串-3-138" class="headerlink" title="字符串(3/138)"></a>字符串(3/138)</h2><h3 id="271-字符串的编码与解码-中等"><a href="#271-字符串的编码与解码-中等" class="headerlink" title="271. 字符串的编码与解码(中等)"></a><a href="https://leetcode-cn.com/problems/encode-and-decode-strings/" target="_blank" rel="noopener">271. 字符串的编码与解码(中等)</a></h3><h3 id="344-反转字符串-简单"><a href="#344-反转字符串-简单" class="headerlink" title="344. 反转字符串(简单)"></a><a href="https://leetcode-cn.com/problems/reverse-string/" target="_blank" rel="noopener">344. 反转字符串(简单)</a></h3><h3 id="345-反转字符串中的元音字母-简单"><a href="#345-反转字符串中的元音字母-简单" class="headerlink" title="345. 反转字符串中的元音字母(简单)"></a><a href="https://leetcode-cn.com/problems/reverse-vowels-of-a-string/" target="_blank" rel="noopener">345. 反转字符串中的元音字母(简单)</a></h3><h2 id="树-0-118"><a href="#树-0-118" class="headerlink" title="树(0/118)"></a>树(0/118)</h2><h2 id="哈希表-0-113"><a href="#哈希表-0-113" class="headerlink" title="哈希表(0/113)"></a>哈希表(0/113)</h2><h2 id="深度优先搜索-0-106"><a href="#深度优先搜索-0-106" class="headerlink" title="深度优先搜索(0/106)"></a>深度优先搜索(0/106)</h2><h2 id="二分查找-0-72"><a href="#二分查找-0-72" class="headerlink" title="二分查找(0/72)"></a>二分查找(0/72)</h2><h2 id="贪心算法-0-59"><a href="#贪心算法-0-59" class="headerlink" title="贪心算法(0/59)"></a>贪心算法(0/59)</h2><h2 id="双指针-0-57"><a href="#双指针-0-57" class="headerlink" title="双指针(0/57)"></a>双指针(0/57)</h2><h2 id="广度优先搜索-0-51"><a href="#广度优先搜索-0-51" class="headerlink" title="广度优先搜索(0/51)"></a>广度优先搜索(0/51)</h2><h2 id="栈-0-50"><a href="#栈-0-50" class="headerlink" title="栈(0/50)"></a>栈(0/50)</h2><h2 id="回溯算法-0-45"><a href="#回溯算法-0-45" class="headerlink" title="回溯算法(0/45)"></a>回溯算法(0/45)</h2><h2 id="设计-0-40"><a href="#设计-0-40" class="headerlink" title="设计(0/40)"></a>设计(0/40)</h2><h2 id="链表-0-36"><a href="#链表-0-36" class="headerlink" title="链表(0/36)"></a>链表(0/36)</h2><h2 id="排序-0-36"><a href="#排序-0-36" class="headerlink" title="排序(0/36)"></a>排序(0/36)</h2><h2 id="位运算-0-34"><a href="#位运算-0-34" class="headerlink" title="位运算(0/34)"></a>位运算(0/34)</h2><h2 id="图-0-34"><a href="#图-0-34" class="headerlink" title="图(0/34)"></a>图(0/34)</h2><h2 id="堆-0-34"><a href="#堆-0-34" class="headerlink" title="堆(0/34)"></a>堆(0/34)</h2><h2 id="并查集-0-27"><a href="#并查集-0-27" class="headerlink" title="并查集(0/27)"></a>并查集(0/27)</h2><h2 id="Sliding-Window-0-19"><a href="#Sliding-Window-0-19" class="headerlink" title="Sliding Window(0/19)"></a>Sliding Window(0/19)</h2><h2 id="分治算法-0-18"><a href="#分治算法-0-18" class="headerlink" title="分治算法(0/18)"></a>分治算法(0/18)</h2><h2 id="字典树-0-17"><a href="#字典树-0-17" class="headerlink" title="字典树(0/17)"></a>字典树(0/17)</h2><h2 id="递归-0-14"><a href="#递归-0-14" class="headerlink" title="递归(0/14)"></a>递归(0/14)</h2><h2 id="Orderd-Map-0-10"><a href="#Orderd-Map-0-10" class="headerlink" title="Orderd Map(0/10)"></a>Orderd Map(0/10)</h2><h2 id="线段树-0-10"><a href="#线段树-0-10" class="headerlink" title="线段树(0/10)"></a>线段树(0/10)</h2><h2 id="队列-0-9"><a href="#队列-0-9" class="headerlink" title="队列(0/9)"></a>队列(0/9)</h2><h2 id="极小化极大-0-8"><a href="#极小化极大-0-8" class="headerlink" title="极小化极大(0/8)"></a>极小化极大(0/8)</h2><h2 id="树状数组-0-6"><a href="#树状数组-0-6" class="headerlink" title="树状数组(0/6)"></a>树状数组(0/6)</h2><h2 id="Random-0-6"><a href="#Random-0-6" class="headerlink" title="Random(0/6)"></a>Random(0/6)</h2><h2 id="拓扑排序-0-5"><a href="#拓扑排序-0-5" class="headerlink" title="拓扑排序(0/5)"></a>拓扑排序(0/5)</h2><h2 id="脑筋急转弯-0-4"><a href="#脑筋急转弯-0-4" class="headerlink" title="脑筋急转弯(0/4)"></a>脑筋急转弯(0/4)</h2><h2 id="几何-0-3"><a href="#几何-0-3" class="headerlink" title="几何(0/3)"></a>几何(0/3)</h2><h2 id="Line-Sweep-0-3"><a href="#Line-Sweep-0-3" class="headerlink" title="Line Sweep(0/3)"></a>Line Sweep(0/3)</h2><h2 id="Rejection-Samping-0-2"><a href="#Rejection-Samping-0-2" class="headerlink" title="Rejection Samping(0/2)"></a>Rejection Samping(0/2)</h2><h2 id="蓄水池抽样-0-2"><a href="#蓄水池抽样-0-2" class="headerlink" title="蓄水池抽样(0/2)"></a>蓄水池抽样(0/2)</h2><h2 id="二叉搜索树-0-1"><a href="#二叉搜索树-0-1" class="headerlink" title="二叉搜索树(0/1)"></a>二叉搜索树(0/1)</h2><h2 id="记忆化-0-1"><a href="#记忆化-0-1" class="headerlink" title="记忆化(0/1)"></a>记忆化(0/1)</h2>
+    </div>
+
+    
+    
+    
+        
+      
+
+      <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+            
+          </div>
+        
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+              
+                <a href="/post/795f0ef9.html" rel="next" title="刷算法(4)-反转字符串中的元音字母">
+                  <i class="fa fa-chevron-left"></i> 刷算法(4)-反转字符串中的元音字母
+                </a>
+              
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+              
+            </div>
+          </div>
+        
+      </footer>
+    
+  </div>
+  
+  
+  
+  </article>
+
+  </div>
+
+
+          </div>
+          
+    
+    <div class="comments" id="gitalk-container"></div>
+  
+
+        </div>
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+        
+        
+        
+        
+      
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组-1-189"><span class="nav-number">2.</span> <span class="nav-text">数组(1/189)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-两数之和-简单"><span class="nav-number">2.1.</span> <span class="nav-text">1. 两数之和(简单)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态规划-0-149"><span class="nav-number">3.</span> <span class="nav-text">动态规划(0/149)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数学-0-142"><span class="nav-number">4.</span> <span class="nav-text">数学(0/142)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串-3-138"><span class="nav-number">5.</span> <span class="nav-text">字符串(3/138)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#271-字符串的编码与解码-中等"><span class="nav-number">5.1.</span> <span class="nav-text">271. 字符串的编码与解码(中等)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#344-反转字符串-简单"><span class="nav-number">5.2.</span> <span class="nav-text">344. 反转字符串(简单)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#345-反转字符串中的元音字母-简单"><span class="nav-number">5.3.</span> <span class="nav-text">345. 反转字符串中的元音字母(简单)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树-0-118"><span class="nav-number">6.</span> <span class="nav-text">树(0/118)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#哈希表-0-113"><span class="nav-number">7.</span> <span class="nav-text">哈希表(0/113)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度优先搜索-0-106"><span class="nav-number">8.</span> <span class="nav-text">深度优先搜索(0/106)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二分查找-0-72"><span class="nav-number">9.</span> <span class="nav-text">二分查找(0/72)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心算法-0-59"><span class="nav-number">10.</span> <span class="nav-text">贪心算法(0/59)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#双指针-0-57"><span class="nav-number">11.</span> <span class="nav-text">双指针(0/57)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广度优先搜索-0-51"><span class="nav-number">12.</span> <span class="nav-text">广度优先搜索(0/51)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#栈-0-50"><span class="nav-number">13.</span> <span class="nav-text">栈(0/50)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#回溯算法-0-45"><span class="nav-number">14.</span> <span class="nav-text">回溯算法(0/45)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设计-0-40"><span class="nav-number">15.</span> <span class="nav-text">设计(0/40)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#链表-0-36"><span class="nav-number">16.</span> <span class="nav-text">链表(0/36)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#排序-0-36"><span class="nav-number">17.</span> <span class="nav-text">排序(0/36)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位运算-0-34"><span class="nav-number">18.</span> <span class="nav-text">位运算(0/34)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图-0-34"><span class="nav-number">19.</span> <span class="nav-text">图(0/34)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆-0-34"><span class="nav-number">20.</span> <span class="nav-text">堆(0/34)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并查集-0-27"><span class="nav-number">21.</span> <span class="nav-text">并查集(0/27)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sliding-Window-0-19"><span class="nav-number">22.</span> <span class="nav-text">Sliding Window(0/19)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分治算法-0-18"><span class="nav-number">23.</span> <span class="nav-text">分治算法(0/18)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字典树-0-17"><span class="nav-number">24.</span> <span class="nav-text">字典树(0/17)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#递归-0-14"><span class="nav-number">25.</span> <span class="nav-text">递归(0/14)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Orderd-Map-0-10"><span class="nav-number">26.</span> <span class="nav-text">Orderd Map(0/10)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线段树-0-10"><span class="nav-number">27.</span> <span class="nav-text">线段树(0/10)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#队列-0-9"><span class="nav-number">28.</span> <span class="nav-text">队列(0/9)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#极小化极大-0-8"><span class="nav-number">29.</span> <span class="nav-text">极小化极大(0/8)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#树状数组-0-6"><span class="nav-number">30.</span> <span class="nav-text">树状数组(0/6)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Random-0-6"><span class="nav-number">31.</span> <span class="nav-text">Random(0/6)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#拓扑排序-0-5"><span class="nav-number">32.</span> <span class="nav-text">拓扑排序(0/5)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#脑筋急转弯-0-4"><span class="nav-number">33.</span> <span class="nav-text">脑筋急转弯(0/4)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几何-0-3"><span class="nav-number">34.</span> <span class="nav-text">几何(0/3)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Line-Sweep-0-3"><span class="nav-number">35.</span> <span class="nav-text">Line Sweep(0/3)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Rejection-Samping-0-2"><span class="nav-number">36.</span> <span class="nav-text">Rejection Samping(0/2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#蓄水池抽样-0-2"><span class="nav-number">37.</span> <span class="nav-text">蓄水池抽样(0/2)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二叉搜索树-0-1"><span class="nav-number">38.</span> <span class="nav-text">二叉搜索树(0/1)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#记忆化-0-1"><span class="nav-number">39.</span> <span class="nav-text">记忆化(0/1)</span></a></li></ol></div>
+        
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+      src="/images/avatar.jpg"
+      alt="老实念佛">
+  <p class="site-author-name" itemprop="name">老实念佛</p>
+  <div class="site-description" itemprop="description">小小程序员</div>
+</div>
+  <nav class="site-state motion-element">
+      <div class="site-state-item site-state-posts">
+        
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-categories">
+        
+          
+            <a href="/categories/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span>
+        </a>
+      </div>
+    
+      
+      
+      <div class="site-state-item site-state-tags">
+        
+          
+            <a href="/tags/">
+          
+        
+        
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span>
+        </a>
+      </div>
+    
+  </nav>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2017 – <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">老实念佛</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> v7.4.0</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+    <span class="post-meta-divider">|</span>
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+
+
+  <script src="/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
+<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+<script src="/js/next-boot.js?v=7.4.0"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+  <script src="/js/local-search.js?v=7.4.0"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID: '60d9686c526081007639',
+      clientSecret: '2cb744c4370e936e30bcd161c1c142fadabe6d46',
+      repo: 'blogcomments',
+      owner: 'yangq212607',
+      admin: ['yangq212607'],
+      id: '4516031e0ace29942e49cd1912beead2',
+        language: 'zh-CN',
+      
+      distractionFreeMode: 'true'
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+</script>
+
+</body>
+</html>
