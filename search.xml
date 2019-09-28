@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[刷算法(5)-删除排序数组中的重复项]]></title>
+    <url>%2Fpost%2F864ad132.html</url>
+    <content type="text"><![CDATA[26. 删除排序数组中的重复项给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。 解法1（我的解法）1234567891011public int removeDuplicates2(int[] nums) &#123; int i = 0; for (int j = 1; j&lt;nums.length; j++)&#123; while (j&lt;nums.length &amp;&amp; nums[j] == nums[i]) j++; if (j &lt; nums.length) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1;&#125; 进到for循环后来个while循环找到第一个不等于前一个变量的索引出循环然后赋值。需要注意的是while循环时必须保证索引不越界。后来发现这个while可以和for合并，请看下边管法答案。 解法2（官方）数组完成排序后，我们可以放置两个指针 i 和 j，其中 i 是慢指针，而 j 是快指针。只要 nums[i] = nums[j]，我们就增加j以跳过重复项。当我们遇到 nums[j]!= nums[i]时，跳过重复项的运行已经结束，因此我们必须把它（nums[j]）的值复制到nums[i+1]。然后递增 i，接着我们将再次重复相同的过程，直到 j 到达数组的末尾为止。 12345678910public int removeDuplicates(int[] nums) &#123; int i = 0; for (int j = 1; j&lt;nums.length; j++)&#123; if (nums[j] != nums[i])&#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1;&#125;]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[leetcode刷题进展]]></title>
     <url>%2Fpost%2F3149820c.html</url>
-    <content type="text"><![CDATA[简介leetcode算法部分共有 1107道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 数组(1/189)1. 两数之和(简单)动态规划(0/149)数学(0/142)字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)树(0/118)哈希表(0/113)深度优先搜索(0/106)二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 贪心算法(0/59)双指针(0/57)广度优先搜索(0/51)栈(0/50)回溯算法(0/45)设计(0/40)链表(0/36)排序(0/36)位运算(0/34)图(0/34)堆(0/34)并查集(0/27)Sliding Window(0/19)分治算法(0/18)字典树(0/17)递归(0/14)Orderd Map(0/10)线段树(0/10)队列(0/9)极小化极大(0/8)树状数组(0/6)Random(0/6)拓扑排序(0/5)脑筋急转弯(0/4)几何(0/3)Line Sweep(0/3)Rejection Samping(0/2)蓄水池抽样(0/2)二叉搜索树(0/1)记忆化(0/1)参考 grandyang/leetcode]]></content>
+    <content type="text"><![CDATA[简介leetcode算法部分共有 1107道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 数组(2/189)1. 两数之和(简单)26. 删除排序数组中的重复项动态规划(0/149)数学(0/142)字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)树(0/118)哈希表(0/113)深度优先搜索(0/106)二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 贪心算法(0/59)双指针(0/57)广度优先搜索(0/51)栈(0/50)回溯算法(0/45)设计(0/40)链表(0/36)排序(0/36)位运算(0/34)图(0/34)堆(0/34)并查集(0/27)Sliding Window(0/19)分治算法(0/18)字典树(0/17)递归(0/14)Orderd Map(0/10)线段树(0/10)队列(0/9)极小化极大(0/8)树状数组(0/6)Random(0/6)拓扑排序(0/5)脑筋急转弯(0/4)几何(0/3)Line Sweep(0/3)Rejection Samping(0/2)蓄水池抽样(0/2)二叉搜索树(0/1)记忆化(0/1)参考 grandyang/leetcode]]></content>
       <categories>
         <category>算法</category>
       </categories>
