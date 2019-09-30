@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[刷算法(6)-移除元素]]></title>
+    <url>%2Fpost%2F26850355.html</url>
+    <content type="text"></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[刷算法(5)-删除排序数组中的重复项]]></title>
     <url>%2Fpost%2F864ad132.html</url>
     <content type="text"><![CDATA[26. 删除排序数组中的重复项给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。 解法1（我的解法）1234567891011public int removeDuplicates2(int[] nums) &#123; int i = 0; for (int j = 1; j&lt;nums.length; j++)&#123; while (j&lt;nums.length &amp;&amp; nums[j] == nums[i]) j++; if (j &lt; nums.length) &#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1;&#125; 进到for循环后来个while循环找到第一个不等于前一个变量的索引出循环然后赋值。需要注意的是while循环时必须保证索引不越界。后来发现这个while可以和for合并，请看下边管法答案。 解法2（官方）数组完成排序后，我们可以放置两个指针 i 和 j，其中 i 是慢指针，而 j 是快指针。只要 nums[i] = nums[j]，我们就增加j以跳过重复项。当我们遇到 nums[j]!= nums[i]时，跳过重复项的运行已经结束，因此我们必须把它（nums[j]）的值复制到nums[i+1]。然后递增 i，接着我们将再次重复相同的过程，直到 j 到达数组的末尾为止。 12345678910public int removeDuplicates(int[] nums) &#123; int i = 0; for (int j = 1; j&lt;nums.length; j++)&#123; if (nums[j] != nums[i])&#123; i++; nums[i] = nums[j]; &#125; &#125; return i+1;&#125;]]></content>
