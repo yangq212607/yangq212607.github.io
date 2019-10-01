@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[刷算法(7)-三数之和]]></title>
     <url>%2Fpost%2F3ad49f62.html</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[15. 三数之和给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。注意：答案中不可以包含重复的三元组。 解法 1234567891011121314151617181920212223242526public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) &#123; List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;(); Arrays.sort(nums); for (int i = 0; i &lt; nums.length; i++)&#123; if (nums[i] &gt; 0) break; if (i &gt; 0 &amp;&amp; nums[i] == nums[i-1]) continue; int left = i+1, right = nums.length - 1; while (left &lt; right)&#123; int sum = nums[i] + nums[left] + nums[right]; if ( sum == 0)&#123; result.add(Arrays.asList(nums[i], nums[left], nums[right])); while (left &lt; right &amp;&amp; nums[right] == nums[right-1]) right--; while (left &lt; right &amp;&amp; nums[left] == nums[left+1]) left++; left++; right--; &#125;else if (sum &gt; 0)&#123; right--; &#125;else&#123; left++; &#125; &#125; &#125; return result;&#125; 心得 整体思路是先对数组进行排序，然后对有序数组依次查找，用最左、最右两个指针索引进行遍历; 因为数组是递增的，一旦num[i] &gt; 0则对索引i就不需要再找了需要结束整个流程(因为i右边的数都比它大)； 如果遍历到i，但是num[i]等于num[i-1]，则忽略这个i，从i的下一个开始找，通过for循环控制； 针对i，定义left和right，在left和right区间去找，计算三者sum； 如果sum = 0，则放到结果里，同时对left和right，判断是否有重复的，如果有重复的就往前/往后移位。这里有两个注意事项： 1)注意是通过left和left+1比的，意味着出while后，left指的位置仍然是当下参与计算sum的那个索引，出循环后left和right要进行递增、递减操作，这一切都归功于数组是递增有序的； 2)注意while循环的条件一定有left &lt; right，这一点非常关键； 如果sum &gt; 0意味着值太大了，需要小点，那就把right递减下； 如果sum &lt; 0意味着太小了，需要更大，那就把left递增加大下这个值，因为right是从最右边来的，已经是最大的了； 参考 画解算法：15. 三数之和]]></content>
       <categories>
         <category>算法</category>
       </categories>
@@ -36,7 +36,7 @@
   <entry>
     <title><![CDATA[leetcode刷题进展]]></title>
     <url>%2Fpost%2F3149820c.html</url>
-    <content type="text"><![CDATA[简介leetcode算法部分共有 1107道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 一.数组(3/189)1. 两数之和(简单)26. 删除排序数组中的重复项27. 移除元素二.动态规划(0/149)三.数学(0/142)四.字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)五.树(0/118)六.哈希表(0/113)七.深度优先搜索(0/106)八.二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 九.贪心算法(0/59)十.双指针(0/57)十一.广度优先搜索(0/51)十二.栈(0/50)十三.回溯算法(0/45)十四.设计(0/40)十五.链表(0/36)十六.排序(0/36)十七.位运算(0/34)十八.图(0/34)十九.堆(0/34)二十.并查集(0/27)二十一.Sliding Window(0/19)二十二.分治算法(0/18)二十三.字典树(0/17)二十四.递归(0/14)二十五.Orderd Map(0/10)二十六.线段树(0/10)二十七.队列(0/9)二十八.极小化极大(0/8)二十九.树状数组(0/6)三十.Random(0/6)三十一.拓扑排序(0/5)三十二.脑筋急转弯(0/4)三十三.几何(0/3)三十四.Line Sweep(0/3)三十五.Rejection Samping(0/2)三十六.蓄水池抽样(0/2)三十七.二叉搜索树(0/1)三十八.记忆化(0/1)参考 grandyang/leetcode]]></content>
+    <content type="text"><![CDATA[简介leetcode算法部分共有 1107道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 一.数组(4/189)1. 两数之和(简单)15. 三数之和26. 删除排序数组中的重复项27. 移除元素二.动态规划(0/149)三.数学(0/142)四.字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)五.树(0/118)六.哈希表(0/113)七.深度优先搜索(0/106)八.二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 九.贪心算法(0/59)十.双指针(0/57)十一.广度优先搜索(0/51)十二.栈(0/50)十三.回溯算法(0/45)十四.设计(0/40)十五.链表(0/36)十六.排序(0/36)十七.位运算(0/34)十八.图(0/34)十九.堆(0/34)二十.并查集(0/27)二十一.Sliding Window(0/19)二十二.分治算法(0/18)二十三.字典树(0/17)二十四.递归(0/14)二十五.Orderd Map(0/10)二十六.线段树(0/10)二十七.队列(0/9)二十八.极小化极大(0/8)二十九.树状数组(0/6)三十.Random(0/6)三十一.拓扑排序(0/5)三十二.脑筋急转弯(0/4)三十三.几何(0/3)三十四.Line Sweep(0/3)三十五.Rejection Samping(0/2)三十六.蓄水池抽样(0/2)三十七.二叉搜索树(0/1)三十八.记忆化(0/1)参考 grandyang/leetcode]]></content>
       <categories>
         <category>算法</category>
       </categories>
