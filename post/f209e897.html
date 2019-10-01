@@ -55,18 +55,18 @@
   };
 </script>
 
-  <meta name="description" content="小小程序员">
+  <meta name="description" content="16. 最接近的三数之和给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。 12例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).">
 <meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="刷算法(8)-最接近的三数之和">
 <meta property="og:url" content="http://yangq.me/post/f209e897.html">
 <meta property="og:site_name" content="yangq&#39;s blog">
-<meta property="og:description" content="小小程序员">
+<meta property="og:description" content="16. 最接近的三数之和给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。 12例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-01T11:32:46.946Z">
+<meta property="og:updated_time" content="2019-10-01T11:47:17.090Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="刷算法(8)-最接近的三数之和">
-<meta name="twitter:description" content="小小程序员">
+<meta name="twitter:description" content="16. 最接近的三数之和给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。 12例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).">
   <link rel="canonical" href="http://yangq.me/post/f209e897">
 
 
@@ -297,7 +297,7 @@
                 
               
 
-              <time title="创建时间：2019-10-01 19:31:59 / 修改时间：19:32:46" itemprop="dateCreated datePublished" datetime="2019-10-01T19:31:59+08:00">2019-10-01</time>
+              <time title="创建时间：2019-10-01 19:31:59 / 修改时间：19:47:17" itemprop="dateCreated datePublished" datetime="2019-10-01T19:31:59+08:00">2019-10-01</time>
             </span>
           
             
@@ -337,7 +337,22 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="16-最接近的三数之和"><a href="#16-最接近的三数之和" class="headerlink" title="16. 最接近的三数之和"></a><a href="https://leetcode-cn.com/problems/3sum-closest/" target="_blank" rel="noopener">16. 最接近的三数之和</a></h2><p>给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.</span><br><span class="line">与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public int threeSumClosest(int[] nums, int target) &#123;</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    int result = nums[0] + nums[1] + nums[2];</span><br><span class="line">    int diff = Integer.MAX_VALUE;</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++)&#123;</span><br><span class="line">        if (i&gt;0 &amp;&amp; nums[i] == nums[i-1]) continue;</span><br><span class="line">        int left = i + 1;</span><br><span class="line">        int right = nums.length - 1;</span><br><span class="line"></span><br><span class="line">        while (left &lt; right)&#123;</span><br><span class="line">            int sum = nums[i] + nums[left] + nums[right];</span><br><span class="line">            if (sum &lt; target)&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;else if(sum &gt; target)&#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                result = target;</span><br><span class="line">                return result;</span><br><span class="line">            &#125;</span><br><span class="line">            if (Math.abs(sum -target) &lt; diff)&#123;</span><br><span class="line">                diff = Math.abs(sum -target);</span><br><span class="line">                result = sum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ol>
+<li>一定要仔细读题，题目要求返回的是sum，和target最接近的求和，而不是diff；</li>
+<li>进入循环后如果i和i-1值相同，一定要进行剪枝操作；</li>
+<li>初始diff设成最大，之后不断修正成最小值；</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/3sum-closest/solution/shuang-zhi-zhen-dui-zhuang-python-dai-ma-java-dai-/" target="_blank" rel="noopener">双指针对撞</a></li>
+</ul>
+
     </div>
 
     
@@ -422,6 +437,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#16-最接近的三数之和"><span class="nav-number">1.</span> <span class="nav-text">16. 最接近的三数之和</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心得"><span class="nav-number">3.</span> <span class="nav-text">心得</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
