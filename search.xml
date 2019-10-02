@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[刷算法(10)-搜寻名人]]></title>
+    <url>%2Fpost%2F92de9a1a.html</url>
+    <content type="text"><![CDATA[277. 搜寻名人(会员题)假设你是一个专业的狗仔，参加了一个n人派对，其中每个人被从0到n-1 标号。在这个派对人群当中可能存在一位 “名人”。所谓 “名人” 的定义是：其他所有n-1个人都认识他/她，而他/她并不认识其他任何人。 现在你想要确认这个“名人”是谁，或者确定这里没有“名人”。而你唯一能做的就是问诸如“A 你好呀，请问你认不认识 B呀？”的问题，以确定A是否认识 B。你需要在（渐近意义上）尽可能少的问题内来确定这位 “名人”是谁（或者确定这里没有“名人”）。在本题中，你可以使用辅助函数bool knows(a, b)获取到 A 是否认识 B。请你来实现一个函数int findCelebrity(n)。 派对最多只会有一个 “名人” 参加。若 “名人” 存在，请返回他/她的编号；若 “名人” 不存在，请返回 -1。 解法1（暴力破解）从0到n-1，假设其中一个数是名人，然后判断是否满足以下两个条件： 别人都认识他； 他除自己外不认识别人代码如下：123456789101112131415161718public class Solution extends Relation &#123; public int findCelebrity(int n) &#123; int result = -1; boolean isFail = false; for (int mingren = 0; mingren &lt; n; mingren++)&#123; int others = 0, count = 0; while (mingren == others || (knows(others, mingren) &amp;&amp; !knows(mingren, others) &amp;&amp; others &lt; n)&#123; count++; // 包括自己名人有n个认识 if (count == n)&#123; return mingren; &#125; others++; &#125; &#125; return result; &#125;&#125; 注意这里假设mingren后，找其他人的时候一定是从头也就是0开始找，不存在从mingren + 1开始找这个说法。上述算法耗时11ms。 贪心算法（优化后）先假设第一个数就是名人，然后如果他认识别人，那就当其他人是名人。如果存在名人，则这个mingren只满足中间交换时i之后的人他不认识，而i之前的还要再确保一下。所以出了循环后针对修正后的名人，看看是不是满足条件。代码如下： 123456789101112131415161718public class Solution extends Relation &#123; public int findCelebrity(int n) &#123; int mingren = 0; for (int i = 1; i &lt; n; i++)&#123; if (knows(mingren, i))&#123; mingren = i; &#125; &#125; for (int j = 0; j&lt;n; j++)&#123; if (j != mingren &amp;&amp; (knows(mingren, j) || !knows(j, mingren)))&#123; return -1; &#125; &#125; return mingren; &#125;&#125; 优化后耗时8ms。 参考 暴力法 官方解法]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[刷算法(9)-较小的三数之和]]></title>
     <url>%2Fpost%2F49a15473.html</url>
     <content type="text"><![CDATA[259. 较小的三数之和(会员题)给定一个长度为 n 的整数数组和一个目标值 target，寻找能够使条件 nums[i] + nums[j] + nums[k] &lt; target 成立的三元组 i, j, k 个数（0 &lt;= i &lt; j &lt; k &lt; n）。 12345输入: nums = [-2,0,1,3], target = 2输出: 2 解释: 因为一共有两个三元组满足累加和小于 2: [-2,0,1] [-2,0,3] 解法123456789101112131415161718192021public int threeSumSmaller(int[] nums, int target) &#123; int result = 0; Arrays.sort(nums); for (int i = 0; i &lt; nums.length; i++) &#123; if (i &gt; 0 &amp;&amp; nums[i] == nums[i - 1]) continue; int left = i + 1; int right = nums.length - 1; while (left &lt; right) &#123; int sum = nums[i] + nums[left] + nums[right]; if (sum &lt; target) &#123; result += right - left; left++; &#125; else &#123; right--; &#125; &#125; &#125; return result; &#125; 心得读题注意题目要求是返回的满足要求的i、j、k三元组个数，这意味着如果有两个数字是重复的，虽然数值一样但是索引位置不同，也认为是不同的结果。所以进到for循环后，不能有nums[i] == nums[i-1]的剪枝操作，如果剪枝了直接答案会不对。 条件控制这道题的关键在result += right - left;，即针对某个left，如果找到一个right满足要求小于了target，则right右边的数字一定是小于target的，因此直接得到个数right - left，然后让left移位。]]></content>
@@ -58,7 +69,7 @@
   <entry>
     <title><![CDATA[leetcode刷题进展]]></title>
     <url>%2Fpost%2F3149820c.html</url>
-    <content type="text"><![CDATA[简介leetcode算法部分共有 1107道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 一.数组(5/189)1. 两数之和(简单)15. 三数之和16. 最接近的三数之和26. 删除排序数组中的重复项27. 移除元素二.动态规划(0/149)三.数学(0/142)四.字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)五.树(0/118)六.哈希表(0/113)七.深度优先搜索(0/106)八.二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 九.贪心算法(0/59)十.双指针(0/57)十一.广度优先搜索(0/51)十二.栈(0/50)十三.回溯算法(0/45)十四.设计(0/40)十五.链表(0/36)十六.排序(0/36)十七.位运算(0/34)十八.图(0/34)十九.堆(0/34)二十.并查集(0/27)二十一.Sliding Window(0/19)二十二.分治算法(0/18)二十三.字典树(0/17)二十四.递归(0/14)二十五.Orderd Map(0/10)二十六.线段树(0/10)二十七.队列(0/9)二十八.极小化极大(0/8)二十九.树状数组(0/6)三十.Random(0/6)三十一.拓扑排序(0/5)三十二.脑筋急转弯(0/4)三十三.几何(0/3)三十四.Line Sweep(0/3)三十五.Rejection Samping(0/2)三十六.蓄水池抽样(0/2)三十七.二叉搜索树(0/1)三十八.记忆化(0/1)参考 grandyang/leetcode]]></content>
+    <content type="text"><![CDATA[简介leetcode算法部分共有 1107道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 一.数组(7/189)1. 两数之和(简单)15. 三数之和16. 最接近的三数之和26. 删除排序数组中的重复项27. 移除元素259. 较小的三数之和(会员题)277. 搜寻名人(会员题)二.动态规划(0/149)三.数学(0/142)四.字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)五.树(0/118)六.哈希表(0/113)七.深度优先搜索(0/106)八.二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 九.贪心算法(0/59)十.双指针(0/57)十一.广度优先搜索(0/51)十二.栈(0/50)十三.回溯算法(0/45)十四.设计(0/40)十五.链表(0/36)十六.排序(0/36)十七.位运算(0/34)十八.图(0/34)十九.堆(0/34)二十.并查集(0/27)二十一.Sliding Window(0/19)二十二.分治算法(0/18)二十三.字典树(0/17)二十四.递归(0/14)二十五.Orderd Map(0/10)二十六.线段树(0/10)二十七.队列(0/9)二十八.极小化极大(0/8)二十九.树状数组(0/6)三十.Random(0/6)三十一.拓扑排序(0/5)三十二.脑筋急转弯(0/4)三十三.几何(0/3)三十四.Line Sweep(0/3)三十五.Rejection Samping(0/2)三十六.蓄水池抽样(0/2)三十七.二叉搜索树(0/1)三十八.记忆化(0/1)参考 grandyang/leetcode]]></content>
       <categories>
         <category>算法</category>
       </categories>
