@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="小小程序员">
-<meta name="keywords" content="Android,iOS,Python,Web,H5,Java,开发,技术博客">
+  <meta name="description" content="259. 较小的三数之和(会员题)给定一个长度为 n 的整数数组和一个目标值 target，寻找能够使条件 nums[i] + nums[j] + nums[k] &amp;lt; target 成立的三元组  i, j, k 个数（0 &amp;lt;= i &amp;lt; j &amp;lt; k &amp;lt; n）。">
+<meta name="keywords" content="leetcode">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RePlugin研究一:基础接入教程">
-<meta property="og:url" content="http://yangq.me/post/98c4f5c4.html">
+<meta property="og:title" content="刷算法(9)-较小的三数之和">
+<meta property="og:url" content="http://yangq.me/post/49a15473.html">
 <meta property="og:site_name" content="yangq&#39;s blog">
-<meta property="og:description" content="小小程序员">
+<meta property="og:description" content="259. 较小的三数之和(会员题)给定一个长度为 n 的整数数组和一个目标值 target，寻找能够使条件 nums[i] + nums[j] + nums[k] &amp;lt; target 成立的三元组  i, j, k 个数（0 &amp;lt;= i &amp;lt; j &amp;lt; k &amp;lt; n）。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-17T16:42:06.929Z">
+<meta property="og:updated_time" content="2019-10-02T09:31:25.472Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RePlugin研究一:基础接入教程">
-<meta name="twitter:description" content="小小程序员">
-  <link rel="canonical" href="http://yangq.me/post/98c4f5c4">
+<meta name="twitter:title" content="刷算法(9)-较小的三数之和">
+<meta name="twitter:description" content="259. 较小的三数之和(会员题)给定一个长度为 n 的整数数组和一个目标值 target，寻找能够使条件 nums[i] + nums[j] + nums[k] &amp;lt; target 成立的三元组  i, j, k 个数（0 &amp;lt;= i &amp;lt; j &amp;lt; k &amp;lt; n）。">
+  <link rel="canonical" href="http://yangq.me/post/49a15473">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>RePlugin研究一:基础接入教程 | yangq's blog</title>
+  <title>刷算法(9)-较小的三数之和 | yangq's blog</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yangq.me/post/98c4f5c4.html">
+    <link itemprop="mainEntityOfPage" href="http://yangq.me/post/49a15473.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="老实念佛">
@@ -281,7 +281,7 @@
       <meta itemprop="name" content="yangq's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">RePlugin研究一:基础接入教程
+        <h1 class="post-title" itemprop="name headline">刷算法(9)-较小的三数之和
 
           
         </h1>
@@ -297,20 +297,25 @@
                 
               
 
-              <time title="创建时间：2018-05-06 21:05:58" itemprop="dateCreated datePublished" datetime="2018-05-06T21:05:58+08:00">2018-05-06</time>
+              <time title="创建时间：2019-10-02 17:19:01 / 修改时间：17:31:25" itemprop="dateCreated datePublished" datetime="2019-10-02T17:19:01+08:00">2019-10-02</time>
             </span>
           
             
 
             
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2019-09-18 00:42:06" itemprop="dateModified" datetime="2019-09-18T00:42:06+08:00">2019-09-18</time>
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
               </span>
-            
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -332,7 +337,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        
+        <h2 id="259-较小的三数之和-会员题"><a href="#259-较小的三数之和-会员题" class="headerlink" title="259. 较小的三数之和(会员题)"></a><a href="https://leetcode-cn.com/problems/3sum-smaller/" target="_blank" rel="noopener">259. 较小的三数之和(会员题)</a></h2><p>给定一个长度为 n 的整数数组和一个目标值 target，寻找能够使条件 nums[i] + nums[j] + nums[k] &lt; target 成立的三元组  i, j, k 个数（0 &lt;= i &lt; j &lt; k &lt; n）。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [-2,0,1,3], target = 2</span><br><span class="line">输出: 2 </span><br><span class="line">解释: 因为一共有两个三元组满足累加和小于 2:</span><br><span class="line">     [-2,0,1]</span><br><span class="line">     [-2,0,3]</span><br></pre></td></tr></table></figure>
+
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public int threeSumSmaller(int[] nums, int target) &#123;</span><br><span class="line">        int result = 0;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        for (int i = 0; i &lt; nums.length; i++) &#123;</span><br><span class="line">            if (i &gt; 0 &amp;&amp; nums[i] == nums[i - 1]) continue;</span><br><span class="line">            int left = i + 1;</span><br><span class="line">            int right = nums.length - 1;</span><br><span class="line"></span><br><span class="line">            while (left &lt; right) &#123;</span><br><span class="line">                int sum = nums[i] + nums[left] + nums[right];</span><br><span class="line">                if (sum &lt; target) &#123;</span><br><span class="line">                    result += right - left;</span><br><span class="line">                    left++;</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    right--;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><h3 id="读题"><a href="#读题" class="headerlink" title="读题"></a>读题</h3><p>注意题目要求是返回的满足要求的i、j、k三元组个数，这意味着如果有两个数字是重复的，虽然数值一样但是索引位置不同，也认为是不同的结果。所以进到for循环后，不能有<code>nums[i] == nums[i-1]</code>的剪枝操作，如果剪枝了直接答案会不对。</p>
+<h3 id="条件控制"><a href="#条件控制" class="headerlink" title="条件控制"></a>条件控制</h3><p>这道题的关键在<code>result += right - left;</code>，即针对某个left，如果找到一个right满足要求小于了target，则right右边的数字一定是小于target的，因此直接得到个数<code>right - left</code>，然后让left移位。</p>
+
     </div>
 
     
@@ -342,14 +355,23 @@
       
 
       <footer class="post-footer">
+          
+            
+          
+          <div class="post-tags">
+            
+              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+            
+          </div>
+        
 
         
 
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/post/c9b0b45c.html" rel="next" title="Android UI设计换算关系一览表">
-                  <i class="fa fa-chevron-left"></i> Android UI设计换算关系一览表
+                <a href="/post/f209e897.html" rel="next" title="刷算法(8)-最接近的三数之和">
+                  <i class="fa fa-chevron-left"></i> 刷算法(8)-最接近的三数之和
                 </a>
               
             </div>
@@ -357,10 +379,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/post/f007732d.html" rel="prev" title="npm安装依赖至指定版本的方法">
-                  npm安装依赖至指定版本的方法 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -412,6 +430,8 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#259-较小的三数之和-会员题"><span class="nav-number">1.</span> <span class="nav-text">259. 较小的三数之和(会员题)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心得"><span class="nav-number">3.</span> <span class="nav-text">心得</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读题"><span class="nav-number">3.1.</span> <span class="nav-text">读题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#条件控制"><span class="nav-number">3.2.</span> <span class="nav-text">条件控制</span></a></li></ol></li></ol></div>
+        
       </div>
       <!--/noindex-->
 
@@ -606,7 +626,7 @@
       repo: 'blogcomments',
       owner: 'yangq212607',
       admin: ['yangq212607'],
-      id: '5c88f6cd4399496c3e2fdf1f1e6ffd68',
+      id: '49f897f8c43adc05bfcf6520afea538f',
         language: 'zh-CN',
       
       distractionFreeMode: 'true'
