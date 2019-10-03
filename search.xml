@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[刷算法(11)-爬楼梯]]></title>
+    <url>%2Fpost%2F41a8f423.html</url>
+    <content type="text"><![CDATA[70. 爬楼梯假设你正在爬楼梯。需要n阶你才能到达楼顶。每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？注意：给定n是一个正整数。 示例1 12345输入： 2输出： 2解释： 有两种方法可以爬到楼顶。1. 1 阶 + 1 阶2. 2 阶 示例2 123456输入： 3输出： 3解释： 有三种方法可以爬到楼顶。1. 1 阶 + 1 阶 + 1 阶2. 1 阶 + 2 阶3. 2 阶 + 1 阶 解法1234567891011121314class Solution &#123; public int climbStairs(int n) &#123; if (n == 1 || n == 2)&#123; return n; &#125; int step[] = new int[n+1]; step[1] = 1; step[2] = 2; for (int i = 3; i &lt; n+1; i++)&#123; step[i] = step[i-1] + step[i-2]; &#125; return step[n]; &#125;&#125; 心得 需要识别出来这是一道典型的动态规划算法 上述代码关键点是对特殊的n要做处理返回，即处理好n的边界。 参考 官方解法]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[刷算法(10)-搜寻名人]]></title>
     <url>%2Fpost%2F92de9a1a.html</url>
     <content type="text"><![CDATA[277. 搜寻名人(会员题)假设你是一个专业的狗仔，参加了一个n人派对，其中每个人被从0到n-1 标号。在这个派对人群当中可能存在一位 “名人”。所谓 “名人” 的定义是：其他所有n-1个人都认识他/她，而他/她并不认识其他任何人。 现在你想要确认这个“名人”是谁，或者确定这里没有“名人”。而你唯一能做的就是问诸如“A 你好呀，请问你认不认识 B呀？”的问题，以确定A是否认识 B。你需要在（渐近意义上）尽可能少的问题内来确定这位 “名人”是谁（或者确定这里没有“名人”）。在本题中，你可以使用辅助函数bool knows(a, b)获取到 A 是否认识 B。请你来实现一个函数int findCelebrity(n)。 派对最多只会有一个 “名人” 参加。若 “名人” 存在，请返回他/她的编号；若 “名人” 不存在，请返回 -1。 解法1（暴力破解）从0到n-1，假设其中一个数是名人，然后判断是否满足以下两个条件： 别人都认识他； 他除自己外不认识别人代码如下：123456789101112131415161718public class Solution extends Relation &#123; public int findCelebrity(int n) &#123; int result = -1; boolean isFail = false; for (int mingren = 0; mingren &lt; n; mingren++)&#123; int others = 0, count = 0; while (mingren == others || (knows(others, mingren) &amp;&amp; !knows(mingren, others) &amp;&amp; others &lt; n)&#123; count++; // 包括自己名人有n个认识 if (count == n)&#123; return mingren; &#125; others++; &#125; &#125; return result; &#125;&#125; 注意这里假设mingren后，找其他人的时候一定是从头也就是0开始找，不存在从mingren + 1开始找这个说法。上述算法耗时11ms。 贪心算法（优化后）先假设第一个数就是名人，然后如果他认识别人，那就当其他人是名人。如果存在名人，则这个mingren只满足中间交换时i之后的人他不认识，而i之前的还要再确保一下。所以出了循环后针对修正后的名人，看看是不是满足条件。代码如下： 123456789101112131415161718public class Solution extends Relation &#123; public int findCelebrity(int n) &#123; int mingren = 0; for (int i = 1; i &lt; n; i++)&#123; if (knows(mingren, i))&#123; mingren = i; &#125; &#125; for (int j = 0; j&lt;n; j++)&#123; if (j != mingren &amp;&amp; (knows(mingren, j) || !knows(j, mingren)))&#123; return -1; &#125; &#125; return mingren; &#125;&#125; 优化后耗时8ms。 参考 暴力法 官方解法]]></content>
@@ -69,7 +80,7 @@
   <entry>
     <title><![CDATA[leetcode刷题进展]]></title>
     <url>%2Fpost%2F3149820c.html</url>
-    <content type="text"><![CDATA[简介leetcode算法部分共有 1107道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 一.数组(7/189)1. 两数之和(简单)15. 三数之和16. 最接近的三数之和26. 删除排序数组中的重复项27. 移除元素259. 较小的三数之和(会员题)277. 搜寻名人(会员题)二.动态规划(0/149)三.数学(0/142)四.字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)五.树(0/118)六.哈希表(0/113)七.深度优先搜索(0/106)八.二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 九.贪心算法(0/59)十.双指针(0/57)十一.广度优先搜索(0/51)十二.栈(0/50)十三.回溯算法(0/45)十四.设计(0/40)十五.链表(0/36)十六.排序(0/36)十七.位运算(0/34)十八.图(0/34)十九.堆(0/34)二十.并查集(0/27)二十一.Sliding Window(0/19)二十二.分治算法(0/18)二十三.字典树(0/17)二十四.递归(0/14)二十五.Orderd Map(0/10)二十六.线段树(0/10)二十七.队列(0/9)二十八.极小化极大(0/8)二十九.树状数组(0/6)三十.Random(0/6)三十一.拓扑排序(0/5)三十二.脑筋急转弯(0/4)三十三.几何(0/3)三十四.Line Sweep(0/3)三十五.Rejection Samping(0/2)三十六.蓄水池抽样(0/2)三十七.二叉搜索树(0/1)三十八.记忆化(0/1)参考 grandyang/leetcode]]></content>
+    <content type="text"><![CDATA[简介leetcode算法部分共有 1118道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 一.数组(7/189)1. 两数之和(简单)15. 三数之和16. 最接近的三数之和26. 删除排序数组中的重复项27. 移除元素259. 较小的三数之和(会员题)277. 搜寻名人(会员题)二.动态规划(1/149)70. 爬楼梯三.数学(0/142)四.字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)五.树(0/118)六.哈希表(0/113)七.深度优先搜索(0/106)八.二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 九.贪心算法(0/59)十.双指针(0/57)十一.广度优先搜索(0/51)十二.栈(0/50)十三.回溯算法(0/45)十四.设计(0/40)十五.链表(0/36)十六.排序(0/36)十七.位运算(0/34)十八.图(0/34)十九.堆(0/34)二十.并查集(0/27)二十一.Sliding Window(0/19)二十二.分治算法(0/18)二十三.字典树(0/17)二十四.递归(0/14)二十五.Orderd Map(0/10)二十六.线段树(0/10)二十七.队列(0/9)二十八.极小化极大(0/8)二十九.树状数组(0/6)三十.Random(0/6)三十一.拓扑排序(0/5)三十二.脑筋急转弯(0/4)三十三.几何(0/3)三十四.Line Sweep(0/3)三十五.Rejection Samping(0/2)三十六.蓄水池抽样(0/2)三十七.二叉搜索树(0/1)三十八.记忆化(0/1)参考 grandyang/leetcode]]></content>
       <categories>
         <category>算法</category>
       </categories>
