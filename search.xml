@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[刷算法(12)-买卖股票的最佳时机]]></title>
+    <url>%2Fpost%2Fcdee2405.html</url>
+    <content type="text"><![CDATA[121. 买卖股票的最佳时机给定一个数组，它的第 i 个元素是一支给定股票第 i 天的价格。如果你最多只允许完成一笔交易（即买入和卖出一支股票），设计一个算法来计算你所能获取的最大利润。注意你不能在买入股票前卖出股票。 解法123456789101112public int maxProfit1(int[] prices) &#123; int result = 0; int minPrice = Integer.MAX_VALUE; for (int i = 0; i &lt; prices.length; i++)&#123; if (prices[i] &lt; minPrice)&#123; minPrice = prices[i]; &#125;else if (prices[i] - minPrice &gt; result)&#123; result = prices[i] - minPrice; &#125; &#125; return result;&#125; 上述算法耗时1ms。]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[刷算法(11)-爬楼梯]]></title>
     <url>%2Fpost%2F41a8f423.html</url>
     <content type="text"><![CDATA[70. 爬楼梯假设你正在爬楼梯。需要n阶你才能到达楼顶。每次你可以爬1或2个台阶。你有多少种不同的方法可以爬到楼顶呢？注意：给定n是一个正整数。 示例1 12345输入： 2输出： 2解释： 有两种方法可以爬到楼顶。1. 1 阶 + 1 阶2. 2 阶 示例2 123456输入： 3输出： 3解释： 有三种方法可以爬到楼顶。1. 1 阶 + 1 阶 + 1 阶2. 1 阶 + 2 阶3. 2 阶 + 1 阶 解法1234567891011121314class Solution &#123; public int climbStairs(int n) &#123; if (n == 1 || n == 2)&#123; return n; &#125; int step[] = new int[n+1]; step[1] = 1; step[2] = 2; for (int i = 3; i &lt; n+1; i++)&#123; step[i] = step[i-1] + step[i-2]; &#125; return step[n]; &#125;&#125; 心得 需要识别出来这是一道典型的动态规划算法 上述代码关键点是对特殊的n要做处理返回，即处理好n的边界。 参考 官方解法]]></content>
