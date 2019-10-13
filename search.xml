@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[刷算法(15)-打家劫舍]]></title>
+    <url>%2Fpost%2Fdb4a93d7.html</url>
+    <content type="text"><![CDATA[198. 打家劫舍你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 解法123456789101112public int rob(int[] nums) &#123; if (nums.length == 0)&#123; return 0; &#125; int[] dp = new int[nums.length + 1]; dp[0] = 0; dp[1] = nums[0]; for (int i = 2; i &lt;= nums.length; i++)&#123; dp[i] = Math.max(dp[i-1], dp[i-2] + nums[i-1]); &#125; return dp[nums.length];&#125; 心得 要注意边界条件，考虑nums数组为空时返回0 要自己分析动态规划方程:1dp[n] = MAX( dp[n-1], dp[n-2] + num ) 参考 画解算法：198. 打家劫舍]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[刷算法(14)-区域和检索]]></title>
     <url>%2Fpost%2F60c0216c.html</url>
     <content type="text"><![CDATA[303. 区域和检索 - 数组不可变给定一个整数数组nums，求出数组从索引i到j(i ≤ j)范围内元素的总和，包含i,j两点。示例： 1234给定 nums = [-2, 0, 3, -5, 2, -1]，求和函数为 sumRange()sumRange(0, 2) -&gt; 1sumRange(2, 5) -&gt; -1sumRange(0, 5) -&gt; -3 方法一：暴力123456789101112131415class NumArray &#123; private int[] mData; public NumArray(int[] nums) &#123; mData = nums; &#125; public int sumRange(int i, int j) &#123; int sum = 0; for (int k = i; k &lt;= j; k++)&#123; sum += mData[k]; &#125; return sum; &#125;&#125; 方法二：把求和转化为作差思路是先创造出来一个数组，该数组里第i个值表示i之前的原始数组nums之和，把问题转为新数组作差。 1234567891011121314class NumArray &#123; private int[] mData; public NumArray(int[] nums) &#123; mData = new int[nums.length + 1]; for (int i = 0; i &lt; nums.length; i++)&#123; mData[i+1] = mData[i] + nums[i]; &#125; &#125; public int sumRange(int i, int j) &#123; return mData[j+1] - mData[i]; &#125;&#125;]]></content>
@@ -113,7 +124,7 @@
   <entry>
     <title><![CDATA[leetcode刷题进展]]></title>
     <url>%2Fpost%2F3149820c.html</url>
-    <content type="text"><![CDATA[简介leetcode算法部分共有 1118道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 一.数组(7/189)1. 两数之和(简单)15. 三数之和16. 最接近的三数之和26. 删除排序数组中的重复项27. 移除元素259. 较小的三数之和(会员题)277. 搜寻名人(会员题)二.动态规划(4/149)53. 最大子序和70. 爬楼梯121. 买卖股票的最佳时机303. 区域和检索 - 数组不可变三.数学(0/142)四.字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)五.树(0/118)六.哈希表(0/113)七.深度优先搜索(0/106)八.二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 九.贪心算法(0/59)十.双指针(0/57)十一.广度优先搜索(0/51)十二.栈(0/50)十三.回溯算法(0/45)十四.设计(0/40)十五.链表(0/36)十六.排序(0/36)十七.位运算(0/34)十八.图(0/34)十九.堆(0/34)二十.并查集(0/27)二十一.Sliding Window(0/19)二十二.分治算法(0/18)二十三.字典树(0/17)二十四.递归(0/14)二十五.Orderd Map(0/10)二十六.线段树(0/10)二十七.队列(0/9)二十八.极小化极大(0/8)二十九.树状数组(0/6)三十.Random(0/6)三十一.拓扑排序(0/5)三十二.脑筋急转弯(0/4)三十三.几何(0/3)三十四.Line Sweep(0/3)三十五.Rejection Samping(0/2)三十六.蓄水池抽样(0/2)三十七.二叉搜索树(0/1)三十八.记忆化(0/1)参考 grandyang/leetcode]]></content>
+    <content type="text"><![CDATA[简介leetcode算法部分共有 1118道题 38个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。 一.数组(7/189)1. 两数之和(简单)15. 三数之和16. 最接近的三数之和26. 删除排序数组中的重复项27. 移除元素259. 较小的三数之和(会员题)277. 搜寻名人(会员题)二.动态规划(5/149)53. 最大子序和70. 爬楼梯121. 买卖股票的最佳时机198. 打家劫舍303. 区域和检索 - 数组不可变三.数学(0/142)四.字符串(3/138)271. 字符串的编码与解码(中等)344. 反转字符串(简单)345. 反转字符串中的元音字母(简单)五.树(0/118)六.哈希表(0/113)七.深度优先搜索(0/106)八.二分查找(0/72)287. 寻找重复数参考： https://github.com/grandyang/leetcode/issues/287 十分好用的二分查找法模板 九.贪心算法(0/59)十.双指针(0/57)十一.广度优先搜索(0/51)十二.栈(0/50)十三.回溯算法(0/45)十四.设计(0/40)十五.链表(0/36)十六.排序(0/36)十七.位运算(0/34)十八.图(0/34)十九.堆(0/34)二十.并查集(0/27)二十一.Sliding Window(0/19)二十二.分治算法(0/18)二十三.字典树(0/17)二十四.递归(0/14)二十五.Orderd Map(0/10)二十六.线段树(0/10)二十七.队列(0/9)二十八.极小化极大(0/8)二十九.树状数组(0/6)三十.Random(0/6)三十一.拓扑排序(0/5)三十二.脑筋急转弯(0/4)三十三.几何(0/3)三十四.Line Sweep(0/3)三十五.Rejection Samping(0/2)三十六.蓄水池抽样(0/2)三十七.二叉搜索树(0/1)三十八.记忆化(0/1)参考 grandyang/leetcode]]></content>
       <categories>
         <category>算法</category>
       </categories>
