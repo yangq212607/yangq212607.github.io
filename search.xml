@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[刷算法(16)-粉刷房子]]></title>
+    <url>%2Fpost%2F5339c6b6.html</url>
+    <content type="text"><![CDATA[256. 粉刷房子假如有一排房子，共 n 个，每个房子可以被粉刷成红色、蓝色或者绿色这三种颜色中的一种，你需要粉刷所有的房子并且使其相邻的两个房子颜色不能相同。当然，因为市场上不同颜色油漆的价格不同，所以房子粉刷成不同颜色的花费成本也是不同的。每个房子粉刷成不同颜色的花费是以一个 n x 3 的矩阵来表示的。 解法12345678910111213public int minCost(int[][] costs) &#123; int n = costs.length; int[][] dp = new int[n][3]; dp[0][0] = costs[0][0]; dp[0][1] = costs[0][1]; dp[0][2] = costs[0][2]; for (int i = 1; i &lt; n; i++)&#123; for (int j = 0; j &lt; 3; j++)&#123; dp[i][j] = Math.min(dp[i-1][(j+1)%3], dp[i-1][(j+2)%3]) + costs[i][j]; &#125; &#125; return Math.min(Math.min(dp[n-1][0], dp[n-1][1]), dp[n-1][2]);&#125; 思路我们需要知道dp[i]和dp[i-1]之间的关系，设dp[i] 是粉刷到第i个房子要花费的最少成本。则dp[i]和第i个房子的状态有关，这样dp[i]有三种情况，分别刷对应的三种颜色。 心得 一定要处理输入数组为空的情况返回0； 带不同状态的动态规划 参考 https://leetcode-cn.com/problems/paint-house/solution/javafen-qing-kuang-de-dong-tai-gui-hua-by-sperger1/]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[刷算法(15)-打家劫舍]]></title>
     <url>%2Fpost%2Fdb4a93d7.html</url>
     <content type="text"><![CDATA[198. 打家劫舍你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。 解法123456789101112public int rob(int[] nums) &#123; if (nums.length == 0)&#123; return 0; &#125; int[] dp = new int[nums.length + 1]; dp[0] = 0; dp[1] = nums[0]; for (int i = 2; i &lt;= nums.length; i++)&#123; dp[i] = Math.max(dp[i-1], dp[i-2] + nums[i-1]); &#125; return dp[nums.length];&#125; 心得 要注意边界条件，考虑nums数组为空时返回0 要自己分析动态规划方程:1dp[n] = MAX( dp[n-1], dp[n-2] + num ) 参考 画解算法：198. 打家劫舍]]></content>
