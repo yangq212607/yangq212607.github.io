@@ -63,10 +63,12 @@
 <meta property="og:site_name" content="yangq&#39;s blog">
 <meta property="og:description" content="276. 栅栏涂色有 k 种颜色的涂料和一个包含 n 个栅栏柱的栅栏，每个栅栏柱可以用其中一种颜色进行上色。你需要给所有栅栏柱上色，并且保证其中相邻的栅栏柱 最多连续两个 颜色相同。然后，返回所有有效涂色的方案数。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-20T04:38:29.152Z">
+<meta property="og:image" content="https://i.loli.net/2019/10/20/X8boVa7kIuTM3Zs.png">
+<meta property="og:updated_time" content="2019-10-20T04:49:12.371Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="刷算法(17)-栅栏涂色">
 <meta name="twitter:description" content="276. 栅栏涂色有 k 种颜色的涂料和一个包含 n 个栅栏柱的栅栏，每个栅栏柱可以用其中一种颜色进行上色。你需要给所有栅栏柱上色，并且保证其中相邻的栅栏柱 最多连续两个 颜色相同。然后，返回所有有效涂色的方案数。">
+<meta name="twitter:image" content="https://i.loli.net/2019/10/20/X8boVa7kIuTM3Zs.png">
   <link rel="canonical" href="http://yangq.me/post/2553772c">
 
 
@@ -297,7 +299,7 @@
                 
               
 
-              <time title="创建时间：2019-10-20 12:37:25 / 修改时间：12:38:29" itemprop="dateCreated datePublished" datetime="2019-10-20T12:37:25+08:00">2019-10-20</time>
+              <time title="创建时间：2019-10-20 12:37:25 / 修改时间：12:49:12" itemprop="dateCreated datePublished" datetime="2019-10-20T12:37:25+08:00">2019-10-20</time>
             </span>
           
             
@@ -339,7 +341,20 @@
       
         <h2 id="276-栅栏涂色"><a href="#276-栅栏涂色" class="headerlink" title="276. 栅栏涂色"></a><a href="https://leetcode-cn.com/problems/paint-fence/" target="_blank" rel="noopener">276. 栅栏涂色</a></h2><p>有 k 种颜色的涂料和一个包含 n 个栅栏柱的栅栏，每个栅栏柱可以用其中一种颜色进行上色。你需要给所有栅栏柱上色，并且保证其中相邻的栅栏柱 最多连续两个 颜色相同。然后，返回所有有效涂色的方案数。</p>
 <a id="more"></a>
+<p><img src="https://i.loli.net/2019/10/20/X8boVa7kIuTM3Zs.png" alt="屏幕快照 2019-10-20 下午12.38.43.png"></p>
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * @param n个栅栏</span><br><span class="line"> * @param k种颜色</span><br><span class="line"> * @return 多少种喷法</span><br><span class="line"> */</span><br><span class="line">public int numWays(int n, int k) &#123;</span><br><span class="line">    if (n == 0)&#123;</span><br><span class="line">        return 0;</span><br><span class="line">    &#125;else if (n == 1)&#123;</span><br><span class="line">        return k;</span><br><span class="line">    &#125;else if (n == 2)&#123;</span><br><span class="line">        return k * k;</span><br><span class="line">    &#125;</span><br><span class="line">    int[] dp = new int[n+1];</span><br><span class="line">    dp[0] = 0;</span><br><span class="line">    dp[1] = k;</span><br><span class="line">    dp[2] = k * k;</span><br><span class="line">    for (int i = 3; i &lt;= n; i++)&#123;</span><br><span class="line">        dp[i] = dp[i-1] * (k-1) + dp[i-2] * (k-1);</span><br><span class="line">    &#125;</span><br><span class="line">    return dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ol>
+<li><p>需要针对n做一些特殊化处理，当n等于1只有一个栅栏时必然有k种涂法；</p>
+</li>
+<li><p>当n等于2时也就是有两个栅栏，共有k * k种涂法</p>
+</li>
+<li><p>当n大于等于3时通过动态规划实现，假设dp[i]等于有i个栅栏时的涂法，那么我们找dp[i]和dp[i-1]及之前的关系，分两种情况考虑。一种是第i个栅栏和i-1个栅栏涂的颜色不同，那必然有dp[i-1]*(k-1)种涂法。第二种情况，第i个栅栏和i-1个栅栏涂的颜色相同，那意味着i-1个栅栏和i-2个栅栏涂的颜色不同(因为最多只能有两个连续栅栏颜色相同)，也即:dp[i-2] * (k-1)，动态规划方程如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dp[i] = dp[i-1] * (k-1) + dp[i-2] * (k-1)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>总之一句话：动态规划先梳理边界条件，再找动态规划方程！！！</strong></p>
+</li>
+</ol>
 
     </div>
 
@@ -425,7 +440,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#276-栅栏涂色"><span class="nav-number">1.</span> <span class="nav-text">276. 栅栏涂色</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#276-栅栏涂色"><span class="nav-number">1.</span> <span class="nav-text">276. 栅栏涂色</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法"><span class="nav-number">2.</span> <span class="nav-text">解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#心得"><span class="nav-number">3.</span> <span class="nav-text">心得</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
