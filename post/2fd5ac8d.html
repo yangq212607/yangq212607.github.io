@@ -55,19 +55,19 @@
   };
 </script>
 
-  <meta name="description" content="26. 删除排序数组中的重复项给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。">
-<meta name="keywords" content="leetcode">
+  <meta name="description" content="本文介绍墙外失联后处理方法。">
+<meta name="keywords" content="科学上网">
 <meta property="og:type" content="article">
-<meta property="og:title" content="刷算法(5)-删除排序数组中的重复项">
-<meta property="og:url" content="http://yangq.me/post/864ad132.html">
+<meta property="og:title" content="墙外失联终极解决方案">
+<meta property="og:url" content="http://yangq.me/post/2fd5ac8d.html">
 <meta property="og:site_name" content="yangq&#39;s blog">
-<meta property="og:description" content="26. 删除排序数组中的重复项给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。">
+<meta property="og:description" content="本文介绍墙外失联后处理方法。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-09-28T08:39:29.802Z">
+<meta property="og:updated_time" content="2020-03-06T16:42:16.739Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="刷算法(5)-删除排序数组中的重复项">
-<meta name="twitter:description" content="26. 删除排序数组中的重复项给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。">
-  <link rel="canonical" href="http://yangq.me/post/864ad132">
+<meta name="twitter:title" content="墙外失联终极解决方案">
+<meta name="twitter:description" content="本文介绍墙外失联后处理方法。">
+  <link rel="canonical" href="http://yangq.me/post/2fd5ac8d">
 
 
 <script id="page-configurations">
@@ -81,7 +81,7 @@
   };
 </script>
 
-  <title>刷算法(5)-删除排序数组中的重复项 | yangq's blog</title>
+  <title>墙外失联终极解决方案 | yangq's blog</title>
   <meta name="generator" content="Hexo 3.9.0">
   
 
@@ -269,7 +269,7 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="http://yangq.me/post/864ad132.html">
+    <link itemprop="mainEntityOfPage" href="http://yangq.me/post/2fd5ac8d.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="老实念佛">
@@ -281,7 +281,7 @@
       <meta itemprop="name" content="yangq's blog">
     </span>
       <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">刷算法(5)-删除排序数组中的重复项
+        <h1 class="post-title" itemprop="name headline">墙外失联终极解决方案
 
           
         </h1>
@@ -297,7 +297,7 @@
                 
               
 
-              <time title="创建时间：2019-09-28 16:24:23 / 修改时间：16:39:29" itemprop="dateCreated datePublished" datetime="2019-09-28T16:24:23+08:00">2019-09-28</time>
+              <time title="创建时间：2020-03-07 00:21:26 / 修改时间：00:42:16" itemprop="dateCreated datePublished" datetime="2020-03-07T00:21:26+08:00">2020-03-07</time>
             </span>
           
             
@@ -310,7 +310,7 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/algorithm/" itemprop="url" rel="index"><span itemprop="name">算法</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/common/" itemprop="url" rel="index"><span itemprop="name">综合</span></a></span>
 
                 
                 
@@ -337,14 +337,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="26-删除排序数组中的重复项"><a href="#26-删除排序数组中的重复项" class="headerlink" title="26. 删除排序数组中的重复项"></a><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">26. 删除排序数组中的重复项</a></h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+        <p>本文介绍墙外失联后处理方法。</p>
 <a id="more"></a>
-<h2 id="解法1（我的解法）"><a href="#解法1（我的解法）" class="headerlink" title="解法1（我的解法）"></a>解法1（我的解法）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">public int removeDuplicates2(int[] nums) &#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    for (int j = 1; j&lt;nums.length; j++)&#123;</span><br><span class="line">       while (j&lt;nums.length &amp;&amp; nums[j] == nums[i]) j++;</span><br><span class="line">       if (j &lt; nums.length) &#123;</span><br><span class="line">           i++;</span><br><span class="line">           nums[i] = nums[j];</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return i+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>进到<code>for</code>循环后来个<code>while</code>循环找到第一个不等于前一个变量的索引出循环然后赋值。需要注意的是while循环时必须保证索引不越界。后来发现这个while可以和for合并，请看下边管法答案。</p>
-<h2 id="解法2（官方）"><a href="#解法2（官方）" class="headerlink" title="解法2（官方）"></a>解法2（官方）</h2><p>数组完成排序后，我们可以放置两个指针 i 和 j，其中 i 是慢指针，而 j 是快指针。只要 nums[i] = nums[j]，我们就增加j以跳过重复项。当我们遇到 nums[j]!= nums[i]时，跳过重复项的运行已经结束，因此我们必须把它（nums[j]）的值复制到nums[i+1]。然后递增 i，接着我们将再次重复相同的过程，直到 j 到达数组的末尾为止。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">public int removeDuplicates(int[] nums) &#123;</span><br><span class="line">    int i = 0;</span><br><span class="line">    for (int j = 1; j&lt;nums.length; j++)&#123;</span><br><span class="line">        if (nums[j] != nums[i])&#123;</span><br><span class="line">            i++;</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return i+1;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="修改hosts"><a href="#修改hosts" class="headerlink" title="修改hosts"></a>修改hosts</h2><p>Mac输入：<code>sudo vim /etc/hosts</code>然后新增一句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">104.20.200.21 free-ss.site</span><br></pre></td></tr></table></figure>
 
+<p>其中：<br>第一位：104<br>第二位：16-31之间的一个数字<br>第三位：0-255<br>第四位：1-254<br>以上是为了访问<a href="https://free-ss.site/" target="_blank" rel="noopener">https://free-ss.site/</a></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ul>
+<li><a href="mailto:ss@rohankdd.com" target="_blank" rel="noopener">ss@rohankdd.com</a></li>
+</ul>
 
     </div>
 
@@ -360,7 +362,7 @@
           
           <div class="post-tags">
             
-              <a href="/tags/leetcode/" rel="tag"># leetcode</a>
+              <a href="/tags/科学上网/" rel="tag"># 科学上网</a>
             
           </div>
         
@@ -370,8 +372,8 @@
           <div class="post-nav">
             <div class="post-nav-next post-nav-item">
               
-                <a href="/post/3149820c.html" rel="next" title="leetcode刷题进展">
-                  <i class="fa fa-chevron-left"></i> leetcode刷题进展
+                <a href="/post/c2a70526.html" rel="next" title="Trojan科学新姿势">
+                  <i class="fa fa-chevron-left"></i> Trojan科学新姿势
                 </a>
               
             </div>
@@ -379,10 +381,6 @@
             <span class="post-nav-divider"></span>
 
             <div class="post-nav-prev post-nav-item">
-              
-                <a href="/post/26850355.html" rel="prev" title="刷算法(6)-移除元素">
-                  刷算法(6)-移除元素 <i class="fa fa-chevron-right"></i>
-                </a>
               
             </div>
           </div>
@@ -434,7 +432,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#26-删除排序数组中的重复项"><span class="nav-number">1.</span> <span class="nav-text">26. 删除排序数组中的重复项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法1（我的解法）"><span class="nav-number">2.</span> <span class="nav-text">解法1（我的解法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法2（官方）"><span class="nav-number">3.</span> <span class="nav-text">解法2（官方）</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改hosts"><span class="nav-number">1.</span> <span class="nav-text">修改hosts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">2.</span> <span class="nav-text">其他</span></a></li></ol></div>
         
       </div>
       <!--/noindex-->
@@ -632,7 +630,7 @@
       repo: 'blogcomments',
       owner: 'yangq212607',
       admin: ['yangq212607'],
-      id: 'e18a7bf6fc4447f55fb4d1fd5639f9e6',
+      id: 'ec17af46e791f018d024d63bf4efd075',
         language: 'zh-CN',
       
       distractionFreeMode: 'true'
