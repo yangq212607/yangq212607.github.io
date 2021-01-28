@@ -3,18 +3,13 @@
   <entry>
     <title><![CDATA[免费tj机场]]></title>
     <url>%2Fpost%2F1f260d72.html</url>
-    <content type="text"><![CDATA[本文介绍墙外失联后使用免费tj机场。 注册账号]]></content>
+    <content type="text"><![CDATA[本文介绍墙外失联后使用免费tj机场。 注册账号极速max]]></content>
       <categories>
         <category>综合</category>
       </categories>
       <tags>
         <tag>科学上网</tag>
       </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[免费tj机场]]></title>
-    <url>%2Fpost%2F1f260d72.html</url>
-    <content type="text"></content>
   </entry>
   <entry>
     <title><![CDATA[墙外失联终极解决方案]]></title>
@@ -30,7 +25,7 @@
   <entry>
     <title><![CDATA[Trojan科学新姿势]]></title>
     <url>%2Fpost%2Fc2a70526.html</url>
-    <content type="text"><![CDATA[本文介绍Trojan科学上网一键脚本配置。 准备工作VPS我选择的是Google VPS，创建一个台湾或香港实例，选择debian9或10，记录外网IP。 域名 购买域名可以选择namesilo或namecheap; 在域名的dns解析设置里新增一个A解析记录，hostname填写任意字符串，如a或0，则后面配置VPS绑定域名时就是a.xxx.com或0.xxx.com，IP填写上面的外网IP, TTL填写3603。注意这里的A解析后面用来配IP地址,表示访问某个域名指向某IP。 等待域名解析生效可以通过ping域名方式，一般需要10分钟。 备注：如果是namesilo可以直接访问https://www.namesilo.com/account_domain_manage_dns.php修改DNS解析，万网访问https://dns.console.aliyun.com/#/dns/domainList。 服务端SSH登陆首先进行SSH登陆，如果是Google VPS需要进行以下配置： 12sudo -ivi /etc/ssh/sshd_config 修改配置: 12PermitRootLogin yesPasswordAuthentication yes 然后记得通过passwd root设置root登陆密码。 然后重启SSH: 1service sshd restart 如何配置 安装准备软件: 12apt-get update -y &amp;&amp; apt-get install curl -y ##Ubuntu/Debian 系统安装 Curl 方法apt-get install xz-utils #Debian/Ubuntu 安装 XZ 压缩工具命令 下载一键安装脚本通过wget https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh或直接 1bash &lt;(curl -s -L https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh) 之后先安装BBR Plus内核，然后开启BBRPlus加速，中间会选择重启VPS。然后安装Trajon，安装时输入对应域名即可。 3. 安装完毕后查看密码及重启命令: 12/usr/src/trojan/server.confsystemctl restart trojan Windows、Mac、LinuxWindows上直接下载安装完毕后生成的压缩包，点击启动bat即可。也可以到官网下载。修改config.json即可。 Androidigniter 补充 Trojan目前的客户端只是socks5代理，Chrome浏览器需要配合SwitchyOmega使用； 相对于SS使用加密模式，Trojan最大的不同是 伪装 成普通的HTTPS流量实现过墙。 如果遇到证书没有申请成功：一键安装的时候显示 https证书没有申请成果，本次安装失败观察是否存在以下错误：1It is recommended to install socat first 如果存在的话执行下面命令解决: 1apt-get update &amp;&amp; apt-get install curl -y &amp;&amp; apt-get install cron -y &amp;&amp; apt-get install socat -y 参考 波仔 gfwlist]]></content>
+    <content type="text"><![CDATA[本文介绍Trojan科学上网一键脚本配置。 准备工作VPS我选择的是Google VPS，创建一个台湾或香港实例，选择debian9或10，记录外网IP。 域名 购买域名可以选择namesilo或namecheap; 在域名的dns解析设置里新增一个A解析记录，hostname填写任意字符串，如a或0，则后面配置VPS绑定域名时就是a.xxx.com或0.xxx.com，IP填写上面的外网IP, TTL填写3603。注意这里的A解析后面用来配IP地址,表示访问某个域名指向某IP。 等待域名解析生效可以通过ping域名方式，一般需要10分钟。 备注：如果是namesilo可以直接访问https://www.namesilo.com/account_domain_manage_dns.php修改DNS解析，万网访问https://dns.console.aliyun.com/#/dns/domainList。 服务端SSH登陆首先进行SSH登陆，如果是Google VPS需要进行以下配置： 12sudo -ivi /etc/ssh/sshd_config 修改配置: 12PermitRootLogin yesPasswordAuthentication yes 然后记得通过passwd root设置root登陆密码。 然后重启SSH: 1service sshd restart 如何配置 安装准备软件: 12apt-get update -y &amp;&amp; apt-get install curl -y ##Ubuntu/Debian 系统安装 Curl 方法apt-get install xz-utils #Debian/Ubuntu 安装 XZ 压缩工具命令 下载一键安装脚本通过wget https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh或直接 1bash &lt;(curl -s -L https://github.com/V2RaySSR/Trojan/raw/master/Trojan.sh) 之后先安装BBR Plus内核，然后开启BBRPlus加速，中间会选择重启VPS。然后安装Trajon，安装时输入对应域名即可。 3. 安装完毕后查看密码及重启命令: 12/usr/src/trojan/server.confsystemctl restart trojan 定时重启1234567891011apt-get install croncrontab -e输入：0 4 * * * /sbin/reboot启动：/etc/init.d/cron start关闭：/etc/init.d/cron stop重启『/etc/init.d/cron restart查看列表：crontab -l 端侧Windows、Mac、LinuxWindows上直接下载安装完毕后生成的压缩包，点击启动bat即可。也可以到官网下载。修改config.json即可。 MacTrojanX Androidigniter 补充 Trojan目前的客户端只是socks5代理，Chrome浏览器需要配合SwitchyOmega使用； 相对于SS使用加密模式，Trojan最大的不同是 伪装 成普通的HTTPS流量实现过墙。 如果遇到证书没有申请成功：一键安装的时候显示 https证书没有申请成果，本次安装失败观察是否存在以下错误：1It is recommended to install socat first 如果存在的话执行下面命令解决: 1apt-get update &amp;&amp; apt-get install curl -y &amp;&amp; apt-get install cron -y &amp;&amp; apt-get install socat -y 参考 波仔 gfwlist]]></content>
       <categories>
         <category>综合</category>
       </categories>
@@ -343,7 +338,7 @@
   <entry>
     <title><![CDATA[Linux实现定时重启]]></title>
     <url>%2Fpost%2F1b7970e0.html</url>
-    <content type="text"><![CDATA[简介本文介绍在CentOS和Debian上实现定时重启的功能. 检查crond服务是否开机自启CentOS上运行systemctl is-enabled crond.service，如果是disabled的话运行systemctl enable crond.service开启。 注意:如果crond服务不能开机自启的话，则第一次重启后，以后定时任务就没法持续了。 开启crond服务运行:service start crond开启服务，service crond status查看状态： 1Active: active (running) since Sun 2017-09-24 09:26:23 EDT; 3h 32min ago 包含以上输出表示已经开启crond服务. 创建定时任务创建:crontable -e,之后输入: 10 4 * * * /sbin/reboot 表示每天早上4:0分重启.]]></content>
+    <content type="text"><![CDATA[简介本文介绍在CentOS和Debian上实现定时重启的功能. CentOS检查crond服务是否开机自启CentOS上运行systemctl is-enabled crond.service，如果是disabled的话运行systemctl enable crond.service开启。 注意:如果crond服务不能开机自启的话，则第一次重启后，以后定时任务就没法持续了。 开启crond服务运行:service start crond开启服务，service crond status查看状态： 1Active: active (running) since Sun 2017-09-24 09:26:23 EDT; 3h 32min ago 包含以上输出表示已经开启crond服务. 创建定时任务创建:crontable -e,之后输入: 10 4 * * * /sbin/reboot 表示每天早上4:0分重启. debian10安装123456apt-get install croncrontab -e0 4 * * * /sbin/reboot``` ### 重启 启动/etc/init.d/cron start 关闭/etc/init.d/cron stop 重启/etc/init.d/cron restart 12### 查看列表 crontab -l]]></content>
       <categories>
         <category>综合</category>
       </categories>
