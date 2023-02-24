@@ -97,51 +97,6 @@
       </tags>
   </entry>
   <entry>
-    <title>OpenCV修改ROI区域值时需注意数据类型</title>
-    <url>/post/935cfe01.html</url>
-    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文介绍使用OpenCV在修改矩阵特定区域也就是ROI值的时候，需要注意的事项。如果类型错误，将得到错误的结果.</p>
-<span id="more"></span>
-<p>正式交代主题前，先看以下几个点.</p>
-<h2 id="imread函数"><a href="#imread函数" class="headerlink" title="imread函数"></a><a href="http://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imread#Mat%20imread(const%20string&%20filename,%20int%20flags)">imread函数</a></h2><p>我们主要是关注第二个参数,有以下四种:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CV_LOAD_IMAGE_ANYDEPTH - If set, return 16-bit/32-bit image when the input has the corresponding depth, otherwise convert it to 8-bit.</span><br><span class="line">CV_LOAD_IMAGE_COLOR - If set, always convert image to the color one</span><br><span class="line">CV_LOAD_IMAGE_GRAYSCALE - If set, always convert image to the grayscale one</span><br><span class="line">&gt;0 Return a 3-channel color image.</span><br></pre></td></tr></table></figure>
-<p>默认下传的是<code>CV_LOAD_IMAGE_COLOR</code>,得到的Mat type为<code>CV_8UC3</code>,如果传的是<code>CV_LOAD_IMAGE_GRAYSCALE</code>则表示加载的是灰度图像，type为<code>CV_8UC1</code>。</p>
-<h2 id="设置ROI"><a href="#设置ROI" class="headerlink" title="设置ROI"></a>设置ROI</h2><p>方式有大概有2种:</p>
-<ol>
-<li>拷贝构造函数</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Mat roi = Mat(gray, Rect(100, 0, 30, 30));</span><br></pre></td></tr></table></figure>
-<p>当然上面也完全等价于下面这句:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Mat roi(gray, Rect(100, 0, 30, 30));</span><br></pre></td></tr></table></figure>
-<p>可能是写Java多的原因，我更喜欢前面的那种写法.<br>2. 使用操作符</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Mat srcROI = src(Rect(0,0,src.cols/2,src.rows/2));  </span><br></pre></td></tr></table></figure>
-<h2 id="Rect的使用"><a href="#Rect的使用" class="headerlink" title="Rect的使用"></a><a href="http://docs.opencv.org/2.4/modules/core/doc/basic_structures.html?highlight=cv_8uc1#rect">Rect</a>的使用</h2><p>最常见的一种构造方法是:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Rect_(_Tp _x, _Tp _y, _Tp _width, _Tp _height);</span><br></pre></td></tr></table></figure>
-<p>其中x表示ROI区域的x坐标(横轴为X),也就是第几列的意思，y就不解释了。width表示ROI区域的宽度.</p>
-<h2 id="Mat元素访问"><a href="#Mat元素访问" class="headerlink" title="Mat元素访问"></a>Mat元素访问</h2><p><a href="http://blog.csdn.net/xiaowei_cqu/article/details/19839019">链接</a>列举了13种访问方法，<a href="http://www.cnblogs.com/phillips/p/4484717.html">这里</a>又精简到3种，如果对效率没什么太高要求那么还是第一种用起来比较顺手:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for (int i=0; i&lt;ROWS ; i++)  </span><br><span class="line"> &#123;  </span><br><span class="line">      for (int j=0; j&lt;COLS ; j++)  </span><br><span class="line">      &#123;  </span><br><span class="line">          img1.at&lt;float&gt;(i,j) = 3.2f;  </span><br><span class="line">     &#125;  </span><br><span class="line"> &#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>这里的Mat.at<float>(i, j),其中i表示第几行，j表示第几列.</p>
-<h2 id="修改特定区域的值"><a href="#修改特定区域的值" class="headerlink" title="修改特定区域的值"></a>修改特定区域的值</h2><p>目的就是要将roi区域灰度值置为0:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#include &lt;opencv2/opencv.hpp&gt;</span><br><span class="line">using namespace cv;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void clearMat(Mat a)&#123;</span><br><span class="line">    if(a.empty())&#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0; i&lt;a.rows; i++)</span><br><span class="line">        for(int j = 0; j&lt;a.cols; j++)&#123;</span><br><span class="line">            a.at&lt;uchar&gt;(i, j) = 0;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    // insert code here...</span><br><span class="line">    cout &lt;&lt; &quot;Hello, World!\n&quot;;</span><br><span class="line">    string path = &quot;/Users/yanzi/Pictures/lena.jpg&quot;;</span><br><span class="line">    Mat img = imread(path);</span><br><span class="line">    </span><br><span class="line">    //显示灰度图</span><br><span class="line">    Mat gray;</span><br><span class="line">    cvtColor(img, gray, COLOR_RGBA2GRAY);</span><br><span class="line">    </span><br><span class="line">    Mat gray1 = imread(path, IMREAD_GRAYSCALE);</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">//    Mat roi = Mat(gray, Rect(100, 0, 30, 30));</span><br><span class="line">    Mat roi(gray, Rect(100, 0, 30, 30));</span><br><span class="line">    clearMat(roi);</span><br><span class="line">    </span><br><span class="line">    namedWindow(&quot;gray&quot;);</span><br><span class="line">    imshow(&quot;gray&quot;, gray);</span><br><span class="line">    waitKey(0);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们将gray矩阵的那个rect区域弄成黑色，效果图如下:<br><img src="http://image.yangq.me/blog/history/16-7-5/Jietu20170909-190218.jpg" alt="">可以看到运行的丝毫不差。注意我们在访问矩阵元素是是将其设为<code>uchar</code>,如果将其改为<code>int</code>看一下效果:<br><img src="http://image.yangq.me/blog/history/16-7-5/Jietu20170909-190418.jpg" alt=""><br>起点是对的，但是宽度变成了需求的四倍。这是因为uchar只占一个字节，而int为4个字节.当错误的将其转为int后，就会发生实际修改的区域越位的情况。所以当修改Mat时一定格外注意.</p>
-<p><a href="http://docs.opencv.org/2.4/modules/core/doc/basic_structures.html?highlight=cv_8uc1#sparsemat-depth">下面</a>是深度和取值范围的对应关系:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CV_8U - 8-bit unsigned integers ( 0..255 )</span><br><span class="line">CV_8S - 8-bit signed integers ( -128..127 )</span><br><span class="line">CV_16U - 16-bit unsigned integers ( 0..65535 )</span><br><span class="line">CV_16S - 16-bit signed integers ( -32768..32767 )</span><br><span class="line">CV_32S - 32-bit signed integers ( -2147483648..2147483647 )</span><br><span class="line">CV_32F - 32-bit floating-point numbers ( -FLT_MAX..FLT_MAX, INF, NAN )</span><br><span class="line">CV_64F - 64-bit floating-point numbers ( -DBL_MAX..DBL_MAX, INF, NAN )</span><br></pre></td></tr></table></figure>
-<p>我们还要清楚这个depth和数据类型的对应关系:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Mat_&lt;uchar&gt;---------CV_8U</span><br><span class="line">Mat&lt;char&gt;-----------CV_8S</span><br><span class="line">Nat_&lt;short&gt;---------CV_16S</span><br><span class="line">Mat_&lt;ushort&gt;--------CV_16U</span><br><span class="line">Mat_&lt;int&gt;-----------CV_32S</span><br><span class="line">Mat_&lt;float&gt;----------CV_32F</span><br><span class="line">Mat_&lt;double&gt;--------CV_64F</span><br></pre></td></tr></table></figure>
-<p>这样就不会出错了。<br>再贴一段如果是三通道时的访问方法:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int ROWS = 100; // height</span><br><span class="line"> 2 int COLS = 200; // width</span><br><span class="line"> 3 Mat img1(ROWS , COLS , CV_8UC3);  </span><br><span class="line"> 4   </span><br><span class="line"> 5 for (int i=0; i&lt;ROWS ; i++)  </span><br><span class="line"> 6 &#123;  </span><br><span class="line"> 7     for (int j=0; j&lt;COLS ; j++)  </span><br><span class="line"> 8     &#123;  </span><br><span class="line"> 9        img1.at&lt;vec3b&gt;(i,j)[0]= 3.2f;  // B 通道</span><br><span class="line">10        img1.at&lt;vec3b&gt;(i,j)[1]= 3.2f;  // G 通道</span><br><span class="line">11        img1.at&lt;vec3b&gt;(i,j)[2]= 3.2f;  // R 通道</span><br><span class="line">12     &#125;  </span><br><span class="line">13 &#125;                 </span><br></pre></td></tr></table></figure>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="http://www.cnblogs.com/dupuleng/articles/4072736.html">http://www.cnblogs.com/dupuleng/articles/4072736.html</a></li>
-<li><a href="http://docs.opencv.org/2.4/modules/core/doc/basic_structures.html?highlight=cv_8uc1#sparsemat-depth">opencv2.4.13官方文档</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>OpenCV</category>
-      </categories>
-      <tags>
-        <tag>图像处理</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Android应用启动流程分析</title>
     <url>/post/c1c83cc.html</url>
     <content><![CDATA[<p><code>ActivityThread</code>是<code>Activity</code>里一个很重要的成员变量，俗称UI线程，也即应用的主线程,它自身有三个比较关键的成员变量，其中之一是<code>ApplicationThread</code>,在<code>ActivityThread</code>创建的时候作为全局变量被创建:</p>
@@ -273,6 +228,51 @@
       </tags>
   </entry>
   <entry>
+    <title>OpenCV修改ROI区域值时需注意数据类型</title>
+    <url>/post/935cfe01.html</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文介绍使用OpenCV在修改矩阵特定区域也就是ROI值的时候，需要注意的事项。如果类型错误，将得到错误的结果.</p>
+<span id="more"></span>
+<p>正式交代主题前，先看以下几个点.</p>
+<h2 id="imread函数"><a href="#imread函数" class="headerlink" title="imread函数"></a><a href="http://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html?highlight=imread#Mat%20imread(const%20string&%20filename,%20int%20flags)">imread函数</a></h2><p>我们主要是关注第二个参数,有以下四种:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CV_LOAD_IMAGE_ANYDEPTH - If set, return 16-bit/32-bit image when the input has the corresponding depth, otherwise convert it to 8-bit.</span><br><span class="line">CV_LOAD_IMAGE_COLOR - If set, always convert image to the color one</span><br><span class="line">CV_LOAD_IMAGE_GRAYSCALE - If set, always convert image to the grayscale one</span><br><span class="line">&gt;0 Return a 3-channel color image.</span><br></pre></td></tr></table></figure>
+<p>默认下传的是<code>CV_LOAD_IMAGE_COLOR</code>,得到的Mat type为<code>CV_8UC3</code>,如果传的是<code>CV_LOAD_IMAGE_GRAYSCALE</code>则表示加载的是灰度图像，type为<code>CV_8UC1</code>。</p>
+<h2 id="设置ROI"><a href="#设置ROI" class="headerlink" title="设置ROI"></a>设置ROI</h2><p>方式有大概有2种:</p>
+<ol>
+<li>拷贝构造函数</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Mat roi = Mat(gray, Rect(100, 0, 30, 30));</span><br></pre></td></tr></table></figure>
+<p>当然上面也完全等价于下面这句:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Mat roi(gray, Rect(100, 0, 30, 30));</span><br></pre></td></tr></table></figure>
+<p>可能是写Java多的原因，我更喜欢前面的那种写法.<br>2. 使用操作符</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Mat srcROI = src(Rect(0,0,src.cols/2,src.rows/2));  </span><br></pre></td></tr></table></figure>
+<h2 id="Rect的使用"><a href="#Rect的使用" class="headerlink" title="Rect的使用"></a><a href="http://docs.opencv.org/2.4/modules/core/doc/basic_structures.html?highlight=cv_8uc1#rect">Rect</a>的使用</h2><p>最常见的一种构造方法是:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Rect_(_Tp _x, _Tp _y, _Tp _width, _Tp _height);</span><br></pre></td></tr></table></figure>
+<p>其中x表示ROI区域的x坐标(横轴为X),也就是第几列的意思，y就不解释了。width表示ROI区域的宽度.</p>
+<h2 id="Mat元素访问"><a href="#Mat元素访问" class="headerlink" title="Mat元素访问"></a>Mat元素访问</h2><p><a href="http://blog.csdn.net/xiaowei_cqu/article/details/19839019">链接</a>列举了13种访问方法，<a href="http://www.cnblogs.com/phillips/p/4484717.html">这里</a>又精简到3种，如果对效率没什么太高要求那么还是第一种用起来比较顺手:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">for (int i=0; i&lt;ROWS ; i++)  </span><br><span class="line"> &#123;  </span><br><span class="line">      for (int j=0; j&lt;COLS ; j++)  </span><br><span class="line">      &#123;  </span><br><span class="line">          img1.at&lt;float&gt;(i,j) = 3.2f;  </span><br><span class="line">     &#125;  </span><br><span class="line"> &#125;  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>这里的Mat.at<float>(i, j),其中i表示第几行，j表示第几列.</p>
+<h2 id="修改特定区域的值"><a href="#修改特定区域的值" class="headerlink" title="修改特定区域的值"></a>修改特定区域的值</h2><p>目的就是要将roi区域灰度值置为0:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#include &lt;opencv2/opencv.hpp&gt;</span><br><span class="line">using namespace cv;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">void clearMat(Mat a)&#123;</span><br><span class="line">    if(a.empty())&#123;</span><br><span class="line">        return;</span><br><span class="line">    &#125;</span><br><span class="line">    for(int i = 0; i&lt;a.rows; i++)</span><br><span class="line">        for(int j = 0; j&lt;a.cols; j++)&#123;</span><br><span class="line">            a.at&lt;uchar&gt;(i, j) = 0;</span><br><span class="line">        </span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int main(int argc, const char * argv[]) &#123;</span><br><span class="line">    // insert code here...</span><br><span class="line">    cout &lt;&lt; &quot;Hello, World!\n&quot;;</span><br><span class="line">    string path = &quot;/Users/yanzi/Pictures/lena.jpg&quot;;</span><br><span class="line">    Mat img = imread(path);</span><br><span class="line">    </span><br><span class="line">    //显示灰度图</span><br><span class="line">    Mat gray;</span><br><span class="line">    cvtColor(img, gray, COLOR_RGBA2GRAY);</span><br><span class="line">    </span><br><span class="line">    Mat gray1 = imread(path, IMREAD_GRAYSCALE);</span><br><span class="line">  </span><br><span class="line">    </span><br><span class="line">//    Mat roi = Mat(gray, Rect(100, 0, 30, 30));</span><br><span class="line">    Mat roi(gray, Rect(100, 0, 30, 30));</span><br><span class="line">    clearMat(roi);</span><br><span class="line">    </span><br><span class="line">    namedWindow(&quot;gray&quot;);</span><br><span class="line">    imshow(&quot;gray&quot;, gray);</span><br><span class="line">    waitKey(0);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们将gray矩阵的那个rect区域弄成黑色，效果图如下:<br><img src="http://image.yangq.me/blog/history/16-7-5/Jietu20170909-190218.jpg" alt="">可以看到运行的丝毫不差。注意我们在访问矩阵元素是是将其设为<code>uchar</code>,如果将其改为<code>int</code>看一下效果:<br><img src="http://image.yangq.me/blog/history/16-7-5/Jietu20170909-190418.jpg" alt=""><br>起点是对的，但是宽度变成了需求的四倍。这是因为uchar只占一个字节，而int为4个字节.当错误的将其转为int后，就会发生实际修改的区域越位的情况。所以当修改Mat时一定格外注意.</p>
+<p><a href="http://docs.opencv.org/2.4/modules/core/doc/basic_structures.html?highlight=cv_8uc1#sparsemat-depth">下面</a>是深度和取值范围的对应关系:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CV_8U - 8-bit unsigned integers ( 0..255 )</span><br><span class="line">CV_8S - 8-bit signed integers ( -128..127 )</span><br><span class="line">CV_16U - 16-bit unsigned integers ( 0..65535 )</span><br><span class="line">CV_16S - 16-bit signed integers ( -32768..32767 )</span><br><span class="line">CV_32S - 32-bit signed integers ( -2147483648..2147483647 )</span><br><span class="line">CV_32F - 32-bit floating-point numbers ( -FLT_MAX..FLT_MAX, INF, NAN )</span><br><span class="line">CV_64F - 64-bit floating-point numbers ( -DBL_MAX..DBL_MAX, INF, NAN )</span><br></pre></td></tr></table></figure>
+<p>我们还要清楚这个depth和数据类型的对应关系:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Mat_&lt;uchar&gt;---------CV_8U</span><br><span class="line">Mat&lt;char&gt;-----------CV_8S</span><br><span class="line">Nat_&lt;short&gt;---------CV_16S</span><br><span class="line">Mat_&lt;ushort&gt;--------CV_16U</span><br><span class="line">Mat_&lt;int&gt;-----------CV_32S</span><br><span class="line">Mat_&lt;float&gt;----------CV_32F</span><br><span class="line">Mat_&lt;double&gt;--------CV_64F</span><br></pre></td></tr></table></figure>
+<p>这样就不会出错了。<br>再贴一段如果是三通道时的访问方法:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">int ROWS = 100; // height</span><br><span class="line"> 2 int COLS = 200; // width</span><br><span class="line"> 3 Mat img1(ROWS , COLS , CV_8UC3);  </span><br><span class="line"> 4   </span><br><span class="line"> 5 for (int i=0; i&lt;ROWS ; i++)  </span><br><span class="line"> 6 &#123;  </span><br><span class="line"> 7     for (int j=0; j&lt;COLS ; j++)  </span><br><span class="line"> 8     &#123;  </span><br><span class="line"> 9        img1.at&lt;vec3b&gt;(i,j)[0]= 3.2f;  // B 通道</span><br><span class="line">10        img1.at&lt;vec3b&gt;(i,j)[1]= 3.2f;  // G 通道</span><br><span class="line">11        img1.at&lt;vec3b&gt;(i,j)[2]= 3.2f;  // R 通道</span><br><span class="line">12     &#125;  </span><br><span class="line">13 &#125;                 </span><br></pre></td></tr></table></figure>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="http://www.cnblogs.com/dupuleng/articles/4072736.html">http://www.cnblogs.com/dupuleng/articles/4072736.html</a></li>
+<li><a href="http://docs.opencv.org/2.4/modules/core/doc/basic_structures.html?highlight=cv_8uc1#sparsemat-depth">opencv2.4.13官方文档</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>OpenCV</category>
+      </categories>
+      <tags>
+        <tag>图像处理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Matlab里double和uint8对imshow函数的影响</title>
     <url>/post/a525c216.html</url>
     <content><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>本文介绍double和uint8两种数据类型对imshow函数造成的影响，如果使用不当用imshow函数显示double类型数据时将得到二值化黑白图像的效果。</p>
@@ -302,6 +302,70 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>npm安装依赖至指定版本的方法</title>
+    <url>/post/f007732d.html</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文介绍npm安装依赖至指定版本的方法,依赖的版本可以在<a href="https://npm.taobao.org/">淘宝镜像</a>或<a href="https://www.npmjs.com/">官方</a>查询到.</p>
+<span id="more"></span>
+<h2 id="三种方法"><a href="#三种方法" class="headerlink" title="三种方法"></a>三种方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>先在package.json里修改好指定版本号，然后输入:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update webpack</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update webpack@4.7.0</span><br></pre></td></tr></table></figure>
+<p>会把webpack更新至指定版本，但是不会写到package.json文件里，如果需要写到package.json里执行如下命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update webpack@4.7.0 --save</span><br></pre></td></tr></table></figure>
+<p>其中<code>--save</code>等于<code>-S</code>.</p>
+<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update webpack@latest -S</span><br></pre></td></tr></table></figure>
+
+<h2 id="save和-save-dev区别"><a href="#save和-save-dev区别" class="headerlink" title="--save和--save-dev区别"></a><code>--save</code>和<code>--save-dev</code>区别</h2><p>一句话:<code>--save-dev</code>是你开发时依赖的东西，<code>--save</code>是发布后还依赖的东西.</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a href="https://segmentfault.com/q/1010000009049039?_ea=1823977">https://segmentfault.com/q/1010000009049039?_ea=1823977</a></li>
+<li><a href="https://segmentfault.com/q/1010000005163089">https://segmentfault.com/q/1010000005163089</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>npm设置和取消代理的方法</title>
+    <url>/post/8f460f7b.html</url>
+    <content><![CDATA[<h2 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config set proxy=http://127.0.0.1:8087</span><br><span class="line">npm config set registry=http://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+<span id="more"></span>
+<h2 id="关于https"><a href="#关于https" class="headerlink" title="关于https"></a>关于https</h2><p>经过上面设置使用了http开头的源，因此不需要设https_proxy了，否则还要增加一句:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config set https-proxy http://server:port</span><br></pre></td></tr></table></figure>
+<h2 id="代理用户名和密码"><a href="#代理用户名和密码" class="headerlink" title="代理用户名和密码"></a>代理用户名和密码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config set proxy http://username:password@server:port</span><br><span class="line">npm confit set https-proxy http://username:password@server:port</span><br></pre></td></tr></table></figure>
+<h2 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config delete proxy</span><br><span class="line">npm config delete https-proxy</span><br></pre></td></tr></table></figure>
+<h2 id="修改源"><a href="#修改源" class="headerlink" title="修改源"></a>修改源</h2><p>请参考<a href="https://segmentfault.com/a/1190000002589144">https://segmentfault.com/a/1190000002589144</a></p>
+]]></content>
+      <categories>
+        <category>Node.js</category>
+      </categories>
+      <tags>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用Python批量push多个仓至github</title>
+    <url>/post/6d48edea.html</url>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文记录使用Python批量从bare类型的git仓库上push到bitbucket.</p>
+<span id="more"></span>
+<h2 id="python代码"><a href="#python代码" class="headerlink" title="python代码"></a>python代码</h2><p>废话不说，先来看代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Time    : 2018/5/20 下午12:50</span><br><span class="line"># @Site    : </span><br><span class="line"># @File    : main.py</span><br><span class="line"># @Software: PyCharm Community Edition</span><br><span class="line">import os</span><br><span class="line">def main():</span><br><span class="line">    DIR = &#x27;/Users/yanzi/work/git/xxx-android-framework&#x27;</span><br><span class="line">    if not os.path.exists(DIR):</span><br><span class="line">        print(&#x27;error: %s not exist&#x27; % DIR)</span><br><span class="line">        return</span><br><span class="line">    if os.path.isfile(DIR):</span><br><span class="line">        print(&#x27;error: %s is not dir&#x27; % DIR)</span><br><span class="line">        return</span><br><span class="line">    dirs = os.listdir(DIR)</span><br><span class="line">    PATH = []</span><br><span class="line">    REPO = []</span><br><span class="line">    i = 0</span><br><span class="line">    for git in dirs:</span><br><span class="line">        if str(git).endswith(&#x27;.git&#x27;):</span><br><span class="line">            # if i == 3:</span><br><span class="line">            #     break</span><br><span class="line">            PATH = getPath(DIR, git)</span><br><span class="line">            pushRepo(PATH, git)</span><br><span class="line">            i += 1</span><br><span class="line"></span><br><span class="line">    #遍历文件夹DIR</span><br><span class="line">    # for (root, dirs, files) in os.walk(DIR):</span><br><span class="line">    #     if root == DIR:</span><br><span class="line">    #         print(dirs)</span><br><span class="line">    #         break</span><br><span class="line"></span><br><span class="line">def getPath(dir, git):</span><br><span class="line">    return dir + &#x27;/&#x27; + git</span><br><span class="line"></span><br><span class="line">def getRepo(git):</span><br><span class="line">    return git[:-4]</span><br><span class="line"></span><br><span class="line">def pushRepo(path, git):</span><br><span class="line">    os.chdir(path)</span><br><span class="line">    pushCmd = &#x27;git push --mirror git@bitbucket.org:xxx/&#x27; + git</span><br><span class="line">    print(pushCmd)</span><br><span class="line">    os.system(pushCmd)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol>
+<li><code>git push --mirror xxx</code>可以push仓下的所有分支和tag至origin上。</li>
+<li>通过python进入不同的工作目录应通过<code>os.chdir(path)</code>而不是<code>os.system(&#39;cd /Users/xxx&#39;)</code>.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>综合</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>leetcode刷题进展</title>
     <url>/post/3149820c.html</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>leetcode算法部分共有 <strong>1118</strong>道题 <strong>38</strong>个标签，本文按照leetcode的标签进行分类，跟踪自己刷题进展。</p>
@@ -317,6 +381,29 @@
 <h2 id="九-贪心算法-0-59"><a href="#九-贪心算法-0-59" class="headerlink" title="九.贪心算法(0/59)"></a>九.贪心算法(0/59)</h2><h2 id="十-双指针-0-57"><a href="#十-双指针-0-57" class="headerlink" title="十.双指针(0/57)"></a>十.双指针(0/57)</h2><h2 id="十一-广度优先搜索-0-51"><a href="#十一-广度优先搜索-0-51" class="headerlink" title="十一.广度优先搜索(0/51)"></a>十一.广度优先搜索(0/51)</h2><h2 id="十二-栈-0-50"><a href="#十二-栈-0-50" class="headerlink" title="十二.栈(0/50)"></a>十二.栈(0/50)</h2><h2 id="十三-回溯算法-0-45"><a href="#十三-回溯算法-0-45" class="headerlink" title="十三.回溯算法(0/45)"></a>十三.回溯算法(0/45)</h2><h2 id="十四-设计-0-40"><a href="#十四-设计-0-40" class="headerlink" title="十四.设计(0/40)"></a>十四.设计(0/40)</h2><h2 id="十五-链表-0-36"><a href="#十五-链表-0-36" class="headerlink" title="十五.链表(0/36)"></a>十五.链表(0/36)</h2><h2 id="十六-排序-0-36"><a href="#十六-排序-0-36" class="headerlink" title="十六.排序(0/36)"></a>十六.排序(0/36)</h2><h2 id="十七-位运算-0-34"><a href="#十七-位运算-0-34" class="headerlink" title="十七.位运算(0/34)"></a>十七.位运算(0/34)</h2><h2 id="十八-图-0-34"><a href="#十八-图-0-34" class="headerlink" title="十八.图(0/34)"></a>十八.图(0/34)</h2><h2 id="十九-堆-0-34"><a href="#十九-堆-0-34" class="headerlink" title="十九.堆(0/34)"></a>十九.堆(0/34)</h2><h2 id="二十-并查集-0-27"><a href="#二十-并查集-0-27" class="headerlink" title="二十.并查集(0/27)"></a>二十.并查集(0/27)</h2><h2 id="二十一-Sliding-Window-0-19"><a href="#二十一-Sliding-Window-0-19" class="headerlink" title="二十一.Sliding Window(0/19)"></a>二十一.Sliding Window(0/19)</h2><h2 id="二十二-分治算法-0-18"><a href="#二十二-分治算法-0-18" class="headerlink" title="二十二.分治算法(0/18)"></a>二十二.分治算法(0/18)</h2><h2 id="二十三-字典树-0-17"><a href="#二十三-字典树-0-17" class="headerlink" title="二十三.字典树(0/17)"></a>二十三.字典树(0/17)</h2><h2 id="二十四-递归-0-14"><a href="#二十四-递归-0-14" class="headerlink" title="二十四.递归(0/14)"></a>二十四.递归(0/14)</h2><h2 id="二十五-Orderd-Map-0-10"><a href="#二十五-Orderd-Map-0-10" class="headerlink" title="二十五.Orderd Map(0/10)"></a>二十五.Orderd Map(0/10)</h2><h2 id="二十六-线段树-0-10"><a href="#二十六-线段树-0-10" class="headerlink" title="二十六.线段树(0/10)"></a>二十六.线段树(0/10)</h2><h2 id="二十七-队列-0-9"><a href="#二十七-队列-0-9" class="headerlink" title="二十七.队列(0/9)"></a>二十七.队列(0/9)</h2><h2 id="二十八-极小化极大-0-8"><a href="#二十八-极小化极大-0-8" class="headerlink" title="二十八.极小化极大(0/8)"></a>二十八.极小化极大(0/8)</h2><h2 id="二十九-树状数组-0-6"><a href="#二十九-树状数组-0-6" class="headerlink" title="二十九.树状数组(0/6)"></a>二十九.树状数组(0/6)</h2><h2 id="三十-Random-0-6"><a href="#三十-Random-0-6" class="headerlink" title="三十.Random(0/6)"></a>三十.Random(0/6)</h2><h2 id="三十一-拓扑排序-0-5"><a href="#三十一-拓扑排序-0-5" class="headerlink" title="三十一.拓扑排序(0/5)"></a>三十一.拓扑排序(0/5)</h2><h2 id="三十二-脑筋急转弯-0-4"><a href="#三十二-脑筋急转弯-0-4" class="headerlink" title="三十二.脑筋急转弯(0/4)"></a>三十二.脑筋急转弯(0/4)</h2><h2 id="三十三-几何-0-3"><a href="#三十三-几何-0-3" class="headerlink" title="三十三.几何(0/3)"></a>三十三.几何(0/3)</h2><h2 id="三十四-Line-Sweep-0-3"><a href="#三十四-Line-Sweep-0-3" class="headerlink" title="三十四.Line Sweep(0/3)"></a>三十四.Line Sweep(0/3)</h2><h2 id="三十五-Rejection-Samping-0-2"><a href="#三十五-Rejection-Samping-0-2" class="headerlink" title="三十五.Rejection Samping(0/2)"></a>三十五.Rejection Samping(0/2)</h2><h2 id="三十六-蓄水池抽样-0-2"><a href="#三十六-蓄水池抽样-0-2" class="headerlink" title="三十六.蓄水池抽样(0/2)"></a>三十六.蓄水池抽样(0/2)</h2><h2 id="三十七-二叉搜索树-0-1"><a href="#三十七-二叉搜索树-0-1" class="headerlink" title="三十七.二叉搜索树(0/1)"></a>三十七.二叉搜索树(0/1)</h2><h2 id="三十八-记忆化-0-1"><a href="#三十八-记忆化-0-1" class="headerlink" title="三十八.记忆化(0/1)"></a>三十八.记忆化(0/1)</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
 <li><a href="https://github.com/grandyang/leetcode/blob/master/README-CN.md">grandyang/leetcode</a></li>
 </ol>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>刷算法(1)-两数之和</title>
+    <url>/post/a28dc3f0.html</url>
+    <content><![CDATA[<h2 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a><a href="https://leetcode-cn.com/problems/two-sum/">1. 两数之和</a></h2><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
+<span id="more"></span>
+<h2 id="第一种做法：暴力破解"><a href="#第一种做法：暴力破解" class="headerlink" title="第一种做法：暴力破解"></a>第一种做法：暴力破解</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.yangq.test;</span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        int[] results = new int[] &#123;0, 0&#125;;</span><br><span class="line">        for (int i =0; i &lt; nums.length; i++) &#123;</span><br><span class="line">            for (int j = i+1; j &lt; nums.length; j++) &#123;</span><br><span class="line">                if (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                    results[0] = i;</span><br><span class="line">                    results[1] = j; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        return results;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度：O(n^2)，空间复杂度O(1)。</p>
+<h2 id="第二种做法-一遍哈希"><a href="#第二种做法-一遍哈希" class="headerlink" title="第二种做法:一遍哈希"></a>第二种做法:一遍哈希</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; data = new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        for (int i = 0; i&lt; nums.length; i++) &#123;</span><br><span class="line">            int diff = target - nums[i];</span><br><span class="line">            if (data.containsKey(diff)) &#123;</span><br><span class="line">                return new int[] &#123;i, data.get(diff)&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            data.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        throw new IllegalArgumentException(&quot;can&#x27;t found&quot;);  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>时间复杂度：O(n)，我们只遍历了包含有 nn 个元素的列表一次。在表中进行的每次查找只花费 O(1)的时间。</p>
+</li>
+<li><p>空间复杂度：O(n)，所需的额外空间取决于哈希表中存储的元素数量，该表最多需要存储 n个元素。</p>
+</li>
+</ul>
 ]]></content>
       <categories>
         <category>算法</category>
@@ -348,29 +435,6 @@
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
 <li><a href="https://github.com/JuiceZhou/Leetcode/blob/master/java/array/$277_FindTheCelebrity.java">暴力法</a></li>
 <li><a href="https://leetcode-cn.com/problems/find-the-celebrity/solution/277-sou-xun-ming-ren-by-guohaoding/">官方解法</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>刷算法(1)-两数之和</title>
-    <url>/post/a28dc3f0.html</url>
-    <content><![CDATA[<h2 id="1-两数之和"><a href="#1-两数之和" class="headerlink" title="1. 两数之和"></a><a href="https://leetcode-cn.com/problems/two-sum/">1. 两数之和</a></h2><p>给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。</p>
-<span id="more"></span>
-<h2 id="第一种做法：暴力破解"><a href="#第一种做法：暴力破解" class="headerlink" title="第一种做法：暴力破解"></a>第一种做法：暴力破解</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package com.yangq.test;</span><br><span class="line"></span><br><span class="line">public class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">        int[] results = new int[] &#123;0, 0&#125;;</span><br><span class="line">        for (int i =0; i &lt; nums.length; i++) &#123;</span><br><span class="line">            for (int j = i+1; j &lt; nums.length; j++) &#123;</span><br><span class="line">                if (nums[i] + nums[j] == target) &#123;</span><br><span class="line">                    results[0] = i;</span><br><span class="line">                    results[1] = j; </span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line">        return results;    </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>时间复杂度：O(n^2)，空间复杂度O(1)。</p>
-<h2 id="第二种做法-一遍哈希"><a href="#第二种做法-一遍哈希" class="headerlink" title="第二种做法:一遍哈希"></a>第二种做法:一遍哈希</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    public int[] twoSum(int[] nums, int target) &#123;</span><br><span class="line">    HashMap&lt;Integer, Integer&gt; data = new HashMap&lt;Integer, Integer&gt;();</span><br><span class="line">        </span><br><span class="line">        for (int i = 0; i&lt; nums.length; i++) &#123;</span><br><span class="line">            int diff = target - nums[i];</span><br><span class="line">            if (data.containsKey(diff)) &#123;</span><br><span class="line">                return new int[] &#123;i, data.get(diff)&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">            data.put(nums[i], i);</span><br><span class="line">        &#125;</span><br><span class="line">        throw new IllegalArgumentException(&quot;can&#x27;t found&quot;);  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>时间复杂度：O(n)，我们只遍历了包含有 nn 个元素的列表一次。在表中进行的每次查找只花费 O(1)的时间。</p>
-</li>
-<li><p>空间复杂度：O(n)，所需的额外空间取决于哈希表中存储的元素数量，该表最多需要存储 n个元素。</p>
-</li>
 </ul>
 ]]></content>
       <categories>
@@ -686,6 +750,41 @@
       </tags>
   </entry>
   <entry>
+    <title>刷算法(7)-三数之和</title>
+    <url>/post/3ad49f62.html</url>
+    <content><![CDATA[<h2 id="15-三数之和"><a href="#15-三数之和" class="headerlink" title="15. 三数之和"></a><a href="https://leetcode-cn.com/problems/3sum/">15. 三数之和</a></h2><p>给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。注意：答案中不可以包含重复的三元组。</p>
+<span id="more"></span>
+
+<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><img src="https://i.loli.net/2019/10/01/MuzHD6gpFPte3Sd.png" alt="屏幕快照 2019-10-01 下午3.51.47.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) &#123;</span><br><span class="line"></span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++)&#123;</span><br><span class="line">        if (nums[i] &gt; 0) break;</span><br><span class="line">        if (i &gt; 0 &amp;&amp; nums[i] == nums[i-1]) continue;</span><br><span class="line">        int left = i+1, right = nums.length - 1;</span><br><span class="line">        while (left &lt; right)&#123;</span><br><span class="line">            int sum = nums[i] + nums[left] + nums[right];</span><br><span class="line">            if ( sum == 0)&#123;</span><br><span class="line">                result.add(Arrays.asList(nums[i], nums[left], nums[right]));</span><br><span class="line">                while (left &lt; right &amp;&amp; nums[right] == nums[right-1]) right--;</span><br><span class="line">                while (left &lt; right &amp;&amp; nums[left] == nums[left+1]) left++;</span><br><span class="line">                left++;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;else if (sum &gt; 0)&#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ol>
+<li>整体思路是先对数组进行排序，然后对有序数组依次查找，用最左、最右两个指针索引进行遍历;</li>
+<li>因为数组是递增的，一旦<code>num[i] &gt; 0</code>则对索引i就不需要再找了需要结束整个流程(因为i右边的数都比它大)；</li>
+<li>如果遍历到i，但是num[i]等于num[i-1]，则忽略这个i，从i的下一个开始找，通过for循环控制；</li>
+<li>针对i，定义left和right，在left和right区间去找，计算三者sum；</li>
+<li>如果<code>sum = 0</code>，则放到结果里，同时对left和right，判断是否有重复的，如果有重复的就往前/往后移位。这里有两个注意事项：</li>
+</ol>
+<ul>
+<li>1)注意是通过left和left+1比的，意味着出while后，left指的位置仍然是当下参与计算sum的那个索引，出循环后left和right要进行递增、递减操作，这一切都归功于数组是递增有序的；</li>
+<li>2)注意while循环的条件一定有<code>left &lt; right</code>，这一点非常关键；</li>
+</ul>
+<ol start="6">
+<li>如果<code>sum &gt; 0</code>意味着值太大了，需要小点，那就把right递减下；</li>
+<li>如果<code>sum &lt; 0</code>意味着太小了，需要更大，那就把left递增加大下这个值，因为right是从最右边来的，已经是最大的了；</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a href="https://leetcode-cn.com/problems/3sum/solution/hua-jie-suan-fa-15-san-shu-zhi-he-by-guanpengchn/">画解算法：15. 三数之和</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>leetcode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>刷算法(8)-最接近的三数之和</title>
     <url>/post/f209e897.html</url>
     <content><![CDATA[<h2 id="16-最接近的三数之和"><a href="#16-最接近的三数之和" class="headerlink" title="16. 最接近的三数之和"></a><a href="https://leetcode-cn.com/problems/3sum-closest/">16. 最接近的三数之和</a></h2><p>给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
@@ -734,105 +833,6 @@
       </categories>
       <tags>
         <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>刷算法(7)-三数之和</title>
-    <url>/post/3ad49f62.html</url>
-    <content><![CDATA[<h2 id="15-三数之和"><a href="#15-三数之和" class="headerlink" title="15. 三数之和"></a><a href="https://leetcode-cn.com/problems/3sum/">15. 三数之和</a></h2><p>给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。注意：答案中不可以包含重复的三元组。</p>
-<span id="more"></span>
-
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p><img src="https://i.loli.net/2019/10/01/MuzHD6gpFPte3Sd.png" alt="屏幕快照 2019-10-01 下午3.51.47.png"></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) &#123;</span><br><span class="line"></span><br><span class="line">    List&lt;List&lt;Integer&gt;&gt; result = new ArrayList&lt;&gt;();</span><br><span class="line">    Arrays.sort(nums);</span><br><span class="line">    for (int i = 0; i &lt; nums.length; i++)&#123;</span><br><span class="line">        if (nums[i] &gt; 0) break;</span><br><span class="line">        if (i &gt; 0 &amp;&amp; nums[i] == nums[i-1]) continue;</span><br><span class="line">        int left = i+1, right = nums.length - 1;</span><br><span class="line">        while (left &lt; right)&#123;</span><br><span class="line">            int sum = nums[i] + nums[left] + nums[right];</span><br><span class="line">            if ( sum == 0)&#123;</span><br><span class="line">                result.add(Arrays.asList(nums[i], nums[left], nums[right]));</span><br><span class="line">                while (left &lt; right &amp;&amp; nums[right] == nums[right-1]) right--;</span><br><span class="line">                while (left &lt; right &amp;&amp; nums[left] == nums[left+1]) left++;</span><br><span class="line">                left++;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;else if (sum &gt; 0)&#123;</span><br><span class="line">                right--;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                left++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><ol>
-<li>整体思路是先对数组进行排序，然后对有序数组依次查找，用最左、最右两个指针索引进行遍历;</li>
-<li>因为数组是递增的，一旦<code>num[i] &gt; 0</code>则对索引i就不需要再找了需要结束整个流程(因为i右边的数都比它大)；</li>
-<li>如果遍历到i，但是num[i]等于num[i-1]，则忽略这个i，从i的下一个开始找，通过for循环控制；</li>
-<li>针对i，定义left和right，在left和right区间去找，计算三者sum；</li>
-<li>如果<code>sum = 0</code>，则放到结果里，同时对left和right，判断是否有重复的，如果有重复的就往前/往后移位。这里有两个注意事项：</li>
-</ol>
-<ul>
-<li>1)注意是通过left和left+1比的，意味着出while后，left指的位置仍然是当下参与计算sum的那个索引，出循环后left和right要进行递增、递减操作，这一切都归功于数组是递增有序的；</li>
-<li>2)注意while循环的条件一定有<code>left &lt; right</code>，这一点非常关键；</li>
-</ul>
-<ol start="6">
-<li>如果<code>sum &gt; 0</code>意味着值太大了，需要小点，那就把right递减下；</li>
-<li>如果<code>sum &lt; 0</code>意味着太小了，需要更大，那就把left递增加大下这个值，因为right是从最右边来的，已经是最大的了；</li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a href="https://leetcode-cn.com/problems/3sum/solution/hua-jie-suan-fa-15-san-shu-zhi-he-by-guanpengchn/">画解算法：15. 三数之和</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>leetcode</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm安装依赖至指定版本的方法</title>
-    <url>/post/f007732d.html</url>
-    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文介绍npm安装依赖至指定版本的方法,依赖的版本可以在<a href="https://npm.taobao.org/">淘宝镜像</a>或<a href="https://www.npmjs.com/">官方</a>查询到.</p>
-<span id="more"></span>
-<h2 id="三种方法"><a href="#三种方法" class="headerlink" title="三种方法"></a>三种方法</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>先在package.json里修改好指定版本号，然后输入:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update webpack</span><br></pre></td></tr></table></figure>
-
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update webpack@4.7.0</span><br></pre></td></tr></table></figure>
-<p>会把webpack更新至指定版本，但是不会写到package.json文件里，如果需要写到package.json里执行如下命令:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update webpack@4.7.0 --save</span><br></pre></td></tr></table></figure>
-<p>其中<code>--save</code>等于<code>-S</code>.</p>
-<h3 id="方法三"><a href="#方法三" class="headerlink" title="方法三"></a>方法三</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm update webpack@latest -S</span><br></pre></td></tr></table></figure>
-
-<h2 id="save和-save-dev区别"><a href="#save和-save-dev区别" class="headerlink" title="--save和--save-dev区别"></a><code>--save</code>和<code>--save-dev</code>区别</h2><p>一句话:<code>--save-dev</code>是你开发时依赖的东西，<code>--save</code>是发布后还依赖的东西.</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a href="https://segmentfault.com/q/1010000009049039?_ea=1823977">https://segmentfault.com/q/1010000009049039?_ea=1823977</a></li>
-<li><a href="https://segmentfault.com/q/1010000005163089">https://segmentfault.com/q/1010000005163089</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>npm设置和取消代理的方法</title>
-    <url>/post/8f460f7b.html</url>
-    <content><![CDATA[<h2 id="设置代理"><a href="#设置代理" class="headerlink" title="设置代理"></a>设置代理</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config set proxy=http://127.0.0.1:8087</span><br><span class="line">npm config set registry=http://registry.npmjs.org</span><br></pre></td></tr></table></figure>
-<span id="more"></span>
-<h2 id="关于https"><a href="#关于https" class="headerlink" title="关于https"></a>关于https</h2><p>经过上面设置使用了http开头的源，因此不需要设https_proxy了，否则还要增加一句:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config set https-proxy http://server:port</span><br></pre></td></tr></table></figure>
-<h2 id="代理用户名和密码"><a href="#代理用户名和密码" class="headerlink" title="代理用户名和密码"></a>代理用户名和密码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config set proxy http://username:password@server:port</span><br><span class="line">npm confit set https-proxy http://username:password@server:port</span><br></pre></td></tr></table></figure>
-<h2 id="取消代理"><a href="#取消代理" class="headerlink" title="取消代理"></a>取消代理</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm config delete proxy</span><br><span class="line">npm config delete https-proxy</span><br></pre></td></tr></table></figure>
-<h2 id="修改源"><a href="#修改源" class="headerlink" title="修改源"></a>修改源</h2><p>请参考<a href="https://segmentfault.com/a/1190000002589144">https://segmentfault.com/a/1190000002589144</a></p>
-]]></content>
-      <categories>
-        <category>Node.js</category>
-      </categories>
-      <tags>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>使用Python批量push多个仓至github</title>
-    <url>/post/6d48edea.html</url>
-    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>本文记录使用Python批量从bare类型的git仓库上push到bitbucket.</p>
-<span id="more"></span>
-<h2 id="python代码"><a href="#python代码" class="headerlink" title="python代码"></a>python代码</h2><p>废话不说，先来看代码:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"># @Time    : 2018/5/20 下午12:50</span><br><span class="line"># @Site    : </span><br><span class="line"># @File    : main.py</span><br><span class="line"># @Software: PyCharm Community Edition</span><br><span class="line">import os</span><br><span class="line">def main():</span><br><span class="line">    DIR = &#x27;/Users/yanzi/work/git/xxx-android-framework&#x27;</span><br><span class="line">    if not os.path.exists(DIR):</span><br><span class="line">        print(&#x27;error: %s not exist&#x27; % DIR)</span><br><span class="line">        return</span><br><span class="line">    if os.path.isfile(DIR):</span><br><span class="line">        print(&#x27;error: %s is not dir&#x27; % DIR)</span><br><span class="line">        return</span><br><span class="line">    dirs = os.listdir(DIR)</span><br><span class="line">    PATH = []</span><br><span class="line">    REPO = []</span><br><span class="line">    i = 0</span><br><span class="line">    for git in dirs:</span><br><span class="line">        if str(git).endswith(&#x27;.git&#x27;):</span><br><span class="line">            # if i == 3:</span><br><span class="line">            #     break</span><br><span class="line">            PATH = getPath(DIR, git)</span><br><span class="line">            pushRepo(PATH, git)</span><br><span class="line">            i += 1</span><br><span class="line"></span><br><span class="line">    #遍历文件夹DIR</span><br><span class="line">    # for (root, dirs, files) in os.walk(DIR):</span><br><span class="line">    #     if root == DIR:</span><br><span class="line">    #         print(dirs)</span><br><span class="line">    #         break</span><br><span class="line"></span><br><span class="line">def getPath(dir, git):</span><br><span class="line">    return dir + &#x27;/&#x27; + git</span><br><span class="line"></span><br><span class="line">def getRepo(git):</span><br><span class="line">    return git[:-4]</span><br><span class="line"></span><br><span class="line">def pushRepo(path, git):</span><br><span class="line">    os.chdir(path)</span><br><span class="line">    pushCmd = &#x27;git push --mirror git@bitbucket.org:xxx/&#x27; + git</span><br><span class="line">    print(pushCmd)</span><br><span class="line">    os.system(pushCmd)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
-<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol>
-<li><code>git push --mirror xxx</code>可以push仓下的所有分支和tag至origin上。</li>
-<li>通过python进入不同的工作目录应通过<code>os.chdir(path)</code>而不是<code>os.system(&#39;cd /Users/xxx&#39;)</code>.</li>
-</ol>
-]]></content>
-      <categories>
-        <category>综合</category>
-      </categories>
-      <tags>
-        <tag>git</tag>
       </tags>
   </entry>
   <entry>
@@ -1201,6 +1201,19 @@
       </categories>
       <tags>
         <tag>v2ray</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>一台电脑部署多个hexo博客ssh密钥管理</title>
+    <url>/post/91ee4cd1.html</url>
+    <content><![CDATA[<p>本文介绍一台电脑上部署多个hexo博客后，github的ssh密钥管理冲突问题，方便多个hexo环境直接使用ssh进行push。</p>
+<span id="more"></span>
+]]></content>
+      <categories>
+        <category>综合</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
       </tags>
   </entry>
   <entry>
